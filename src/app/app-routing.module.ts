@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-const routes: Routes = [];
+import { RouterModule, Routes } from '@angular/router';
+import { LazyLoadingRoutes } from './routing/lazy-loading-routes';
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [
+        RouterModule.forRoot(LazyLoadingRoutes),
+    ],
     exports: [RouterModule],
 })
 export class AppRoutingModule {

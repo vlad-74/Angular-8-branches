@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HelperService } from '../../../helper/helper.service';
 
 @Component({
     selector: 'login',
@@ -7,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-    public constructor() {
+    public constructor(
+        private _h: HelperService,
+    ) {
     }
 
     public ngOnInit() {
+        console.log('+++++++', this._h.screen.checkScreen());
     }
 
 }
