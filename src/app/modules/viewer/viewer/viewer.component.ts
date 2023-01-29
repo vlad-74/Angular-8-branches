@@ -12,4 +12,5 @@ export class ViewerComponent implements OnInit {
 
     public ngOnInit() {
     }
+
 }
