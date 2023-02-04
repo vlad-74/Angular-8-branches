@@ -66,11 +66,12 @@ export class AppComponent implements OnInit, OnDestroy {
     При любом изменении в appActions, appState, isTheme
     эмитится appSnapshot для всех компонентов
     */
-    public dispatch() {
+    public dispatch(item) {
         this._snapShot.getCurrentAppSnapshot({
             appActions: this.appActions,
             appState: this.appState,
             isTheme: this.isTheme,
+            item,
         });
     }
 
@@ -83,7 +84,7 @@ export class AppComponent implements OnInit, OnDestroy {
     /* Если не старт, то идет отправка appSnapshot всем компонентам */
     private _watch(item, itemName) {
         this[itemName] = item;
-        if (!this.isStartApp) { this.dispatch(); }
+        if (!this.isStartApp) { this.dispatch(item); }
     }
 
     /* Инициируем appSnapshot - lightTheme() вызовет подписку и последующий dispatch */
