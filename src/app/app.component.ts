@@ -71,7 +71,7 @@ export class AppComponent implements OnInit, OnDestroy {
             appActions: this.appActions,
             appState: this.appState,
             isTheme: this.isTheme,
-            item,
+            itemChange: item,
         });
     }
 
@@ -90,5 +90,6 @@ export class AppComponent implements OnInit, OnDestroy {
     /* Инициируем appSnapshot - lightTheme() вызовет подписку и последующий dispatch */
     private _startAppSnapshot() {
         this._theme.lightTheme();
+        // kvg: задать стартовый стейт
     }
 }

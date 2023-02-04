@@ -14,7 +14,7 @@ export class AppSnapshotService {
         appActions: null,
         appState: null,
         isTheme: null,
-        item: null, // по этому показателю определяется логика в зависимости ГДЕ произошли изменения
+        itemChange: null, // по этому показателю определяется логика в зависимости ГДЕ произошли изменения
     });
 
     public constructor(
