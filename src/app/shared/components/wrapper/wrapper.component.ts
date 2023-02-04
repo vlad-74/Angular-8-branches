@@ -1,3 +1,4 @@
+/* WrapperComponent - компонент, который управляет экранными модулями (module-screen) */
 import { Component, OnInit } from '@angular/core';
 
 @Component({

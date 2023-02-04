@@ -1,4 +1,7 @@
+import { IScreen } from '../interfaces/helper.interfaces';
+
 export class ScreenService {
+    /* iOS detection */
     public iOS() {
         return [
                 'iPad Simulator',
@@ -11,8 +14,8 @@ export class ScreenService {
             || (navigator.userAgent.includes('Mac') && 'ontouchend' in document); // iPad on iOS 13 detection
     }
 
-    // в зависимости от размера экрана
-    public checkScreen() {
+    /* Возвращает ширину, высоту и dpi в зависимости от размера экрана */
+    public checkScreen(): IScreen {
         // const screenWidth = window.screen.width
         // const screenHeight = window.screen.height
 
