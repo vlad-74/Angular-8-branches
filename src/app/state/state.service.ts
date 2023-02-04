@@ -7,11 +7,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class StateService {
-    public appState: BehaviorSubject<any> = new BehaviorSubject({});
+    public appState: BehaviorSubject<any> = new BehaviorSubject({ StateService: 6 });
 
-    public newAppState(state): void {
+    public newAppState(state): any {
         this.appState.next(state);
     }
 }
