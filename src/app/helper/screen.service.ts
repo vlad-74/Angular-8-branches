@@ -1,3 +1,4 @@
+/* Функции для работы с экраном */
 import { IScreen } from '../interfaces/helper.interfaces';
 
 export class ScreenService {

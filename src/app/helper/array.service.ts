@@ -1,3 +1,5 @@
+/* Функции для работы с массивами */
+
 export class ArrayService {
 
     /*

@@ -14,7 +14,12 @@ export class LoginComponent implements OnInit {
     }
 
     public ngOnInit() {
+        this.test().then();
+    }
+
+    public async test() {
         console.log('+++++++', this._h.screen.checkScreen());
+        console.log('=======', await this._h.dom.getElement('login'));
     }
 
 }

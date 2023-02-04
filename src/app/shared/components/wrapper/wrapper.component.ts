@@ -1,5 +1,6 @@
 /* WrapperComponent - компонент, который управляет экранными модулями (module-screen) */
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'wrapper',
@@ -8,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WrapperComponent implements OnInit {
 
-    public constructor() {
+    public constructor(
+        private router: Router,
+    ) {
     }
 
     public ngOnInit() {
+        this.router.navigate(['login']).then();
     }
 
 }
