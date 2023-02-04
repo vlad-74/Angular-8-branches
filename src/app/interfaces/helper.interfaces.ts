@@ -5,3 +5,7 @@ export interface IScreen {
     vh: string;
     dpi: number;
 }
+
+export type TSelector = 'querySelector' | 'querySelectorAll';
+
+export type TGetElement = Element | NodeList;
