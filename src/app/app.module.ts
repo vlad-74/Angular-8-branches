@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DeveloperInfoComponent } from './developer-info/developer-info.component';
 import { SharedModule } from './shared/shared.module';
-import { LoginModule } from './modules/login/login.module';
-import { NotFoundModule } from './modules/not-found/not-found.module';
+import { LoginModule } from './module-screen/login/login.module';
+import { NotFoundModule } from './module-screen/not-found/not-found.module';
 
 @NgModule({
     declarations: [

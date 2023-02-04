@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PlayerComponent } from '../../modules/player/player/player.component';
+import { PlayerComponent } from '../../module-screen/player/player/player.component';
 
 const routes: Routes = [
     {

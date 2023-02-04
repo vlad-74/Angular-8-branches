@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PlayerRouting } from './player.routing';
-import { PlayerModule } from '../../modules/player/player.module';
+import { PlayerModule } from '../../module-screen/player/player.module';
 
 @NgModule({
     imports: [

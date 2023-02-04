@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { NotFoundRouting } from './not-found.routing';
-import { NotFoundModule } from '../../modules/not-found/not-found.module';
+import { NotFoundModule } from '../../module-screen/not-found/not-found.module';
 
 @NgModule({
     imports: [

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ViewerComponent } from '../../modules/viewer/viewer/viewer.component';
+import { ViewerComponent } from '../../module-screen/viewer/viewer/viewer.component';
 
 const routes: Routes = [
     {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RefereeComponent } from '../../modules/referee/referee/referee.component';
+import { RefereeComponent } from '../../module-screen/referee/referee/referee.component';
 
 const routes: Routes = [
     {

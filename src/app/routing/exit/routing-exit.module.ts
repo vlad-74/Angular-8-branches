@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ExitRouting } from './exit.routing';
-import { ExitModule } from '../../modules/exit/exit.module';
+import { ExitModule } from '../../module-screen/exit/exit.module';
 
 @NgModule({
     imports: [

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ViewerRouting } from './viewer.routing';
-import { ViewerModule } from '../../modules/viewer/viewer.module';
+import { ViewerModule } from '../../module-screen/viewer/viewer.module';
 
 @NgModule({
     imports: [
