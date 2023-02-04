@@ -3,15 +3,15 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ThemeService {
     public isTheme: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-    public darkTheme(): void {
+    public darkTheme(): any {
         this.isTheme.next(true);
     }
 
-    public lightTheme(): void {
+    public lightTheme(): any {
         this.isTheme.next(false);
     }
 }

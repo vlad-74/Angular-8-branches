@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HelperModule } from '../helper/helper.module';
 import { WrapperComponent } from './components/wrapper/wrapper.component';
-import { StateModule } from '../state/state.module';
 
 @NgModule({
     declarations: [
@@ -16,7 +15,6 @@ import { StateModule } from '../state/state.module';
         RouterModule,
         ReactiveFormsModule,
         HelperModule,
-        StateModule,
     ],
 })
 export class SharedModule {

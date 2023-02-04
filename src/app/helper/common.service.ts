@@ -1,6 +1,9 @@
 /* Общие функции. Для работы с логикой */
+import { environment } from '../../environments/environment';
 
 export class CommonService {
+    protected logСоunt = 0;
+
     /*
      Задержка во времени (Аналог есть в DomService)
      ПРИМЕР
@@ -12,5 +15,13 @@ export class CommonService {
     */
     public setDelay(ms): Promise<unknown> {
         return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    /* Отписываемся от подписок */
+    public log(arg) {
+        if (!environment.production) {
+            this.logСоunt++;
+            console.log('==log-' + this.logСоunt, ...arg);
+        }
     }
 }
