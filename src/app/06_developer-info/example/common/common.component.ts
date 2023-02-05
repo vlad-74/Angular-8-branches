@@ -21,9 +21,9 @@ export class CommonComponent implements OnInit {
     ) {
     }
 
-    /* Подписывемся на appSnapshot*/
+    /* Подписывемся на appSnapshot$*/
     public ngOnInit() {
-        this._snapShot.appSnapshot
+        this._snapShot.appSnapshot$
             .pipe(takeUntil(this.destroyed$))
             .subscribe(
                 appSnapshot => {

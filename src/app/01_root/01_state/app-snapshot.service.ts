@@ -10,7 +10,7 @@ import { HelperService } from '@helper/helper.service';
 
 @Injectable({ providedIn: 'root' })
 export class AppSnapshotService {
-    public appSnapshot: BehaviorSubject<any> = new BehaviorSubject({
+    public appSnapshot$: BehaviorSubject<any> = new BehaviorSubject({
         appActions: null,
         appState: null,
         isTheme: null,
@@ -23,7 +23,7 @@ export class AppSnapshotService {
 
     public getCurrentAppSnapshot(snapshot): any {
         this._log([' - snapshot - ', snapshot]);
-        this.appSnapshot.next(snapshot);
+        this.appSnapshot$.next(snapshot);
     }
 
     private _log(arr: any[]) {

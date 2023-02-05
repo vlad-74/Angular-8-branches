@@ -9,9 +9,9 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ActionsService {
-    public appActions: BehaviorSubject<any> = new BehaviorSubject({ ActionsService: 5 });
+    public appActions$: BehaviorSubject<any> = new BehaviorSubject({ ActionsService: 5 });
 
     public runAppActions(action): any {
-        this.appActions.next(action);
+        this.appActions$.next(action);
     }
 }
