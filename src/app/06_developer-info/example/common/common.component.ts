@@ -36,9 +36,9 @@ export class CommonComponent implements OnInit {
     }
 
     public async test() {
-        // console.log('+++++++', this._h.screen.checkScreen());
-        // this._log(['=======']);
-        // this._log(['=======', await this._h.dom.getElement('login')]);
+        console.log('+++++++', this._h.screen.checkScreen());
+        this._log(['=======']);
+        this._log(['=======', await this._h.dom.getElement('login')]);
 
         setTimeout(() => { this._theme.darkTheme(); }, 2000);
     }
