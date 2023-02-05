@@ -17,5 +17,5 @@ getTestBed().initTestEnvironment(
 // Then we find all the tests.
 const context = require.context('./', true, /\.spec\.ts$/);
 
-// And load the module-screen.
+// And load the 01_module-screen.
 context.keys().map(context);
