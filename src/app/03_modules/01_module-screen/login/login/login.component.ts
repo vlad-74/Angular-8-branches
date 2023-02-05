@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { ThemeService } from '@root/01_state/theme.service';
-import { AppSnapshotService } from '@root/01_state/app-snapshot.service';
-import { HelperService } from '@root/02_helper/helper.service';
+import { HelperService } from '@helper/helper.service';
+import { ThemeService } from '@state/theme.service';
+import { AppSnapshotService } from '@state/app-snapshot.service';
 
 @Component({
     selector: 'login',

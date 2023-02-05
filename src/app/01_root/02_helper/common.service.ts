@@ -1,7 +1,7 @@
 /* Общие функции. Для работы с логикой */
 
-import { environment } from '@environments/environment';
 import { Injectable } from '@angular/core';
+import { environment } from '@environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class CommonService {

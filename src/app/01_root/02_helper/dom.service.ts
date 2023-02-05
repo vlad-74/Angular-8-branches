@@ -1,6 +1,6 @@
 /* Общие функции. Для работы с DOM */
-import { TGetElement, TSelector } from '@interfaces/helper.interfaces';
 import { Injectable } from '@angular/core';
+import { TGetElement, TSelector } from '@interfaces/helper.interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class DomService {

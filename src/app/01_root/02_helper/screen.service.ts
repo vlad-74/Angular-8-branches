@@ -1,6 +1,6 @@
 /* Функции для работы с экраном */
-import { IScreen } from '@interfaces/helper.interfaces';
 import { Injectable } from '@angular/core';
+import { IScreen } from '@interfaces/helper.interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class ScreenService {

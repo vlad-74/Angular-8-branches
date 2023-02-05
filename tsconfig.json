@@ -4,11 +4,16 @@
     "baseUrl": "./",
     "paths": {
         "@environments/*": ["src/environments/*"],
+        "@src/*": ["src/*"],
+        "@app/*": ["src/app/*"],
         "@root/*": ["src/app/01_root/*"],
+        "@state/*": ["src/app/01_root/01_state/*"],
+        "@helper/*": ["src/app/01_root/02_helper/*"],
+        "@routing/*": ["src/app/02_routing/*"],
         "@modules/*": ["src/app/03_modules/*"],
         "@shared/*": ["src/app/04_shared/*"],
         "@interfaces/*": ["src/app/05_interfaces/*"],
-        "@developer/*": ["src/app/06_developer/*"]
+        "@developer/*": ["src/app/06_developer-info/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

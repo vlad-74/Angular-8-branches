@@ -9,36 +9,36 @@ export const LazyLoadingRoutes: Routes = [
     {
         path: 'admin',
         component: WrapperComponent,
-        loadChildren: () => import('./02_routing/admin/routing-admin.module').then(m => m.RoutingAdminModule),
+        loadChildren: () => import('@routing/admin/routing-admin.module').then(m => m.RoutingAdminModule),
     },
     {
         path: 'exit',
         component: WrapperComponent,
-        loadChildren: () => import('./02_routing/exit/routing-exit.module').then(m => m.RoutingExitModule),
+        loadChildren: () => import('@routing/exit/routing-exit.module').then(m => m.RoutingExitModule),
     },
     {
         path: 'login',
         component: WrapperComponent,
-        loadChildren: () => import('./02_routing/login/routing-login.module').then(m => m.RoutingLoginModule),
+        loadChildren: () => import('@routing/login/routing-login.module').then(m => m.RoutingLoginModule),
     },
     {
         path: 'player',
         component: WrapperComponent,
-        loadChildren: () => import('./02_routing/player/routing-player.module').then(m => m.RoutingPlayerModule),
+        loadChildren: () => import('@routing/player/routing-player.module').then(m => m.RoutingPlayerModule),
     },
     {
         path: 'referee',
         component: WrapperComponent,
-        loadChildren: () => import('./02_routing/referee/routing-referee.module').then(m => m.RoutingRefereeModule),
+        loadChildren: () => import('@routing/referee/routing-referee.module').then(m => m.RoutingRefereeModule),
     },
     {
         path: 'viewer',
         component: WrapperComponent,
-        loadChildren: () => import('./02_routing/viewer/routing-viewer.module').then(m => m.RoutingViewerModule),
+        loadChildren: () => import('@routing/viewer/routing-viewer.module').then(m => m.RoutingViewerModule),
     },
     {
         path: '**',
         component: WrapperComponent,
-        loadChildren: () => import('./02_routing/not-found/routing-not-found.module').then(m => m.RoutingNotFoundModule),
+        loadChildren: () => import('@routing/not-found/routing-not-found.module').then(m => m.RoutingNotFoundModule),
     },
 ];

@@ -6,7 +6,7 @@
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { HelperService } from '@root/02_helper/helper.service';
+import { HelperService } from '@helper/helper.service';
 
 @Injectable({ providedIn: 'root' })
 export class AppSnapshotService {
