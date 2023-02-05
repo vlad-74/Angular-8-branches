@@ -3,10 +3,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ThemeService } from './state/theme.service';
-import { StateService } from './state/state.service';
-import { ActionsService } from './state/actions.service';
-import { AppSnapshotService } from './state/app-snapshot.service';
+import { ThemeService } from '@root/01_state/theme.service';
+import { StateService } from '@root/01_state/state.service';
+import { ActionsService } from '@root/01_state/actions.service';
+import { AppSnapshotService } from '@root/01_state/app-snapshot.service';
 
 @Component({
     selector: 'app-root',
