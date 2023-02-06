@@ -21,6 +21,7 @@ export class CommonService {
     }
 
     /* Отписываемся от подписок */
+    // console.log(this.constructor.name + ' - appSnapshot - ', appSnapshot);
     public log(arg) {
         if (!environment.production) {
             this.logСоunt++;

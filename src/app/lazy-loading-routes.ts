@@ -37,6 +37,16 @@ export const LazyLoadingRoutes: Routes = [
         loadChildren: () => import('@routing/viewer/routing-viewer.module').then(m => m.RoutingViewerModule),
     },
     {
+        path: 'developer',
+        component: WrapperComponent,
+        loadChildren: () => import('@routing/developer/routing-developer.module').then(m => m.RoutingDeveloperModule),
+    },
+    {
+        path: 'sleep',
+        component: WrapperComponent,
+        loadChildren: () => import('@routing/sleep/routing-sleep.module').then(m => m.RoutingSleepModule),
+    },
+    {
         path: '**',
         component: WrapperComponent,
         loadChildren: () => import('@routing/not-found/routing-not-found.module').then(m => m.RoutingNotFoundModule),

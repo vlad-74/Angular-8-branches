@@ -22,7 +22,7 @@ export class UserActivitySubscribeService {
     }
 
     /* Подписываемся на USER_ACTIVITY */
-    public userActivity() {
+    public userActivitySubscribe() {
         fromEvent(this.document, 'click')
             .pipe(
                 takeUntil(this.destroyed$),

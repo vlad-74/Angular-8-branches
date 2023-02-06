@@ -4,12 +4,14 @@
 
 import { Injectable } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { ActionsService } from '@state/actions.service';
 import { AppSnapshotService } from '@state/app-snapshot.service';
 import { StateService } from '@state/state.service';
 import { ThemeService } from '@state/theme.service';
-import { Subject } from 'rxjs';
 import { UserActivityService } from '@state/user-activity.service';
+import { StateDispatchService } from '@reglaments/state-dispatch.service';
+import {ScreenService} from '@state/screen.service';
 
 @Injectable({ providedIn: 'root' })
 export class StateSubscribeService {
@@ -29,6 +31,8 @@ export class StateSubscribeService {
         private _state: StateService,
         private _theme: ThemeService,
         private _userActivity: UserActivityService,
+        private _screen: ScreenService,
+        private _stateDispatch: StateDispatchService,
     ) {
     }
 
@@ -40,47 +44,40 @@ export class StateSubscribeService {
         this._actions.appActions$
             .pipe( takeUntil(this.destroyed$) )
             .subscribe(appActions => {
-                this.appActions = appActions;
+                this._stateDispatch.appActions = appActions;
                 this._watch('appActions', appActions);
             });
 
         this._state.appState$
             .pipe( takeUntil(this.destroyed$) )
             .subscribe(appState => {
-                this.appState = appState;
+                this._stateDispatch.appState = appState;
                 this._watch('appState', appState);
             });
 
         this._theme.isTheme$
             .pipe( takeUntil(this.destroyed$) )
             .subscribe(isTheme => {
-                this.isTheme = isTheme;
+                this._stateDispatch.isTheme = isTheme;
                 this._watch('isTheme', isTheme);
             });
 
         this._userActivity.isSleep$
             .pipe( takeUntil(this.destroyed$) )
             .subscribe(isSleep => {
-                this.isSleep = isSleep;
+                this._stateDispatch.isSleep = isSleep;
                 this._watch('isSleep', isSleep);
+            });
+
+        this._screen.appScreen$
+            .pipe( takeUntil(this.destroyed$) )
+            .subscribe(appScreen => {
+                this._stateDispatch.appScreen = appScreen;
+                this._watch('appScreen', appScreen);
             });
 
         this.isStartApp = false;
         this._startAppSnapshot();
-    }
-
-    /*
-    При любом изменении в appActions$, appState$, isTheme$
-    эмитится appSnapshot$ для всех компонентов
-    */
-    public dispatch(item) {
-        this._snapShot.getCurrentAppSnapshot({
-            appActions: this.appActions,
-            appState: this.appState,
-            isTheme: this.isTheme,
-            isSleep: this.isSleep,
-            itemChange: item,
-        });
     }
 
     /* Отписываемся от подписок */
@@ -92,7 +89,13 @@ export class StateSubscribeService {
     /* Если не старт, то идет отправка appSnapshot$ всем компонентам */
     private _watch(item, itemName) {
         this[itemName] = item;
-        if (!this.isStartApp) { this.dispatch(item); }
+        if (!this.isStartApp) {
+            /*
+            При любом изменении в appActions$, appScreen$, appState$, isTheme$, isSleep$
+            эмитится appSnapshot$ для всех компонентов
+            */
+            this._stateDispatch.stateDispatch(item);
+        }
     }
 
     /* Инициируем appSnapshot$ - lightTheme() вызовет подписку и последующий dispatch */
