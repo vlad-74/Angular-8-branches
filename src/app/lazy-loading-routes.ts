@@ -10,6 +10,7 @@ export const LazyLoadingRoutes: Routes = [
         path: 'admin',
         component: WrapperComponent,
         loadChildren: () => import('@routing/admin/routing-admin.module').then(m => m.RoutingAdminModule),
+        data: { preload: true },
     },
     {
         path: 'exit',

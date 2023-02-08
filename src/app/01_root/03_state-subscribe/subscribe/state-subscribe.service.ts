@@ -11,7 +11,7 @@ import { StateService } from '@state/state.service';
 import { ThemeService } from '@state/theme.service';
 import { UserActivityService } from '@state/user-activity.service';
 import { StateDispatchService } from '@reglaments/state-dispatch.service';
-import {ScreenService} from '@state/screen.service';
+import { ScreenService } from '@state/screen.service';
 
 @Injectable({ providedIn: 'root' })
 export class StateSubscribeService {

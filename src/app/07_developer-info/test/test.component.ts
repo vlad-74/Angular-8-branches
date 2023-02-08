@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { HelperService } from '@helper/helper.service';
 import { ThemeService } from '@state/theme.service';
 import { AppSnapshotService } from '@state/app-snapshot.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'developer-common',
-  templateUrl: './common.component.html',
-  styleUrls: ['./common.component.scss'],
+    selector: 'test',
+    templateUrl: './test.component.html',
+    styleUrls: ['./test.component.scss'],
 })
-export class CommonComponent implements OnInit {
+export class TestComponent implements OnInit, OnDestroy {
     private readonly destroyed$ = new Subject();
     private currentAppSnapshot;
 
@@ -36,11 +36,13 @@ export class CommonComponent implements OnInit {
     }
 
     public async test() {
-        console.log('+++++++', this._h.screen.checkScreen());
-        this._log(['=======']);
-        this._log(['=======', await this._h.dom.getElement('login')]);
+        // console.log('+++++++', this._h.screen.checkScreen());
+        // this._log(['=======']);
+        // this._log(['=======', await this._h.dom.getElement('test')]);
 
-        setTimeout(() => { this._theme.darkTheme(); }, 2000);
+        setTimeout(() => {
+            this._theme.darkTheme();
+        }, 2000);
     }
 
     /* Отписываемся от подписок */

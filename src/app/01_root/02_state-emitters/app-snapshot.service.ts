@@ -11,6 +11,7 @@ import { BehaviorSubject } from 'rxjs';
 export class AppSnapshotService {
     public appSnapshot$: BehaviorSubject<any> = new BehaviorSubject({
         appActions: null,
+        appScreen: null,
         appState: null,
         isTheme: null,
         isSleep: null,

@@ -1,14 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CommonComponent } from '@developer/example/common/common.component';
+import { DeveloperInfoComponent } from '@developer/developer-info.component';
+import { TestComponent } from '@developer/test/test.component';
+import { WrapperComponent } from '@shared/components/wrapper/wrapper.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: CommonComponent,
-        data: {
-            name: 'developer',
-        },
+        component: WrapperComponent,
+        data: { name: 'test' },
+        children: [
+            {
+                path: 'develop',
+                component: DeveloperInfoComponent,
+            },
+            {
+                path: '',
+                redirectTo: 'develop',
+                pathMatch: 'full',
+            },
+            {
+                path: 'test',
+                component: TestComponent,
+            },
+        ],
     },
 ];
 

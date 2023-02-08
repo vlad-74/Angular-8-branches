@@ -7,7 +7,7 @@ export class ArrayService {
 
     /*
     Получить случайный элемент из списка
-    @example
+    @examples
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     this.01_helper.array.randomItemFromArray(months)
     */
@@ -17,7 +17,7 @@ export class ArrayService {
 
     /*
     Объединение уникальных значений массива
-    @example
+    @examples
     const arrayA = [1, 2, 3, 4];
     const arrayB = [3, 4, 5, 6];
     this.01_helper.array.unionUniqueArrayValues(arrayA, arrayB); // [1, 2, 3, 4, 5, 6]
@@ -28,7 +28,7 @@ export class ArrayService {
 
     /*
     Пересечение уникальных значений в массивах
-    @example
+    @examples
     const arrayA = [1, 2, 3, 3, 4, 5];
     const arrayB = [2, 3, 2];
     this.01_helper.array.intersectionUniqueInArrays(arrayA, arrayB); // [2, 3]
@@ -39,7 +39,7 @@ export class ArrayService {
 
     /*
     Разность уникальных значений в обеих массивах
-    @example
+    @examples
     const arrayA = [1, 2, 3, 4, 5, 5];
     const arrayB = [2, 3, 7, 7, 8];
     this.01_helper.array.differenceUniqueInArrays(arrayA, arrayB); // [1, 4, 5, 7, 8]
@@ -50,7 +50,7 @@ export class ArrayService {
 
     /*
     Разность уникальных значений одного массива от другого
-    @example
+    @examples
     const arrayA = [1, 2, 3, 4, 5, 5];
     const arrayB = [2, 3, 7, 7, 8];
     this.01_helper.array.differenceArrayFromAnother(arrayA, arrayB); // [1, 4, 5]
