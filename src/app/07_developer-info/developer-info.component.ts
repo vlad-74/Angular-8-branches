@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
     selector: 'developer-info',
     templateUrl: './developer-info.component.html',
     styleUrls: [ './developer-info.component.scss' ],
+    styles: [
+        ':host { width: 100%;}',
+    ],
 })
 export class DeveloperInfoComponent implements OnInit {
     public title = 'competitions';
@@ -47,5 +50,9 @@ export class DeveloperInfoComponent implements OnInit {
 
     public goSnapshot() {
         this._router.navigate(['developer', 'snapshot']).then();
+    }
+
+    public goTheme() {
+        this._router.navigate(['developer', 'theme']).then();
     }
 }

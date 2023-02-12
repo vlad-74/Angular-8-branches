@@ -5,6 +5,7 @@ import { TestComponent } from '@developer/test/test.component';
 import { InfoComponent } from '@developer/examples/info/info.component';
 import { InterComponent } from '@developer/examples/inter/inter.component';
 import { SnapshotComponent } from '@developer/examples/app-snapshot/snapshot.component';
+import { ThemeComponent } from '@developer/examples/theme/theme.component';
 
 const routes: Routes = [
     {
@@ -31,6 +32,11 @@ const routes: Routes = [
                 path: 'snapshot',
                 component: SnapshotComponent,
             },
+            {
+                path: 'theme',
+                component: ThemeComponent,
+            },
+
             {
                 path: '',
                 redirectTo: 'info',

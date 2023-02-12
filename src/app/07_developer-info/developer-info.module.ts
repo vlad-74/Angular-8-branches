@@ -8,6 +8,7 @@ import { TestComponent } from './test/test.component';
 import { InfoComponent } from '@developer/examples/info/info.component';
 import { InterComponent } from '@developer/examples/inter/inter.component';
 import { SnapshotComponent } from '@developer/examples/app-snapshot/snapshot.component';
+import { ThemeComponent } from '@developer/examples/theme/theme.component';
 
 @NgModule({
     declarations: [
@@ -16,6 +17,7 @@ import { SnapshotComponent } from '@developer/examples/app-snapshot/snapshot.com
         InfoComponent,
         InterComponent,
         SnapshotComponent,
+        ThemeComponent,
     ],
     imports: [
         CommonModule,
