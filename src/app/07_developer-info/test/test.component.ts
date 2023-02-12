@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { HelperService } from '@helper/helper.service';
 import { ThemeService } from '@state/theme.service';
 import { AppSnapshotService } from '@state/app-snapshot.service';
-import { takeUntil } from 'rxjs/operators';
+
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'test',
@@ -13,8 +15,10 @@ import { takeUntil } from 'rxjs/operators';
 export class TestComponent implements OnInit, OnDestroy {
     private readonly destroyed$ = new Subject();
     private currentAppSnapshot;
+    public name = 'Translation';
 
     public constructor(
+        public translate: TranslateService,
         private _h: HelperService,
         private _theme: ThemeService,
         private _snapShot: AppSnapshotService,
@@ -23,6 +27,16 @@ export class TestComponent implements OnInit, OnDestroy {
 
     /* Подписывемся на appSnapshot$*/
     public ngOnInit() {
+        this.translate.addLangs(['en', 'fr', 'vi']);
+        this.translate.setDefaultLang('en');
+
+        const browserLang = this.translate.getBrowserLang();
+
+        this.translate.use(browserLang.match(/en|fr|vi/) ? browserLang : 'en');
+
+        console.log(browserLang);
+        // =========================================================
+
         this._snapShot.appSnapshot$
             .pipe(takeUntil(this.destroyed$))
             .subscribe(
