@@ -21,10 +21,6 @@ export class DeveloperInfoComponent implements OnInit {
         this._router.navigate(['']).then();
     }
 
-    public goTest() {
-        this._router.navigate(['developer', 'test']).then();
-    }
-
     public goSleep() {
         this._router.navigate(['sleep']).then();
     }
@@ -35,5 +31,21 @@ export class DeveloperInfoComponent implements OnInit {
 
     public goAdmin() {
         this._router.navigate(['admin']).then();
+    }
+
+    public goTest() {
+        this._router.navigate(['developer', 'test']).then();
+    }
+
+    public goInfo() {
+        this._router.navigate(['developer', 'info']).then();
+    }
+
+    public goInternationalization() {
+        this._router.navigate(['developer', 'internationalization']).then();
+    }
+
+    public goSnapshot() {
+        this._router.navigate(['developer', 'snapshot']).then();
     }
 }

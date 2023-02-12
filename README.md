@@ -1,6 +1,10 @@
 # Competitions
 [Справочные материалы по Markdown](https://learn.microsoft.com/ru-ru/contribute/markdown-reference)
 
+[Internaltionalization I18n stackblitz](https://stackblitz.com/edit/angular-internaltionalization-i18n-cpzeaf?file=src%2Fapp%2Fhello.component.ts,src%2Fapp%2Fapp.component.ts)
+
+[Internaltionalization I18n статья](https://progtask.ru/angular-i18n-ngx-translate/)
+
 > ## НАВИГАЦИЯ
 * 1 - lazy-loading-routes.ts в папке app - стартовый роутинг.
 * 2 - Папка `routing` - логика направления на `module-screen` экранные (групповые) модули (первый слеш роутинга). ...через папку `modules`
