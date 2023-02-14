@@ -11,12 +11,12 @@
         "@state/*": ["src/app/01_root/02_state-emitters/*"],
         "@subscribe/*": ["src/app/01_root/03_state-subscribe/*"],
         "@reglaments/*": ["src/app/01_root/04_state-reglaments/*"],
-        "@routing/*": ["src/app/02_routing/*"],
-        "@modules/*": ["src/app/03_modules/*"],
-        "@shared/*": ["src/app/04_shared/*"],
-        "@interfaces/*": ["src/app/05_interfaces/*"],
-        "@style/*": ["src/app/06_style/*"],
-        "@developer/*": ["src/app/07_developer-info/*"]
+          "@style/*": ["src/app/00_style/*"],
+          "@routing/*": ["src/app/02_routing/*"],
+          "@modules/*": ["src/app/03_modules/*"],
+          "@shared/*": ["src/app/04_shared/*"],
+          "@interfaces/*": ["src/app/05_interfaces/*"],
+        "@developer/*": ["src/app/06_developer-info/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

@@ -1,9 +1,16 @@
 /* Функции для работы с экраном */
 import { Injectable } from '@angular/core';
 import { IScreen } from '@interfaces/helper.interfaces';
+import { BrowserService } from '@helper/browser.service';
 
 @Injectable({ providedIn: 'root' })
 export class ScreenService {
+
+    public constructor(
+        public browser: BrowserService,
+    ) {
+    }
+
     /* iOS detection */
     public iOS() {
         return [
@@ -26,6 +33,9 @@ export class ScreenService {
         const vh = window.innerHeight + 'px';
         const dpi = window.devicePixelRatio;
 
-        return { vw, vh, dpi };
+        const coefficient = window.innerWidth / window.innerHeight;
+        const typeScreen = coefficient >= 1 ? 'tablet' : 'mobile';
+
+        return <IScreen> { vw, vh, dpi, coefficient, typeScreen, browser: this.browser.getBrowser() };
     }
 }

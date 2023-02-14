@@ -33,10 +33,11 @@ export class TestComponent implements OnInit, OnDestroy {
             );
 
         this.test().then();
+        console.log('+++++++', this._h.screen.checkScreen());
     }
 
     public async test() {
-        // console.log('+++++++', this._h.screen.checkScreen());
+
         // this._log(['=======']);
         // this._log(['=======', await this._h.dom.getElement('test')]);
 
