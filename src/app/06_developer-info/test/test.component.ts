@@ -22,7 +22,7 @@ export class TestComponent implements OnInit, OnDestroy {
     }
 
     /* Подписывемся на appSnapshot$*/
-    public ngOnInit() {
+    public async ngOnInit() {
         this._snapShot.appSnapshot$
             .pipe(takeUntil(this.destroyed$))
             .subscribe(
@@ -33,13 +33,11 @@ export class TestComponent implements OnInit, OnDestroy {
             );
 
         this.test().then();
-        console.log('+++++++', this._h.screen.checkScreen());
+        console.log('+++++++', await this._h.jsonService.getAssetsJsonData('i18n/en.json'));
     }
 
     public async test() {
-
-        // this._log(['=======']);
-        // this._log(['=======', await this._h.dom.getElement('test')]);
+        this._log([await this._h.dom.getElement('test')]);
 
         setTimeout(() => {
             this._theme.darkTheme();
