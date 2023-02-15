@@ -6,6 +6,7 @@ import { InfoComponent } from '@developer/examples/info/info.component';
 import { InterComponent } from '@developer/examples/inter/inter.component';
 import { SnapshotComponent } from '@developer/examples/app-snapshot/snapshot.component';
 import { ThemeComponent } from '@developer/examples/theme/theme.component';
+import { LoaderComponent2 } from '@developer/examples/loader/loader.component';
 
 const routes: Routes = [
     {
@@ -36,7 +37,10 @@ const routes: Routes = [
                 path: 'theme',
                 component: ThemeComponent,
             },
-
+            {
+                path: 'loader',
+                component: LoaderComponent2,
+            },
             {
                 path: '',
                 redirectTo: 'info',

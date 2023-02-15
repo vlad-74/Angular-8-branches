@@ -1,0 +1,95 @@
+@import '../../../00_style/variables';
+
+:host {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: $bg;
+    color: $color;
+}
+
+u {
+    display: block;
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    border-top: 5px solid #eb1777;
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin: -64px 0 0 -64px;
+    box-sizing: border-box;
+    animation: 2s Rotate ease-in-out infinite;
+    -webkit-animation: 2s Rotate ease-in-out infinite;
+    color: $color;
+    line-height: 128px;
+    text-align: center;
+    text-decoration: none;
+}
+@keyframes Rotate {
+    50% {
+        transform: rotate(180deg)
+    }
+    100% {
+        transform: rotate(360deg)
+    }
+}
+@-webkit-keyframes Rotate {
+    50% {
+        -webkit-transform: rotate(180deg)
+    }
+    100% {
+        -webkit-transform: rotate(360deg)
+    }
+}
+u:before,
+u:after {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 128px;
+    height: 128px;
+    top: -5px;
+    left: 0;
+    border-radius: 50%;
+    box-sizing: border-box
+}
+
+u:before {
+    border-top: 5px solid #89c759;
+    transform: rotate(120deg)
+}
+
+u:after {
+    border-top: 5px solid #3bb4e5;
+    transform: rotate(240deg)
+}
+
+u i {
+    animation: 2s deRotate linear infinite;
+    -webkit-animation: 2s deRotate linear infinite;
+    display: block;
+    width: 128px;
+    height: 128px;
+    position: absolute;
+    top: -5px;
+    left: 0;
+}
+
+@keyframes deRotate {
+    50% {
+        transform: rotate(-180deg)
+    }
+    100% {
+        transform: rotate(-360deg)
+    }
+}
+
+@-webkit-keyframes deRotate {
+    50% {
+        -webkit-transform: rotate(-180deg)
+    }
+    100% {
+        -webkit-transform: rotate(-360deg)
+    }
+}

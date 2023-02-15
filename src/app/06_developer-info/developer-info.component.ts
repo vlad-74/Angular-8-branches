@@ -55,4 +55,8 @@ export class DeveloperInfoComponent implements OnInit {
     public goTheme() {
         this._router.navigate(['developer', 'theme']).then();
     }
+
+    public goLoader() {
+        this._router.navigate(['developer', 'loader']).then();
+    }
 }
