@@ -1,4 +1,7 @@
 @import '../../../00_style/variables';
+$size: 30vw;
+$smallSize: 1vw;
+$fs: 2vw;
 
 :host {
     width: 100%;
@@ -6,23 +9,23 @@
     display: block;
     background: $bg;
     color: $color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 u {
     display: block;
-    width: 128px;
-    height: 128px;
+    width: $size;
+    height: $size;
     border-radius: 50%;
-    border-top: 5px solid #eb1777;
-    position: absolute;
-    top:50%;
-    left:50%;
-    margin: -64px 0 0 -64px;
+    border-top: $smallSize solid #eb1777;
     box-sizing: border-box;
     animation: 2s Rotate ease-in-out infinite;
     -webkit-animation: 2s Rotate ease-in-out infinite;
     color: $color;
-    line-height: 128px;
+    line-height: $size;
     text-align: center;
     text-decoration: none;
 }
@@ -42,26 +45,27 @@ u {
         -webkit-transform: rotate(360deg)
     }
 }
+
 u:before,
 u:after {
     display: block;
     position: absolute;
     content: "";
-    width: 128px;
-    height: 128px;
-    top: -5px;
+    width: $size;
+    height: $size;
+    top: -$smallSize;
     left: 0;
     border-radius: 50%;
     box-sizing: border-box
 }
 
 u:before {
-    border-top: 5px solid #89c759;
+    border-top: $smallSize solid #89c759;
     transform: rotate(120deg)
 }
 
 u:after {
-    border-top: 5px solid #3bb4e5;
+    border-top: $smallSize solid #3bb4e5;
     transform: rotate(240deg)
 }
 
@@ -69,11 +73,12 @@ u i {
     animation: 2s deRotate linear infinite;
     -webkit-animation: 2s deRotate linear infinite;
     display: block;
-    width: 128px;
-    height: 128px;
+    width: $size;
+    height: $size;
     position: absolute;
-    top: -5px;
+    top: -$smallSize;
     left: 0;
+    font-size: $fs;
 }
 
 @keyframes deRotate {
