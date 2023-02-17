@@ -5,6 +5,9 @@
 
 [Internaltionalization I18n статья](https://progtask.ru/angular-i18n-ngx-translate/)
 
+### ngrok http 4200 -host-header="localhost:4200"
+[ngrok - для удаленного тестирования](https://ngrok.com)
+
 > ## НАВИГАЦИЯ
 * 1 - lazy-loading-routes.ts в папке app - стартовый роутинг.
 * 2 - Папка `routing` - логика направления на `module-screen` экранные (групповые) модули (первый слеш роутинга). ...через папку `modules`
