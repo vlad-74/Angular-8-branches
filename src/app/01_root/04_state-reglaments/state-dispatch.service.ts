@@ -9,6 +9,7 @@ export class StateDispatchService {
     public appState;
     public isTheme;
     public isSleep;
+    public history;
 
     public constructor(
         private _snapShot: AppSnapshotService,
@@ -26,6 +27,7 @@ export class StateDispatchService {
             appScreen: this.appScreen,
             isTheme: this.isTheme,
             isSleep: this.isSleep,
+            history: this.history,
             itemChange: itemState,
         });
     }

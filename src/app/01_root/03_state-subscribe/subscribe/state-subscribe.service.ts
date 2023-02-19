@@ -12,6 +12,7 @@ import { ThemeService } from '@state/theme.service';
 import { UserActivityService } from '@state/user-activity.service';
 import { StateDispatchService } from '@reglaments/state-dispatch.service';
 import { ScreenService } from '@state/screen.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class StateSubscribeService {
@@ -22,6 +23,7 @@ export class StateSubscribeService {
     public appState;
     public isTheme;
     public isSleep;
+    public history: string[] = [];
 
     private readonly destroyed$ = new Subject();
 
@@ -33,19 +35,26 @@ export class StateSubscribeService {
         private _userActivity: UserActivityService,
         private _screen: ScreenService,
         private _stateDispatch: StateDispatchService,
+        private _router: Router,
     ) {
     }
 
     /*
-    Подписываемся на appActions$, appState$, isTheme$
+    Подписываемся на изменения url, appState$, appActions$, appScreen$, isTheme$, isSleep$
     для получения во всех компонентах (при необходимости) - appSnapshot$
     */
     public stateSubscribe() {
-        this._actions.appActions$
+        this._router.events
             .pipe( takeUntil(this.destroyed$) )
-            .subscribe(appActions => {
-                this._stateDispatch.appActions = appActions;
-                this._watch('appActions', appActions);
+            .subscribe(event => {
+                if (event instanceof NavigationEnd) {
+                    this.history.push(event.urlAfterRedirects);
+                    if (this.history.length > 10) {
+                        this.history = this.history.slice(-10);
+                    }
+                    this._stateDispatch.history = this.history;
+                    this._watch('history', this.history);
+                }
             });
 
         this._state.appState$
@@ -53,6 +62,20 @@ export class StateSubscribeService {
             .subscribe(appState => {
                 this._stateDispatch.appState = appState;
                 this._watch('appState', appState);
+            });
+
+        this._actions.appActions$
+            .pipe( takeUntil(this.destroyed$) )
+            .subscribe(appActions => {
+                this._stateDispatch.appActions = appActions;
+                this._watch('appActions', appActions);
+            });
+
+        this._screen.appScreen$
+            .pipe( takeUntil(this.destroyed$) )
+            .subscribe(appScreen => {
+                this._stateDispatch.appScreen = appScreen;
+                this._watch('appScreen', appScreen);
             });
 
         this._theme.isTheme$
@@ -67,13 +90,6 @@ export class StateSubscribeService {
             .subscribe(isSleep => {
                 this._stateDispatch.isSleep = isSleep;
                 this._watch('isSleep', isSleep);
-            });
-
-        this._screen.appScreen$
-            .pipe( takeUntil(this.destroyed$) )
-            .subscribe(appScreen => {
-                this._stateDispatch.appScreen = appScreen;
-                this._watch('appScreen', appScreen);
             });
 
         this.isStartApp = false;
@@ -91,7 +107,7 @@ export class StateSubscribeService {
         this[itemName] = item;
         if (!this.isStartApp) {
             /*
-            При любом изменении в appActions$, appScreen$, appState$, isTheme$, isSleep$
+            При любом изменении в appActions$, appScreen$, appState$, isTheme$, isSleep$, url
             эмитится appSnapshot$ для всех компонентов
             */
             this._stateDispatch.stateDispatch(item);

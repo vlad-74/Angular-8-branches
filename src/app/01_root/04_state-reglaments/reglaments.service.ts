@@ -17,21 +17,22 @@ export class ReglamentsService {
     ) {}
 
     public checkStateChanges(appSnapshot) {
-        this._h.common.log([' - ReglamentsService - ', appSnapshot]);
-
         const change = appSnapshot.itemChange;
+
+        if (change === 'appState') {
+            this._stateReglaments.checkForChanges(appSnapshot);
+        }
 
         if (change === 'appActions') {
             this._actionsReglaments.checkForChanges(appSnapshot);
         }
-        if (change === 'isSleep') {
-            this._sleepReglaments.checkForChanges(appSnapshot);
-        }
-        if (change === 'appState') {
-            this._stateReglaments.checkForChanges(appSnapshot);
-        }
+
         if (change === 'isTheme') {
             this._themeReglaments.checkForChanges(appSnapshot);
+        }
+
+        if (change === 'isSleep') {
+            this._sleepReglaments.checkForChanges(appSnapshot);
         }
     }
 }
