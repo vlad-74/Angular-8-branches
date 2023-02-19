@@ -50,7 +50,7 @@ export class StateSubscribeService {
                 if (event instanceof NavigationEnd) {
                     this.history.push(event.urlAfterRedirects);
                     if (this.history.length > 10) {
-                        this.history = this.history.slice(-9);
+                        this.history = this.history.slice(-9); // оствить последние 10 шт
                     }
                     this._stateDispatch.history = this.history;
                     this._watch('history', this.history);
