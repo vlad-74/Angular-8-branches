@@ -31,7 +31,7 @@ export class StateDispatchService {
             appScreen: this.appScreen,
             isTheme: this.isTheme,
             isSleep: this.isSleep,
-            history: this.appHistory,
+            appHistory: this.appHistory,
             itemChange: itemState,
         });
     }
