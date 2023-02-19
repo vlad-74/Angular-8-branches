@@ -23,7 +23,7 @@ export class StateSubscribeService {
     public appState;
     public isTheme;
     public isSleep;
-    public history: string[] = [];
+    public appHistory: string[] = [];
 
     private readonly destroyed$ = new Subject();
 
@@ -48,12 +48,12 @@ export class StateSubscribeService {
             .pipe( takeUntil(this.destroyed$) )
             .subscribe(event => {
                 if (event instanceof NavigationEnd) {
-                    this.history.push(event.urlAfterRedirects);
-                    if (this.history.length > 10) {
-                        this.history = this.history.slice(-9); // оствить последние 10 шт
+                    this.appHistory.push(event.urlAfterRedirects);
+                    if (this.appHistory.length > 10) {
+                        this.appHistory = this.appHistory.slice(-9); // оствить последние 10 шт
                     }
-                    this._stateDispatch.history = this.history;
-                    this._watch('history', this.history);
+                    this._stateDispatch.appHistory = this.appHistory;
+                    this._watch('appHistory', this.appHistory);
                 }
             });
 

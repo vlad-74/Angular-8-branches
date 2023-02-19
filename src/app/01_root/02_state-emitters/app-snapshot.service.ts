@@ -10,6 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AppSnapshotService {
     public appSnapshot$: BehaviorSubject<any> = new BehaviorSubject({
+        history: null,
         appActions: null,
         appScreen: null,
         appState: null,
@@ -19,6 +20,7 @@ export class AppSnapshotService {
     });
 
     public setCurrentAppSnapshot(snapshot): any {
+        console.log('---snapshot', snapshot);
         this.appSnapshot$.next(snapshot);
     }
 }

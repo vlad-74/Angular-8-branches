@@ -9,7 +9,7 @@ export class StateDispatchService {
     public appState;
     public isTheme;
     public isSleep;
-    public history;
+    public appHistory;
 
     public constructor(
         private _snapShot: AppSnapshotService,
@@ -17,7 +17,7 @@ export class StateDispatchService {
     }
 
     /*
-    При любом изменении в appActions$, appState$, isTheme$, isSleep$ сервиса StateSubscribeService
+    При любом изменении в url, appActions$, appState$, isTheme$, isSleep$ сервиса StateSubscribeService
     в сервисе AppSnapshotService эмитится appSnapshot$ для всех компонентов
     */
     public stateDispatch(itemState) {
@@ -27,7 +27,7 @@ export class StateDispatchService {
             appScreen: this.appScreen,
             isTheme: this.isTheme,
             isSleep: this.isSleep,
-            history: this.history,
+            history: this.appHistory,
             itemChange: itemState,
         });
     }
