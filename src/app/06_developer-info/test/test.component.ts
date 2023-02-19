@@ -38,10 +38,6 @@ export class TestComponent implements OnInit, OnDestroy {
 
     public async test() {
         this._log([await this._h.dom.getElement('test')]);
-
-        setTimeout(() => {
-            this._theme.darkTheme();
-        }, 2000);
     }
 
     /* Отписываемся от подписок */
