@@ -24,7 +24,7 @@ export class ScreenService {
             || (navigator.userAgent.includes('Mac') && 'ontouchend' in document); // iPad on iOS 13 detection
     }
 
-    /* Возвращает ширину, высоту и dpi в зависимости от размера экрана */
+    /* Возвращает ширину, высоту, dpi, коэффиент, тип экрана и тип браузера в зависимости от размера экрана */
     public checkScreen(): IScreen {
         // const screenWidth = window.screen.width
         // const screenHeight = window.screen.height

@@ -8,7 +8,7 @@ export class CommonService {
     protected logСоunt = 0;
 
     /*
-     Задержка во времени (Аналог есть в DomService)
+     Задержка во времени
      ПРИМЕР
          private async _getElementResult(name, parent, time, max): Promise<any> {
            return await this

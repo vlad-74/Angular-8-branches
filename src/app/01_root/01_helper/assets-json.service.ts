@@ -9,6 +9,10 @@ export class AssetsJsonService {
         private http: HttpClient,
     ) {}
 
+    /**
+     * Получение данных из assets
+     * @param path - json файл
+     */
     public getAssetsJsonData(path) {
         return this.http.get('/assets/' + path).toPromise();
     }

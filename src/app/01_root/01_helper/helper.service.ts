@@ -8,6 +8,8 @@ import { AssetsJsonService } from '@helper/assets-json.service';
 import { ScreenService } from '@helper/screen.service';
 import { UniqueService } from '@helper/unique.service';
 import { StorageService } from '@helper/storage.service';
+import { ObjectService } from '@helper/object.service';
+import { StringService } from '@helper/string.service';
 
 @Injectable({ providedIn: 'root' })
 export class HelperService {
@@ -20,6 +22,8 @@ export class HelperService {
         public screen: ScreenService,
         public unique: UniqueService,
         public storage: StorageService,
+        public object: ObjectService,
+        public string: StringService,
     ) {
     }
 }
