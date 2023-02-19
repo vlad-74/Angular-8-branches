@@ -1,3 +1,7 @@
+/*
+  МЕСТО В КОТОРОМ "ПУБЛИКУЕТСЯ" СНИМОК ПРИЛОЖЕНИЯ
+*/
+
 import { Injectable } from '@angular/core';
 import { AppSnapshotService } from '@state/app-snapshot.service';
 
@@ -7,9 +11,9 @@ export class StateDispatchService {
     public appActions;
     public appScreen;
     public appState;
-    public isTheme;
-    public isSleep;
-    public appHistory;
+    public isTheme: boolean;
+    public isSleep: boolean;
+    public appHistory: string[] = [];
 
     public constructor(
         private _snapShot: AppSnapshotService,

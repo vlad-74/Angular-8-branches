@@ -1,6 +1,6 @@
 /*
   СНИМОК ПРИЛОЖЕНИЯ
-    1. при изменении в 02_state-emitters - appActions$, appState$, isTheme$, isSleep$
+    1. при изменении в 02_state-emitters - url, appActions$, appState$, isTheme$, isSleep$
     2. обновляется СНИМОК ПРИЛОЖЕНИЯ
 */
 
@@ -10,7 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AppSnapshotService {
     public appSnapshot$: BehaviorSubject<any> = new BehaviorSubject({
-        history: null,
+        appHistory: null,
         appActions: null,
         appScreen: null,
         appState: null,
@@ -20,7 +20,6 @@ export class AppSnapshotService {
     });
 
     public setCurrentAppSnapshot(snapshot): any {
-        console.log('---snapshot', snapshot);
         this.appSnapshot$.next(snapshot);
     }
 }
