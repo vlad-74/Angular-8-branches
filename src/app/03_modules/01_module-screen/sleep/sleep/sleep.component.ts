@@ -1,6 +1,7 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
+import { UserActivityService } from '@state/user-activity.service';
 
 @Component({
     selector: 'sleep',
@@ -14,6 +15,7 @@ export class SleepComponent implements OnInit, OnDestroy {
     public constructor(
         public router: Router,
         @Inject(DOCUMENT) private document: Document,
+        private _userActivity: UserActivityService,
     ) {
     }
 
@@ -24,12 +26,13 @@ export class SleepComponent implements OnInit, OnDestroy {
                 hour: '2-digit', minute: '2-digit', second: '2-digit',
             });
 
-            const el = document.querySelector('.time').innerHTML = t.replace(':', ':');
+            document.querySelector('.time').innerHTML = t.replace(':', ':');
 
         }, 1000);
     }
 
     public goHome() {
+        this._userActivity.userWork();
         this.router.navigate(['']).then();
     }
 
