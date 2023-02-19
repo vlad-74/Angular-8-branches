@@ -7,6 +7,7 @@ import { DomService } from '@helper/dom.service';
 import { AssetsJsonService } from '@helper/assets-json.service';
 import { ScreenService } from '@helper/screen.service';
 import { UniqueService } from '@helper/unique.service';
+import { StorageService } from '@helper/storage.service';
 
 @Injectable({ providedIn: 'root' })
 export class HelperService {
@@ -18,6 +19,7 @@ export class HelperService {
         public jsonService: AssetsJsonService,
         public screen: ScreenService,
         public unique: UniqueService,
+        public storage: StorageService,
     ) {
     }
 }
