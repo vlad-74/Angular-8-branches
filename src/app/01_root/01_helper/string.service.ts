@@ -78,4 +78,14 @@ export class StringService {
     public delMidle(str, start= 0, end= 1000) {
         return str.substring(start, end);
     }
+
+    /* Сделать первую букву заглавной */
+    public firstLetterCapitalize(str) {
+        return str[0].toUpperCase() + str.slice(1);
+    }
+
+    /* Сделать первую букву маленькой */
+    public firstLetterToLower(str) {
+        return str[0].toLowerCase() + str.slice(1);
+    }
 }
