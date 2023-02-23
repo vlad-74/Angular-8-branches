@@ -19,6 +19,13 @@ export class DomService {
 
     /**
      * Создаем новый html элемент
+     * @param parentElement- элемент на который будет добавляться новый элемент
+     * @param typeAppend- тип добавления
+     * @param strInnerHTML- шаблон html
+     * @param newElement- добавляемый элемент
+     * @param dataId- идентификатор - id для атрибута data-id
+     * @param eventName- тип эвента для listen
+     * @param fn - функция для eventName
      */
     public elementCreate(parentElement: Element | NodeList, typeAppend: TTypeAppend, strInnerHTML: string, newElement: string, dataId: number | string, eventName: TAllEvents, fn = null) {
         const el$ = this.renderer.createElement(newElement);
@@ -31,6 +38,12 @@ export class DomService {
 
     /**
      * Добавляем HTMl элемент
+     * @param parentElement- элемент на который будет добавляться новый элемент
+     * @param typeAppend- тип добавления
+     * @param dataId- идентификатор - id для атрибута data-id
+     * @param eventName- тип эвента для listen
+     * @param fn - функция для eventName
+     * @param el$- добавляемый элемент
      */
     public elementAdd(parentElement: Element | NodeList, typeAppend: TTypeAppend, dataId: number | string, eventName: TAllEvents, fn, el$) {
         if ('firstChild' in parentElement) {
@@ -48,12 +61,21 @@ export class DomService {
 
     /**
      * Удаляем HTMl элемент
+     * @param parentElement- родительский элемент
+     * @param el$- новый элемент
      */
     public elementRemove(parentElement: Element | NodeList, el$: Element | NodeList) {
         this.renderer.removeChild(parentElement, el$);
     }
 
-    /* Несколько итераций для получения необходимого html элемента */
+    /**
+     * Несколько итераций для получения необходимого html элемента
+     * @param identifier - вид выборки - типа -'dom div' для селектора
+     * @param selector - селектор
+     * @param node - родительский элемент
+     * @param time - время в миллисекундах - для задержки
+     * @param max - максимальное количество попыток получения результата
+     */
     public async elementGet(identifier: string, selector: TSelector = 'querySelector', node = this.document, time = 500, max = 20): Promise<TGetElement> {
         // let result: Element | NodeList = await this._getElementResult(identifier, selector, node, time, max);
         let result = await this._getElementResult(identifier, selector, node, time);
@@ -78,7 +100,11 @@ export class DomService {
         }
     }
 
-    /* Добавить класс к элементу */
+    /**
+     *  Добавить класс к элементу
+     *  @param el- элемент
+     *  @param newClass- новый класс
+     */
     public elementClassAdd(el: Element | NodeList, newClass: string): boolean {
         if ('classList' in el) {
             // el.classList.add(newClass); // добавляем класс
@@ -90,7 +116,11 @@ export class DomService {
         return false;
     }
 
-    /* Удалить класс у элемента */
+    /**
+     *  Удалить класс у элемента
+     *  @param el- элемент
+     *  @param removeClass- удаляемый класс
+     */
     public elementClassRemove(el: Element | NodeList, removeClass: string): boolean {
         if ('classList' in el) {
             // el.classList.remove(removeClass); // добавляем класс
@@ -112,10 +142,10 @@ export class DomService {
     }
 
     /**
-     * Получить всех соседние элементы в не зависимости от полученного элемента
+     * Получить все соседние элементы, в не зависимости от места от полученного элемента
      * @param el- элемент
      */
-    public elementsGeAllNeighbor(el: Element | NodeList): Element[] {
+    public elementsGetSiblingAll(el: Element | NodeList): Element[] {
         const parent = this.renderer.parentNode(el);
         const firstElement = parent.firstChild;
 

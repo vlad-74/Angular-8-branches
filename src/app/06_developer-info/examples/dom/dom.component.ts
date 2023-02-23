@@ -28,7 +28,7 @@ export class DomComponent implements OnInit {
             console.log('getNextSiblingElement', this._h.dom.elementGetSiblingNext(el));
             console.log('getPreviousSiblingElement', this._h.dom.elementGetSiblingPrevious(el));
             console.log('getChildrenOfGivenElement', this._h.dom.elementGetChildren(el));
-            console.log('elementsGeAllNeighbor', this._h.dom.elementsGeAllNeighbor(el));
+            console.log('elementsGeAllNeighbor', this._h.dom.elementsGetSiblingAll(el));
         }
 
         setTimeout(() => {
