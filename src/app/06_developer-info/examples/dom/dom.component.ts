@@ -13,21 +13,71 @@ export class DomComponent implements OnInit {
     ) {
     }
 
-    /* Подписывемся на appSnapshot$*/
     public ngOnInit() {
         this.testDom().then();
+        this.renderer().then();
     }
 
     public async testDom() {
-        const el = await this._h.dom.getElement('dom div');
+        const el = await this._h.dom.elementGet('dom div');
 
-        if (!this._h.dom.addClassToElement(el,  'red')) {
+        if (!this._h.dom.elementClassAdd(el,  'red')) {
             console.log('еще одна попытка' );
         } else {
-            console.log('getParentElement', this._h.dom.getParentElement(el));
-            console.log('getNextSiblingElement', this._h.dom.getNextSiblingElement(el));
-            console.log('getPreviousSiblingElement', this._h.dom.getPreviousSiblingElement(el));
-            console.log('getChildrenOfGivenElement', this._h.dom.getChildrenOfGivenElement(el));
+            console.log('getParentElement', this._h.dom.elementGetParent(el));
+            console.log('getNextSiblingElement', this._h.dom.elementGetSiblingNext(el));
+            console.log('getPreviousSiblingElement', this._h.dom.elementGetSiblingPrevious(el));
+            console.log('getChildrenOfGivenElement', this._h.dom.elementGetChildren(el));
+            console.log('elementsGeAllNeighbor', this._h.dom.elementsGeAllNeighbor(el));
         }
+
+        setTimeout(() => {
+            this._h.dom.elementClassRemove(el,  'red');
+        }, 2000);
+    }
+
+    public async renderer() {
+        // =============== Создаем элемент
+        const counter = this._h.unique.GenerateUniqueString();
+        const strInnerHtml = `
+          <button data-remove="${counter}" data-remove="${counter}" class="mat-raised-button mat-button-base warn">
+            <span data-remove="${counter}" class="mat-button-wrapper"># ${counter} удалить</span>
+            <div class="mat-button-ripple mat-ripple"></div>
+            <div class="mat-button-focus-overlay">
+            </div>
+          </button>
+          <button data-message="${counter}" class="mat-raised-button mat-button-base primary">
+            <span data-message="${counter}" class="mat-button-wrapper"># ${counter} cooбщение</span>
+            <div class="mat-button-ripple mat-ripple"></div>
+            <div class="mat-button-focus-overlay">
+            </div>
+          </button>
+          <br><br>
+        `;
+        const el = await this._h.dom.elementGet('dom div span');
+        const fn = (event, renderer, el$, dataId) => {
+            console.log('---el$', el$);
+            console.log('---dataId', dataId);
+            console.log('---event', event.target);
+
+            if (event.target.dataset.remove) {
+                renderer.removeChild(el, el$);
+            }
+            if (event.target.dataset.message) { alert(`Сообщение из div # ${counter}`); }
+        };
+
+        this._h.dom.elementCreate(el, 'insertBefore', strInnerHtml, 'div', counter, 'click', fn);
+
+        // =============== Удаляем элемент
+        const parentElement = await this._h.dom.elementGet('[data-id]');
+        const removeElement = await this._h.dom.elementGet('[data-message]');
+
+        this._h.dom.elementRemove(parentElement, removeElement);
+
+        // =============== Вставляем скопированный элемент
+        setTimeout(() => {
+            this._h.dom.elementAdd(parentElement, 'appendChild', counter, 'click', null, removeElement);
+        }, 5000);
+
     }
 }
