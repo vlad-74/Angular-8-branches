@@ -29,6 +29,11 @@ export class TestComponent implements OnInit, OnDestroy {
                 },
                 error => console.log('login - error', error),
             );
+        const date1 = new Date('1/07/2023');
+        const date2 = new Date('2/07/2023');
+
+        console.log('---this._h.date.getDifferenceDays', this._h.date.getDifferenceDays(date1, date2));
+        console.log('---this._h.date.getDateWeekNumber', this._h.date.getDateWeekNumber());
 
         console.log('+++++++', await this._h.jsonService.getAssetsJsonData('i18n/en.json'));
     }

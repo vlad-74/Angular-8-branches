@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class UniqueService {
 
     /* Создать новый guid */
-    public GenerateGuid(): string {
+    public generateGuid(): string {
         function s4() {
             return Math.floor((1 + Math.random()) * 0x10000)
                 .toString(16)
@@ -17,12 +17,12 @@ export class UniqueService {
     }
 
     /* Создать уникальную строку */
-    public GenerateUniqueString(): string {
+    public generateUniqueString(): string {
         return (+new Date()).toString(16);
     }
 
     /* Глубокое копирование через Json */
-    public CloneDeepViaJson<T>(source: T): T {
+    public cloneDeepViaJson<T>(source: T): T {
         return JSON.parse(JSON.stringify(source)) as T;
     }
 

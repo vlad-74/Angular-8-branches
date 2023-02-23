@@ -23,6 +23,14 @@ export class ArrayService {
     }
 
     /**
+     * Получить уникальный массив
+     * @param arr - исходный массив
+     */
+    public getArrayUnique(arr) {
+        return  [...new Set(arr)];
+    }
+
+    /**
      * Получить случайный элемент из списка
      * @examples
      * const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];

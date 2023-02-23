@@ -10,6 +10,7 @@ import { UniqueService } from '@helper/unique.service';
 import { StorageService } from '@helper/storage.service';
 import { ObjectService } from '@helper/object.service';
 import { StringService } from '@helper/string.service';
+import { DateService } from '@helper/date.service';
 
 @Injectable({ providedIn: 'root' })
 export class HelperService {
@@ -24,6 +25,7 @@ export class HelperService {
         public storage: StorageService,
         public object: ObjectService,
         public string: StringService,
+        public date: DateService,
     ) {
     }
 }

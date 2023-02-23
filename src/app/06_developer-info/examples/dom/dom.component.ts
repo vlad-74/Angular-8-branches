@@ -38,7 +38,7 @@ export class DomComponent implements OnInit {
 
     public async renderer() {
         // =============== Создаем элемент
-        const counter = this._h.unique.GenerateUniqueString();
+        const counter = this._h.unique.generateUniqueString();
         const strInnerHtml = `
           <button data-remove="${counter}" data-remove="${counter}" class="mat-raised-button mat-button-base warn">
             <span data-remove="${counter}" class="mat-button-wrapper"># ${counter} удалить</span>
