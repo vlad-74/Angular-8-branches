@@ -9,7 +9,7 @@ export class StringService {
      * @param str - строка
      * @param num - количество повторений
      */
-    public repeatStringGivenNumber(str, num) {
+    public repeatStringGivenNumber(str, num): string {
         return str.repeat(num);
     }
 
@@ -19,7 +19,7 @@ export class StringService {
      * @param num - длина возвращаемой строки
      * @param insert - втавляемое значение
      */
-    public startAddString(str, num, insert) {
+    public startAddString(str, num, insert): string {
         return str.padStart(num, insert); // hello'.padStart(10, '!'); // "!!!! hello"
     }
 
@@ -29,7 +29,7 @@ export class StringService {
      * @param num - длина возвращаемой строки
      * @param insert - втавляемое значение
      */
-    public endAddString(str, num, insert) {
+    public endAddString(str, num, insert): string {
         return str.padEnd(num, insert); // 'hello '.padEnd(10, '!'); // "hello !!!!"
     }
 
@@ -38,7 +38,7 @@ export class StringService {
      *  @param str - строка
      *  @param check - проверяемый параметр
      */
-    public startСhecking(str, check) {
+    public startСhecking(str, check): string {
         return str.startsWith(check);
     }
 
@@ -47,7 +47,7 @@ export class StringService {
      *  @param str - строка
      *  @param check - проверяемый параметр
      */
-    public endChecking(str, check) {
+    public endChecking(str, check): string {
         return str.endsWith(check);
     }
 
@@ -56,7 +56,7 @@ export class StringService {
      *  @param str - строка
      *  @param i - от
      */
-    public startDel(str, i= 1) {
+    public startDel(str, i= 1): string {
         return str.slice(i);
     }
 
@@ -65,7 +65,7 @@ export class StringService {
      *  @param str - строка
      *  @param i - от
      */
-    public endDel(str, i= 1) {
+    public endDel(str, i= 1): string {
         return str.slice(0, -i);
     }
 
@@ -75,7 +75,7 @@ export class StringService {
      *  @param start - от
      *  @end i - по
      */
-    public midleDel(str, start= 0, end= 1000) {
+    public midleDel(str, start= 0, end= 1000): string {
         return str.substring(start, end);
     }
 
@@ -84,17 +84,43 @@ export class StringService {
      *  @param str - строка исходная
      *  @param findStr - 'поисковая' строка
      */
-    public isLineInLine(str: string, findStr: string) {
+    public isLineInLine(str: string, findStr: string): boolean {
         return str.includes(findStr);
     }
 
+    /**
+     *  Получить букву по номеру
+     *  @param str - строка
+     *  @param num - номер буквы в строке
+     */
+    public getStr(str: string, num: number): string {
+        return str.charAt(num); // "Привет Том".charAt(2) // и
+    }
+
+    /**
+     * Получить код по номеру
+     *  @param str - строка
+     *  @param num - номер буквы в строке
+     */
+    public getCode(str: string, num: number): number {
+        return str.charCodeAt(num); // "Привет Том".charCodeAt(2) // 1080
+    }
+
+    /**
+     *  Получить str по коду
+     *  @param arrNumber - массив кодов букв/знаков
+     */
+    public getStrByCode(arrNumber: number[]): string {
+        return String.fromCharCode(...arrNumber);
+    }
+
     /* Сделать первую букву заглавной */
-    public firstLetterCapitalize(str) {
+    public firstLetterCapitalize(str): string {
         return str[0].toUpperCase() + str.slice(1);
     }
 
     /* Сделать первую букву маленькой */
-    public firstLetterToLower(str) {
+    public firstLetterToLower(str): string {
         return str[0].toLowerCase() + str.slice(1);
     }
 }
