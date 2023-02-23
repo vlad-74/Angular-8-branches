@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 export class StringService {
 
     /**
-     * Cоздать строку путем многократного повторения
+     * Создать строку путем многократного повторения
      * @param str - строка
      * @param num - количество повторений
      */
@@ -19,7 +19,7 @@ export class StringService {
      * @param num - длина возвращаемой строки
      * @param insert - втавляемое значение
      */
-    public addToStartline(str, num, insert) {
+    public startAddString(str, num, insert) {
         return str.padStart(num, insert); // hello'.padStart(10, '!'); // "!!!! hello"
     }
 
@@ -29,7 +29,7 @@ export class StringService {
      * @param num - длина возвращаемой строки
      * @param insert - втавляемое значение
      */
-    public addToEndline(str, num, insert) {
+    public endAddString(str, num, insert) {
         return str.padEnd(num, insert); // 'hello '.padEnd(10, '!'); // "hello !!!!"
     }
 
@@ -38,7 +38,7 @@ export class StringService {
      *  @param str - строка
      *  @param check - проверяемый параметр
      */
-    public checkingStartLine(str, check) {
+    public startСhecking(str, check) {
         return str.startsWith(check);
     }
 
@@ -47,7 +47,7 @@ export class StringService {
      *  @param str - строка
      *  @param check - проверяемый параметр
      */
-    public checkingEndLine(str, check) {
+    public endChecking(str, check) {
         return str.endsWith(check);
     }
 
@@ -56,7 +56,7 @@ export class StringService {
      *  @param str - строка
      *  @param i - от
      */
-    public delStart(str, i= 1) {
+    public startDel(str, i= 1) {
         return str.slice(i);
     }
 
@@ -65,7 +65,7 @@ export class StringService {
      *  @param str - строка
      *  @param i - от
      */
-    public delFinish(str, i= 1) {
+    public endDel(str, i= 1) {
         return str.slice(0, -i);
     }
 
@@ -75,8 +75,17 @@ export class StringService {
      *  @param start - от
      *  @end i - по
      */
-    public delMidle(str, start= 0, end= 1000) {
+    public midleDel(str, start= 0, end= 1000) {
         return str.substring(start, end);
+    }
+
+    /**
+     * Строка в строке
+     *  @param str - строка исходная
+     *  @param findStr - 'поисковая' строка
+     */
+    public checkLineInLine(str: string, findStr: string) {
+        return str.includes(findStr);
     }
 
     /* Сделать первую букву заглавной */
