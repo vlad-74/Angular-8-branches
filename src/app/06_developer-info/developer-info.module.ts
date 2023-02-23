@@ -10,6 +10,7 @@ import { InterComponent } from '@developer/examples/inter/inter.component';
 import { SnapshotComponent } from '@developer/examples/app-snapshot/snapshot.component';
 import { ThemeComponent } from '@developer/examples/theme/theme.component';
 import { LoaderComponent2 } from '@developer/examples/loader/loader.component';
+import { DomComponent } from '@developer/examples/dom/dom.component';
 
 @NgModule({
     declarations: [
@@ -20,6 +21,7 @@ import { LoaderComponent2 } from '@developer/examples/loader/loader.component';
         SnapshotComponent,
         ThemeComponent,
         LoaderComponent2,
+        DomComponent,
     ],
     imports: [
         CommonModule,

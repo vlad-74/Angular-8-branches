@@ -7,6 +7,7 @@ import { InterComponent } from '@developer/examples/inter/inter.component';
 import { SnapshotComponent } from '@developer/examples/app-snapshot/snapshot.component';
 import { ThemeComponent } from '@developer/examples/theme/theme.component';
 import { LoaderComponent2 } from '@developer/examples/loader/loader.component';
+import { DomComponent } from '@developer/examples/dom/dom.component';
 
 const routes: Routes = [
     {
@@ -40,6 +41,10 @@ const routes: Routes = [
             {
                 path: 'loader',
                 component: LoaderComponent2,
+            },
+            {
+                path: 'dom',
+                component: DomComponent,
             },
             {
                 path: '',

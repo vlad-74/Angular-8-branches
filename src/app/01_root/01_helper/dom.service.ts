@@ -51,7 +51,7 @@ export class DomService {
     }
 
     /* Удалить класс у элемента */
-    public removeClassToElement(el: Element | NodeList, removeClass: string): boolean {
+    public removeClassOfElement(el: Element | NodeList, removeClass: string): boolean {
         if ('classList' in el) {
             el.classList.remove(removeClass); // добавляем класс
 
