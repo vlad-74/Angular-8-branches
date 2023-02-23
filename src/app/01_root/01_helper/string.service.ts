@@ -84,7 +84,7 @@ export class StringService {
      *  @param str - строка исходная
      *  @param findStr - 'поисковая' строка
      */
-    public checkLineInLine(str: string, findStr: string) {
+    public isLineInLine(str: string, findStr: string) {
         return str.includes(findStr);
     }
 
