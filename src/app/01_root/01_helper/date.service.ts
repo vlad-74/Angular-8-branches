@@ -16,6 +16,21 @@ export class DateService {
 
     /**
      * Создать дату по строке
+     * 7 numbers specify - year, month, day, hour, minute, second, and millisecond (in that order)
+     * @param year
+     * @param month
+     * @param date
+     * @param hour
+     * @param minute
+     * @param second
+     * @param millisecond
+     */
+    public createDateByNumbers(year: number, month: number, date: number, hour = 8, minute = 0, second = 0, millisecond = 0) {
+        return new Date(year, month, date, hour, minute, second, millisecond);
+    }
+
+    /**
+     * Создать дату по строке
      * @param str - string - '3/27/2008' - формат месяц/день/год!!!
      */
     public createDateByString(str): Date {
@@ -120,8 +135,8 @@ export class DateService {
 
     /**
      * Получить разницу в днях
-     * @param date1 - date
-     * @param date2 - date
+     * @param date1 - не получилось типизировать как Date - но приходит именно Date
+     * @param date2 - не получилось типизировать как Date - но приходит именно Date
      */
     public getDifferenceDays(date1, date2): number {
         const diffTime = Math.abs(date2 - date1);
@@ -134,7 +149,7 @@ export class DateService {
      * Получить номер недели по дню
      * @param date - date
      */
-    public getDateWeekNumber(date = null) {
+    public getDateWeekNumber(date: Date = null) {
         date = date ? date : new Date(new Date().valueOf());
         const tdt = new Date(date.valueOf());
         const dayn = (date.getDay() + 6) % 7;
