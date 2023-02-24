@@ -27,13 +27,15 @@ export class DomService {
      * @param eventName- тип эвента для listen
      * @param fn - функция для eventName
      */
-    public elementCreate(parentElement: Element | NodeList, typeAppend: TTypeAppend, strInnerHTML: string, newElement: string, dataId: number | string, eventName: TAllEvents, fn = null) {
+    public elementCreate(parentElement: Element | NodeList | string, newElement: string, typeAppend: TTypeAppend, strInnerHTML: string, dataId: number | string, eventName: TAllEvents, fn = null) {
+        parentElement = typeof parentElement === 'string' ? this.renderer.selectRootElement(parentElement) : parentElement;
+
         const el$ = this.renderer.createElement(newElement);
 
         this.renderer.setAttribute(el$, 'data-id', String(dataId));
         el$.innerHTML = strInnerHTML;
 
-        this.elementAdd(parentElement, typeAppend, dataId, eventName, fn, el$);
+        this.elementAdd((parentElement as Element), typeAppend, dataId, eventName, fn, el$);
     }
 
     /**
@@ -77,7 +79,6 @@ export class DomService {
      * @param max - максимальное количество попыток получения результата
      */
     public async elementGet(identifier: string, selector: TSelector = 'querySelector', node = this.document, time = 500, max = 20): Promise<TGetElement> {
-        // let result: Element | NodeList = await this._getElementResult(identifier, selector, node, time, max);
         let result = await this._getElementResult(identifier, selector, node, time);
 
         // СИНТАКСИС в IF - 'length' in result && result.length < 1 - для NodeList и селектора querySelectorAll

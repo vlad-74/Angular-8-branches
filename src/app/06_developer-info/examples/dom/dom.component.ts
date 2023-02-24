@@ -52,7 +52,6 @@ export class DomComponent implements OnInit {
             <div class="mat-button-focus-overlay">
             </div>
           </button>
-          <br><br>
         `;
         const el = await this._h.dom.elementGet('dom div span');
         const fn = (event, renderer, el$, dataId) => {
@@ -66,7 +65,8 @@ export class DomComponent implements OnInit {
             if (event.target.dataset.message) { alert(`Сообщение из div # ${counter}`); }
         };
 
-        this._h.dom.elementCreate(el, 'insertBefore', strInnerHtml, 'div', counter, 'click', fn);
+        this._h.dom.elementCreate(el, 'div', 'appendChild', strInnerHtml, counter, 'click', fn);
+        // this._h.dom.elementCreate('dom div span', 'div', 'appendChild', strInnerHtml,  counter, 'click', fn);
 
         // =============== Удаляем элемент
         const parentElement = await this._h.dom.elementGet('[data-id]');
