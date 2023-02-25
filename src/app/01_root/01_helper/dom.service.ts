@@ -79,7 +79,7 @@ export class DomService {
      * @param max - максимальное количество попыток получения результата
      */
     public async elementGet(identifier: string, selector: TSelector = 'querySelector', node = this.document, time = 100, max = 100): Promise<TGetElement> {
-        let result = await this._getElementResult(identifier, selector, node, time);
+        let result = await this.getElementResult(identifier, selector, node, time);
 
         // СИНТАКСИС в IF - 'length' in result && result.length < 1 - для NodeList и селектора querySelectorAll
         if ((!result || 'length' in result && result.length < 1) && this._countGetElement < max) {
@@ -204,7 +204,7 @@ export class DomService {
     }
 
     /* Получение необходимого html элемента */
-    private async _getElementResult(identifier: string, selector: TSelector, node, time): Promise<TGetElement> {
+    public async getElementResult(identifier: string, selector: TSelector, node, time): Promise<TGetElement> {
         return await this
             .common.setDelay(time)
             .then(_ => node[selector](identifier));

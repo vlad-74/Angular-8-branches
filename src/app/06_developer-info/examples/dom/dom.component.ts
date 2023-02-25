@@ -53,6 +53,16 @@ export class DomComponent implements OnInit {
             </div>
           </button>
         `;
+
+        this._h.common.getFunctionExecutionTime(
+            this._h.dom.elementGet,
+            {
+                getElementResult: this._h.dom.getElementResult,
+                common: this._h.common,
+            },
+            ['dom div span', 'querySelector', document],
+            true,
+        );
         const el = await this._h.dom.elementGet('dom div span');
         const fn = (event, renderer, el$, dataId) => {
             console.log('---el$', el$);
