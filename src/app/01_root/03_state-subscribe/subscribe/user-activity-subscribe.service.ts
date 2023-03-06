@@ -11,7 +11,7 @@ import { UserActivityService } from '@state/user-activity.service';
 @Injectable({ providedIn: 'root' })
 export class UserActivitySubscribeService {
 
-    public USER_ACTIVITY = 60; // секунды - время после простоя пользователя происходит выход из приложения
+    public USER_ACTIVITY = 600; // секунды - время после простоя пользователя происходит выход из приложения
 
     private readonly destroyed$ = new Subject();
 
