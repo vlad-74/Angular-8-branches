@@ -1,0 +1,40 @@
+{
+    "items": [
+        {
+            "id": "1",
+            "image": "/assets/db/items/babushki.jpg",
+            "preImage": "",
+            "idParticipant": "1"
+        },
+        {
+            "id": "2",
+            "video": "/assets/db/items/баскетбол.mp4",
+            "preImage": "",
+            "idParticipant": "2"
+        },
+        {
+            "id": "3",
+            "video": "https://youtu.be/tYa6OLQHrEc",
+            "preImage": "",
+            "idParticipant": "3"
+        },
+        {
+            "id": "4",
+            "image": "/assets/db/items/babushki2.jpg",
+            "preImage": "",
+            "idParticipant": "4"
+        },
+        {
+            "id": "5",
+            "video": "/assets/db/items/баскетбол2.mp4",
+            "preImage": "",
+            "idParticipant": "5"
+        },
+        {
+            "id": "6",
+            "video": "https://youtu.be/tYa6OLQHrEc",
+            "preImage": "",
+            "idParticipant": "6"
+        }
+    ]
+}

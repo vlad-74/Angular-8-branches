@@ -1,0 +1,64 @@
+{
+    "roundItems": [
+        {
+            "id": "1",
+            "idRound": "1",
+            "idItem": "1"
+        },
+        {
+            "id": "2",
+            "idRound": "1",
+            "idItem": "2"
+        },
+        {
+            "id": "3",
+            "idRound": "1",
+            "idItem": "3"
+        },
+        {
+            "id": "4",
+            "idRound": "1",
+            "idItem": "4"
+        },
+        {
+            "id": "5",
+            "idRound": "2",
+            "idItem": "4"
+        },
+        {
+            "id": "6",
+            "idRound": "2",
+            "idItem": "3"
+        },
+        {
+            "id": "7",
+            "idRound": "2",
+            "idItem": "2"
+        },
+        {
+            "id": "8",
+            "idRound": "2",
+            "idItem": "1"
+        },
+        {
+            "id": "9",
+            "idRound": "3",
+            "idItem": "1"
+        },
+        {
+            "id": "10",
+            "idRound": "3",
+            "idItem": "2"
+        },
+        {
+            "id": "11",
+            "idRound": "3",
+            "idItem": "3"
+        },
+        {
+            "id": "12",
+            "idRound": "3",
+            "idItem": "4"
+        }
+    ]
+}

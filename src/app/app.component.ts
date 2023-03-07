@@ -44,9 +44,9 @@ export class AppComponent implements OnInit, OnDestroy {
         console.log('-----------------------------------------------------' );
         this._subscribeApp.onInitApp();
 
-        if (!environment.production) {
-            this._router.navigate(['developer']);
-        }
+        // if (!environment.production) {
+        //     this._router.navigate(['developer']);
+        // }
     }
 
     /* Отписываемся от подписок */

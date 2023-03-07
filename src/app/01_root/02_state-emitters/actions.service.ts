@@ -6,12 +6,16 @@
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { IAction } from '@interfaces/helper.interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class ActionsService {
-    public appActions$: BehaviorSubject<any> = new BehaviorSubject({ ActionsService: 5 });
+    private _appActions: IAction = null;
+    public appActions$: BehaviorSubject<any> = new BehaviorSubject(this._appActions);
 
-    public runAppActions(action): any {
-        this.appActions$.next(action);
+    public runAppActions(action: IAction): void {
+        if (action) {
+            this.appActions$.next(action);
+        }
     }
 }

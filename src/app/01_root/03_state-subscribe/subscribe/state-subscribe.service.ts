@@ -104,7 +104,7 @@ export class StateSubscribeService {
 
     /* Инициируем appSnapshot$ - lightTheme() вызовет подписку и последующий dispatch */
     private _startAppSnapshot() {
-        this._theme.lightTheme();
+        // this._theme.lightTheme();
         // kvg: задать стартовый стейт
     }
 }

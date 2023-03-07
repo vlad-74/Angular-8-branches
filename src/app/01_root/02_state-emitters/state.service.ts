@@ -6,12 +6,22 @@
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { IState } from '@interfaces/helper.interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class StateService {
-    public appState$: BehaviorSubject<any> = new BehaviorSubject({ StateService: 6 });
+    private _appStartState: IState = {
+        visitorHasLogin: false,
+        roles: ['visitor'],
+        participants: [],
+        cupsReferee: [],
+        cupsParticipants: [],
+        cupsFounders: [],
+    };
 
-    public newAppState(state): any {
+    public appState$: BehaviorSubject<any> = new BehaviorSubject(this._appStartState);
+
+    public newAppState(state: IState): any {
         this.appState$.next(state);
     }
 }

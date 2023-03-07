@@ -16,5 +16,4 @@ export class AssetsJsonService {
     public getAssetsJsonData(path) {
         return this.http.get('/assets/' + path).toPromise();
     }
-
 }
