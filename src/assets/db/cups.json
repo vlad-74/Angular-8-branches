@@ -1,0 +1,44 @@
+{
+    "cups": [
+        {
+            "id": "1",
+            "name": "Абсолютный кубок мира",
+            "founderUser": "1",
+            "maxNumberParticipants": "10",
+            "prizeMoney": "1000000",
+            "currency": "$",
+            "period": ["01/01/2023", "12/31/2023"],
+            "isOpen": "true"
+        },
+        {
+            "id": "2",
+            "name": "Абсолютный кубок Европы",
+            "founderUser": "1",
+            "maxNumberParticipants": "10",
+            "prizeMoney": "100000",
+            "currency": "$",
+            "period": ["01/01/2023", "12/31/2023"],
+            "isOpen": "true"
+        },
+        {
+            "id": "3",
+            "name": "Абсолютный кубок России",
+            "founderUser": "1",
+            "maxNumberParticipants": "10",
+            "prizeMoney": "10000",
+            "currency": "$",
+            "period": ["01/01/2023", "12/31/2023"],
+            "isOpen": "true"
+        },
+        {
+            "id": "4",
+            "name": "Абсолютный кубок Мордовии",
+            "founderUser": "1",
+            "maxNumberParticipants": "10",
+            "prizeMoney": "10000",
+            "currency": "$",
+            "period": ["01/01/2023", "12/31/2023"],
+            "isOpen": "true"
+        }
+    ]
+}

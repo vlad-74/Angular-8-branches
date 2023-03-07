@@ -15,6 +15,24 @@ export interface IBrowser {
     OS: string;
 }
 
+export interface IState {
+    visitorHasLogin: boolean;
+    roles: TRoles[];
+    participants: string[];
+    cupsReferee: string[];
+    cupsParticipants: string[];
+    cupsFounders: string[];
+}
+
+export type TRoles = 'visitor' | 'viewer' | 'participant' | 'referee' | 'founder' | 'developer' | 'admin';
+
+export interface IAction {
+    from: string;
+    to: string;
+    name: string;
+    data: any;
+}
+
 export type TSelector = 'querySelector' | 'querySelectorAll';
 
 export type TGetElement = Element | NodeList;

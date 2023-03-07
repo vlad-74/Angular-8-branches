@@ -1,0 +1,24 @@
+{
+    "cupParticipantsReferees": [
+        {
+            "idCup": "1",
+            "idParticipants": ["1","2","3","4"],
+            "referees": ["8"]
+        },
+        {
+            "idCup": "2",
+            "idParticipants": ["5","6","7","8"],
+            "referees": ["2"]
+        },
+        {
+            "idCup": "3",
+            "idParticipants": ["1","2","3","4"],
+            "referees": ["8"]
+        },
+        {
+            "idCup": "4",
+            "idParticipants": ["5","6","7","8"],
+            "referees": ["2"]
+        }
+    ]
+}

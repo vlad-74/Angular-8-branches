@@ -1,0 +1,52 @@
+{
+    "users": [
+        {
+            "id": "1",
+            "login": "владимир",
+            "password": "1",
+            "email": "kurguzov74@gmail.com"
+        },
+        {
+            "id": "2",
+            "login": "андрей",
+            "password": "2",
+            "email": "test2@test.ru"
+        },
+        {
+            "id": "3",
+            "login": "сергей",
+            "password": "3",
+            "email": "test3@test.ru"
+        },
+        {
+            "id": "4",
+            "login": "игорь",
+            "password": "4",
+            "email": "test4@test.ru"
+        },
+        {
+            "id": "5",
+            "login": "коля",
+            "password": "5",
+            "email": "test5@test.ru"
+        },
+        {
+            "id": "6",
+            "login": "костя",
+            "password": "6",
+            "email": "test6@test.ru"
+        },
+        {
+            "id": "7",
+            "login": "эльнар",
+            "password": "7",
+            "email": "test7@test.ru"
+        },
+        {
+            "id": "8",
+            "login": "оля",
+            "password": "8",
+            "email": "test8@test.ru"
+        }
+    ]
+}

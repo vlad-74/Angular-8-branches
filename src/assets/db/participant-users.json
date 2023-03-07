@@ -1,0 +1,68 @@
+{
+    "participantUsers": [
+        {
+            "idParticipant": "1",
+            "nameParticipant":"наименование1",
+            "idUsers": ["1"],
+            "maxNumberParticipants": "10",
+            "isOpen": "true",
+            "idUserFounder": "1"
+        },
+        {
+            "idParticipant": "2",
+            "nameParticipant": "наименование2",
+            "idUsers": ["2"],
+            "maxNumberParticipants": "10",
+            "isOpen": "true",
+            "idUserFounder": "2"
+        },
+        {
+            "idParticipant": "3",
+            "nameParticipant": "наименование3",
+            "idUsers": ["3"],
+            "maxNumberParticipants": "10",
+            "isOpen": "true",
+            "idUserFounder": "3"
+        },
+        {
+            "idParticipant": "4",
+            "nameParticipant": "наименование4",
+            "idUsers": ["4"],
+            "maxNumberParticipants": "10",
+            "isOpen": "true",
+            "idUserFounder": "4"
+        },
+        {
+            "idParticipant": "5",
+            "nameParticipant": "наименование5",
+            "idUsers": ["5"],
+            "maxNumberParticipants": "10",
+            "isOpen": "true",
+            "idUserFounder": "5"
+        },
+        {
+            "idParticipant": "6",
+            "nameParticipant": "наименование6",
+            "idUsers": ["6"],
+            "maxNumberParticipants": "10",
+            "isOpen": "true",
+            "idUserFounder": "6"
+        },
+        {
+            "idParticipant": "7",
+            "nameParticipant": "наименование7",
+            "idUsers": ["7"],
+            "maxNumberParticipants": "10",
+            "isOpen": "true",
+            "idUserFounder": "7"
+        },
+        {
+            "idParticipant": "8",
+            "nameParticipant": "наименование8",
+            "idUsers": ["8"],
+            "maxNumberParticipants": "10",
+            "isOpen": "true",
+            "idUserFounder": "8"
+        }
+    ]
+}
