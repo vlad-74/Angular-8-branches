@@ -64,7 +64,7 @@ export class DomService {
     /**
      * Удаляем HTMl элемент
      * @param parentElement- родительский элемент
-     * @param el$- новый элемент
+     * @param el$- элемент
      */
     public elementRemove(parentElement: Element | NodeList, el$: Element | NodeList) {
         this.renderer.removeChild(parentElement, el$);

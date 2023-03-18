@@ -41,6 +41,8 @@ export class TestComponent implements OnInit, OnDestroy {
         console.log('---this._h.date.getDifferenceDays', this._h.date.getDifferenceDays(date1, date2));
         console.log('---this._h.date.getDateWeekNumber', this._h.date.getDateWeekNumber());
         console.log('---this._h.date.createDateByNumbers', this._h.date.createDateByNumbers(2023, 2, 24));
+
+        console.log('---!!!!!', this._h.array.randomItemFromArray(this._h.array.getArrayFromTo(11, 22)));
     }
 
     /* Отписываемся от подписок */

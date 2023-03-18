@@ -23,6 +23,19 @@ export class ArrayService {
     }
 
     /**
+     * Получить массив с и по
+     * @param a - стартовая позиция массива
+     * @param b - последня позиция массива
+     */
+    public getArrayFromTo(a: number, b: number) {
+        const arr = [];
+
+        while (a <= b) { arr.push(a); a++; }
+
+        return arr; // [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+    }
+
+    /**
      * Получить уникальный массив
      * @param arr - исходный массив
      */
