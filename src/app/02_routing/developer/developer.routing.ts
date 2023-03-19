@@ -8,6 +8,7 @@ import { SnapshotComponent } from '@developer/examples/app-snapshot/snapshot.com
 import { ThemeComponent } from '@developer/examples/theme/theme.component';
 import { LoaderComponent2 } from '@developer/examples/loader/loader.component';
 import { DomComponent } from '@developer/examples/dom/dom.component';
+import { AnimationComponent } from '@developer/examples/animation/animation.component';
 
 const routes: Routes = [
     {
@@ -46,6 +47,11 @@ const routes: Routes = [
                 path: 'dom',
                 component: DomComponent,
             },
+            {
+                path: 'animation',
+                component: AnimationComponent,
+            },
+
             {
                 path: '',
                 redirectTo: 'info',

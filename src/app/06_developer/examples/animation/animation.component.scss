@@ -1,5 +1,5 @@
-@import '../../01_root/01_helper/style/10_mixins';
-@import '../../01_root/01_helper/style/12_animation';
+@import '../../../01_root/01_helper/style/10_mixins';
+@import '../../../01_root/01_helper/style/12_animation';
 
 .red{
     color: red;
@@ -15,6 +15,7 @@
         border: 1px solid blue;
         &:hover {
             color: red;
+            //&:hover{ animation: 0.5s tremor ease-out infinite; }
             &:hover { animation: 0.5s heart linear infinite; }
         }
     }

@@ -63,4 +63,8 @@ export class DeveloperComponent implements OnInit {
     public goDom() {
         this._router.navigate(['developer', 'dom']).then();
     }
+
+    public goAnimation() {
+        this._router.navigate(['developer', 'animation']).then();
+    }
 }
