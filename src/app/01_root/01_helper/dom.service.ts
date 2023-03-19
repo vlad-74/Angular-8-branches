@@ -36,6 +36,7 @@ export class DomService {
         el$.innerHTML = strInnerHTML;
 
         this.elementAdd((parentElement as Element), typeAppend, dataId, eventName, fn, el$);
+        console.log('--this.common.getFunctionName-', this.common.getFunctionName());
     }
 
     /**

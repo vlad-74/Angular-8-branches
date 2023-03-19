@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { HelperService } from '@helper/helper.service';
 import { AppSnapshotService } from '@state/app-snapshot.service';
+import { BrowserService } from '@helper/browser.service';
 
 @Component({
     selector: 'test',
@@ -31,6 +32,7 @@ export class TestComponent implements OnInit, OnDestroy {
             );
 
         this.checkDates();
+        this.checkArray();
         console.log('+++++++', await this._h.jsonService.getAssetsJsonData('i18n/en.json'));
     }
 
@@ -51,8 +53,21 @@ export class TestComponent implements OnInit, OnDestroy {
         this.destroyed$.complete();
     }
 
-    /* Отписываемся от подписок */
     private _log(arr: any[]) {
         this._h.common.log(arr);
+    }
+
+    private checkArray() {
+        const arr = [1, 2, 3, 4, 5];
+        const arr1 = [10, 12, 13, 14, 15];
+        const arr2 = [ ...arr, ...arr1];
+        const arr3 = [ arr, arr1, ];
+
+        console.log('---arr.max()', arr['max']());
+        console.log('---arr.min()', arr['min']());
+        console.log('---arr2.max()', arr2['max']());
+        console.log('---getMin', this._h.array.getMin(arr3));
+        console.log('---getMax', this._h.array.getMax(arr3));
+        console.log('---getFunctionName', this._h.common.getFunctionName());
     }
 }
