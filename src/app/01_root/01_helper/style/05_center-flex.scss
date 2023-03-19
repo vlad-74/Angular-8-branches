@@ -1,0 +1,63 @@
+// центрирование БЛОКА по вертикале и горизонтале
+.block-center-for-chaild, .center-for {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.block-center-from-chaild, .center-from {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// центрирование ТЕКСТА по горизонтале
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+// FLEX CONTAINER
+.fle {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    &-center{ justify-content: center; }
+    &-between{ justify-content: space-between; }
+    &-around{ justify-content: space-around; }
+    &-evenly{ justify-content: space-evenly; }
+    &-left { justify-content: flex-start; }
+    &-right { justify-content: flex-end; }
+    &-nowrap { flex-wrap: nowrap; }
+}
+
+// FLEX ITEM
+// basis - размер
+.fle-item-basis-10 { flex-basis: 10%; }
+.fle-item-basis-9 { flex-basis: 11.1%; }
+.fle-item-basis-8 { flex-basis: 12.5%; }
+.fle-item-basis-7 { flex-basis: 14.28%; }
+.fle-item-basis-6 { flex-basis: 16.66%; }
+.fle-item-basis-5 { flex-basis: 20%; }
+.fle-item-basis-4 { flex-basis: 25%; }
+.fle-item-basis-3 { flex-basis: 33.33%; }
+.fle-item-basis-2 { flex-basis: 50%; }
+.fle-item-basis-1 { flex-basis: 100%; }
+
+.fle-item-basis-content { flex-basis: content; }
+.fle-item-basis-fit-content { flex-basis: fit-content; }
+.fle-item-basis-min-content { flex-basis: min-content; }
+.fle-item-basis-max-content { flex-basis: max-content; }
+
+// grow - как будет расширяться - чем больше цифра тем больше расширение
+.fle-item-grow-1 { flex-grow: 1; }
+.fle-item-grow-2 { flex-grow: 2; }
+.fle-item-grow-3 { flex-grow: 3; }
+.fle-item-grow-4 { flex-grow: 4; }
+
+// shrink - как будет сжиматься - чем меньше цифра тем меньше сжимается
+.fle-item-shrink-1 { flex-shrink: 1; }
+.fle-item-shrink-2 { flex-shrink: 2; }
+.fle-item-shrink-3 { flex-shrink: 3; }
+.fle-item-shrink-4 { flex-shrink: 4; }
