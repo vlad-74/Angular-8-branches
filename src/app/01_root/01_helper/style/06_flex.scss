@@ -3,13 +3,13 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    &-center{ justify-content: center; }
-    &-between{ justify-content: space-between; }
-    &-around{ justify-content: space-around; }
-    &-evenly{ justify-content: space-evenly; }
-    &-left { justify-content: flex-start; }
-    &-right { justify-content: flex-end; }
-    &-nowrap { flex-wrap: nowrap; }
+    &-center, &-cen { justify-content: center; }
+    &-between, &-bet { justify-content: space-between; }
+    &-around, &-aro { justify-content: space-around; }
+    &-evenly, &-eve { justify-content: space-evenly; }
+    &-left, &-lef { justify-content: flex-start; }
+    &-right, &-rig { justify-content: flex-end; }
+    &-nowrap, &-nowrap { flex-wrap: nowrap; }
 }
 
 // FLEX ITEM
