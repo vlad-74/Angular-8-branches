@@ -1,0 +1,18 @@
+@import '02_variables';
+
+// задаем размер для элемента
+@mixin width-height($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+// задаем квадрат
+@mixin square ($width){
+    @include width-height($width, $width)
+}
+
+// изменение размера элемента
+@mixin resize($percent, $sec) {
+    transform: scale($percent);
+    transition: all $sec linear;
+}

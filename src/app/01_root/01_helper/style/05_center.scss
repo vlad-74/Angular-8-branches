@@ -1,4 +1,5 @@
-// центрирование БЛОКА по вертикале и горизонтале
+// центрирование БЛОКА по вертикале и горизонтале - @import '05_center'; - добавлены в styles.scss
+
 .block-center-for-chaild, .center-for {
     display: flex;
     justify-content: center;
