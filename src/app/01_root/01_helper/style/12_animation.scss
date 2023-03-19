@@ -57,18 +57,19 @@
 /* ======================================================= */
 // $num - number - в секундах
 @mixin animation-tremor($num) {
-    animation: $num + s tremor linear;
+    animation: $num + s tremor ease-out infinite;
 }
 .animation-tremor {
-    animation: 2s tremor;
+    animation: 0.3s tremor ease-out infinite;;
 }
 
 // $num - number - в секундах
 @mixin animation-heart($num) {
-    animation: $num + s heart linear;
+    animation: $num + s heart ease-out infinit;
 }
 .animation-heart{
-    animation: 2s heart
+    //animation: 2s heart
+    animation: 0.5s heart ease-out infinite;
 }
 
 /* ======================================================= */

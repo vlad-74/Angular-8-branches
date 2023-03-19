@@ -33,6 +33,7 @@
     100% { opacity: 0; }
 }
 
+// &:hover{ animation: 0.5s tremor ease-out infinite; }
 @keyframes tremor {
     0%, 25% {
         left: -1px;
@@ -46,6 +47,7 @@
     }
 }
 
+// &:hover { animation: 0.5s heart linear infinite; }
 @keyframes heart {
     25% { @include resize(1.1, 0.5s); }
 }

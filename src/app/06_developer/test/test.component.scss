@@ -9,12 +9,14 @@
     width: 600px;
     border: 1px solid black;
     position: relative;
+
     .chaild{
         @include square(200px);
         border: 1px solid blue;
         &:hover {
             color: red;
-            @include animation-trans-y(1)
+            //&:hover{ animation: 0.5s tremor ease-out infinite; }
+            &:hover { animation: 0.5s heart linear infinite; }
         }
     }
 }
