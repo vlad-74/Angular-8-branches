@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DeveloperInfoComponent } from '@developer/developer-info.component';
+import { DeveloperComponent } from '@developer/developer.component';
 import { TestComponent } from '@developer/test/test.component';
 import { InfoComponent } from '@developer/examples/info/info.component';
 import { InterComponent } from '@developer/examples/inter/inter.component';
@@ -12,11 +12,11 @@ import { DomComponent } from '@developer/examples/dom/dom.component';
 const routes: Routes = [
     {
         path: '',
-        component: DeveloperInfoComponent,
+        component: DeveloperComponent,
         children: [
             {
                 path: 'develop',
-                component: DeveloperInfoComponent,
+                component: DeveloperComponent,
             },
             {
                 path: 'test',

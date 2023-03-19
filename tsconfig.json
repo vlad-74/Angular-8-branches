@@ -16,7 +16,7 @@
           "@modules/*": ["src/app/03_modules/*"],
           "@shared/*": ["src/app/04_shared/*"],
           "@interfaces/*": ["src/app/05_interfaces/*"],
-        "@developer/*": ["src/app/06_developer-info/*"]
+          "@developer/*": ["src/app/06_developer/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

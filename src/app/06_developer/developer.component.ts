@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'developer-info',
-    templateUrl: './developer-info.component.html',
-    styleUrls: [ './developer-info.component.scss' ],
+    selector: 'developer',
+    templateUrl: './developer.component.html',
+    styleUrls: [ './developer.component.scss' ],
     styles: [
         ':host { width: 100%;}',
     ],
 })
-export class DeveloperInfoComponent implements OnInit {
+export class DeveloperComponent implements OnInit {
     public title = 'competitions';
 
     public constructor(
