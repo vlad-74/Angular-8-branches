@@ -1,3 +1,6 @@
+@import '../../../01_root/01_helper/style/10_mixins';
+@import '../../../01_root/01_helper/style/12_animation';
+
 .spacer {
     flex: 1;
 }
@@ -10,6 +13,7 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    @include animation-trans-y(1)
 }
 
 svg.material-icons {

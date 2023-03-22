@@ -1,0 +1,44 @@
+// FLEX CONTAINER -  - @import '06_flex'; - добавлены в styles.scss
+
+.fle-container, .fle {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    &-center, &-cen { justify-content: center; }
+    &-between, &-bet { justify-content: space-between; }
+    &-around, &-aro { justify-content: space-around; }
+    &-evenly, &-eve { justify-content: space-evenly; }
+    &-left, &-lef { justify-content: flex-start; }
+    &-right, &-rig { justify-content: flex-end; }
+    &-nowrap, &-nowrap { flex-wrap: nowrap; }
+}
+
+// FLEX ITEM
+// basis - размер
+.fle-item-basis-10, .fib-10 { flex-basis: 10%; }
+.fle-item-basis-9, .fib-9 { flex-basis: 11.1%; }
+.fle-item-basis-8, .fib-8 { flex-basis: 12.5%; }
+.fle-item-basis-7, .fib-7 { flex-basis: 14.28%; }
+.fle-item-basis-6, .fib-6 { flex-basis: 16.66%; }
+.fle-item-basis-5, .fib-5{ flex-basis: 20%; }
+.fle-item-basis-4, .fib-4 { flex-basis: 25%; }
+.fle-item-basis-3, .fib-3 { flex-basis: 33.33%; }
+.fle-item-basis-2, .fib-2 { flex-basis: 50%; }
+.fle-item-basis-1, .fib-1 { flex-basis: 100%; }
+
+.fle-item-basis-content, .fibc { flex-basis: content; }
+.fle-item-basis-fit-content, .fibfc { flex-basis: fit-content; }
+.fle-item-basis-min-content, .fibminc { flex-basis: min-content; }
+.fle-item-basis-max-content, .fibmaxc { flex-basis: max-content; }
+
+// grow - как будет расширяться - чем больше цифра тем больше расширение
+.fle-item-grow-4, .fig-4 { flex-grow: 4; }
+.fle-item-grow-3, .fig-3 { flex-grow: 3; }
+.fle-item-grow-2, .fig-2 { flex-grow: 2; }
+.fle-item-grow-1, .fig-1 { flex-grow: 1; }
+
+// shrink - как будет сжиматься - чем меньше цифра тем меньше сжимается
+.fle-item-shrink-1, .fis-1 { flex-shrink: 1; }
+.fle-item-shrink-2, .fis-2 { flex-shrink: 2; }
+.fle-item-shrink-3, .fis-3 { flex-shrink: 3; }
+.fle-item-shrink-4, .fis-4 { flex-shrink: 4; }

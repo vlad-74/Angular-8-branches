@@ -2,10 +2,16 @@
 
 import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
+import { BrowserService } from '@helper/browser.service';
 
 @Injectable({ providedIn: 'root' })
 export class CommonService {
     protected logСоunt = 0;
+
+    public constructor(
+        public browser: BrowserService
+    ) {
+    }
 
     /*
      Задержка во времени
@@ -47,5 +53,36 @@ export class CommonService {
         const end = new Date().getTime();
 
         console.log( `Время выполнения функции "${fn.name}" равно ${end - start} миллисекунд`);
+    }
+
+    /**
+     * ДЛЯ ПРОМИСОВ РАБОТАЕТ НЕ КОРРЕКТНО
+     * */
+    public getFunctionName() {
+        // tslint:disable-next-line:prefer-const
+        const err = new Error().stack;
+        // tslint:disable-next-line:one-variable-per-declaration
+        let emp, txt_fun, fun;
+
+        emp = ' - АНОНИМНАЯ';
+        if (this.browser.getBrowser().browser.toLowerCase() === 'chrome') {
+            fun = err.split('\n')[2].split(' ')[5];
+            if (fun !== 'Object.<anonymous>') {
+                txt_fun = err.split('\n')[2].split(' ')[5];
+            } else {
+                txt_fun = emp;
+            }
+
+            return txt_fun;
+        } else {
+            fun = err.split('\n')[1].split('@')[0];
+            if (fun !== '') {
+                txt_fun = err.split('\n')[1].split('@')[0];
+            } else {
+                txt_fun = emp;
+            }
+
+            return txt_fun;
+        }
     }
 }

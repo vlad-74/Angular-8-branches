@@ -1,0 +1,23 @@
+@import '../../../01_root/01_helper/style/10_mixins';
+@import '../../../01_root/01_helper/style/12_animation';
+
+.red{
+    color: red;
+}
+.parent{
+    height: 600px;
+    width: 600px;
+    border: 1px solid black;
+    position: relative;
+
+    .chaild{
+        @include square(200px);
+        border: 1px solid blue;
+        &:hover {
+            color: red;
+            //&:hover{ animation: 0.5s tremor ease-out infinite; }
+            &:hover { animation: 0.5s heart linear infinite; }
+        }
+    }
+}
+

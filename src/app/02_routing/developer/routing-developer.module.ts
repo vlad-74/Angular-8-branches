@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { DeveloperRouting } from './developer.routing';
-import { DeveloperInfoModule } from '@developer/developer-info.module';
+import { DeveloperModule } from '@developer/developer.module';
 
 @NgModule({
     imports: [
         DeveloperRouting,
-        DeveloperInfoModule,
+        DeveloperModule,
     ],
 })
 export class RoutingDeveloperModule {

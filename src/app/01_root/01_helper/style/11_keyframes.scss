@@ -1,0 +1,53 @@
+@import '10_mixins';
+
+// АНИМАЦИЯ ПРИЛОЖЕНИЯ - @import '00_animation'; - добавлены в styles.scss
+
+/* =========== KEYFRAMES =========== */
+@keyframes trans-x {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0%); }
+}
+
+@keyframes trans-x-rev {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0%); }
+}
+
+@keyframes trans-y {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0%); }
+}
+
+@keyframes trans-y-rev {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0%); }
+}
+
+@keyframes open-opacity {
+    0% { opacity: 0; }
+    100% { opacity: 100%; }
+}
+
+@keyframes hide-opacity {
+    0% { opacity: 100%; }
+    100% { opacity: 0; }
+}
+
+// &:hover{ animation: 0.5s tremor ease-out infinite; }
+@keyframes tremor {
+    0%, 25% {
+        left: -1px;
+        top: -1px;
+        transform: translateX(-4%);
+    }
+    50%, 100% {
+        left: 1px;
+        top: 1px;
+        transform: translateX(4%);
+    }
+}
+
+// &:hover { animation: 0.5s heart linear infinite; }
+@keyframes heart {
+    25% { @include resize(1.1, 0.5s); }
+}

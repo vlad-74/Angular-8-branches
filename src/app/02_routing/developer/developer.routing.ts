@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DeveloperInfoComponent } from '@developer/developer-info.component';
+import { DeveloperComponent } from '@developer/developer.component';
 import { TestComponent } from '@developer/test/test.component';
 import { InfoComponent } from '@developer/examples/info/info.component';
 import { InterComponent } from '@developer/examples/inter/inter.component';
@@ -8,15 +8,16 @@ import { SnapshotComponent } from '@developer/examples/app-snapshot/snapshot.com
 import { ThemeComponent } from '@developer/examples/theme/theme.component';
 import { LoaderComponent2 } from '@developer/examples/loader/loader.component';
 import { DomComponent } from '@developer/examples/dom/dom.component';
+import { AnimationComponent } from '@developer/examples/animation/animation.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: DeveloperInfoComponent,
+        component: DeveloperComponent,
         children: [
             {
                 path: 'develop',
-                component: DeveloperInfoComponent,
+                component: DeveloperComponent,
             },
             {
                 path: 'test',
@@ -46,6 +47,11 @@ const routes: Routes = [
                 path: 'dom',
                 component: DomComponent,
             },
+            {
+                path: 'animation',
+                component: AnimationComponent,
+            },
+
             {
                 path: '',
                 redirectTo: 'info',

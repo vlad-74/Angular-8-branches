@@ -1,0 +1,75 @@
+@import '11_keyframes';
+
+// АНИМАЦИЯ ПРИЛОЖЕНИЯ - @import '00_animation'; - добавлены в styles.scss
+
+/* =========== АНИМАЦИЯ =========== */
+/* ======================================================= */
+// $num - number - в секундах
+@mixin animation-trans-x($num) {
+    animation: $num + s trans-x linear;
+}
+.animation-trans-x {
+    animation: 2s trans-x linear;
+}
+
+// $num - number - в секундах
+@mixin animation-trans-x-rev($num) {
+    animation: $num + s trans-x-rev linear;
+}
+.animation-trans-x-rev {
+    animation: 2s trans-x-rev linear;
+}
+
+/* ======================================================= */
+// $num - number - в секундах
+@mixin animation-trans-y($num) {
+    animation: $num + s trans-y linear;
+}
+.animation-trans-y {
+    animation: 2s trans-y linear;
+}
+
+// $num - number - в секундах
+@mixin animation-trans-y-rev($num) {
+    animation: $num + s trans-y-rev linear;
+}
+.animation-trans-y-rev {
+    animation: 2s trans-y-rev linear;
+}
+
+/* ======================================================= */
+// $num - number - в секундах
+@mixin animation-hide-opacity($num) {
+    animation: $num + s hide-opacity linear;
+}
+.animation-hide-opacity {
+    animation: 2s hide-opacity linear;
+}
+
+// $num - number - в секундах
+@mixin animation-open-opacity($num) {
+    animation: $num + s open-opacity linear;
+}
+.animation-open-opacity {
+    animation: 2s open-opacity linear;
+}
+
+/* ======================================================= */
+// $num - number - в секундах
+@mixin animation-tremor($num) {
+    animation: $num + s tremor ease-out infinite;
+}
+.animation-tremor {
+    animation: 0.3s tremor ease-out infinite;;
+}
+
+// $num - number - в секундах
+@mixin animation-heart($num) {
+    animation: $num + s heart ease-out infinit;
+}
+.animation-heart{
+    //animation: 2s heart
+    animation: 0.5s heart ease-out infinite;
+}
+
+/* ======================================================= */

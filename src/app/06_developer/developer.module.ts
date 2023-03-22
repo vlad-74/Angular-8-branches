@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '@shared/shared.module';
-import { DeveloperInfoComponent } from '@developer/developer-info.component';
+import { DeveloperComponent } from '@developer/developer.component';
 import { TestComponent } from './test/test.component';
 import { InfoComponent } from '@developer/examples/info/info.component';
 import { InterComponent } from '@developer/examples/inter/inter.component';
@@ -11,10 +11,11 @@ import { SnapshotComponent } from '@developer/examples/app-snapshot/snapshot.com
 import { ThemeComponent } from '@developer/examples/theme/theme.component';
 import { LoaderComponent2 } from '@developer/examples/loader/loader.component';
 import { DomComponent } from '@developer/examples/dom/dom.component';
+import { AnimationComponent } from '@developer/examples/animation/animation.component';
 
 @NgModule({
     declarations: [
-        DeveloperInfoComponent,
+        DeveloperComponent,
         TestComponent,
         InfoComponent,
         InterComponent,
@@ -22,6 +23,7 @@ import { DomComponent } from '@developer/examples/dom/dom.component';
         ThemeComponent,
         LoaderComponent2,
         DomComponent,
+        AnimationComponent,
     ],
     imports: [
         CommonModule,
@@ -30,5 +32,5 @@ import { DomComponent } from '@developer/examples/dom/dom.component';
         TranslateModule,
     ],
 })
-export class DeveloperInfoModule {
+export class DeveloperModule {
 }

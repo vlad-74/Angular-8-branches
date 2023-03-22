@@ -4,6 +4,18 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class ArrayService {
+    private _maxGetMax: number;
+    private _maxGetMin: number;
+
+    public constructor() {
+        Array.prototype['max'] = function() {
+            return Math.max.apply(null, this);
+        };
+
+        Array.prototype['min'] = function() {
+            return Math.min.apply(null, this);
+        };
+    }
 
     /**
      * Создать массив определенной длины = num
@@ -20,6 +32,19 @@ export class ArrayService {
      */
     public fillArray(num, example) {
         return new Array(num).fill(example); // ['z', 'z', 'z', 'z', 'z']
+    }
+
+    /**
+     * Получить массив с и по
+     * @param a - стартовая позиция массива
+     * @param b - последня позиция массива
+     */
+    public getArrayFromTo(a: number, b: number) {
+        const arr = [];
+
+        while (a <= b) { arr.push(a); a++; }
+
+        return arr; // [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
     }
 
     /**
@@ -102,5 +127,53 @@ export class ArrayService {
     public conversionToObjectTwoDimensionalArray(arr1, arr2) {
         // @ts-ignore
         return Object.fromEntries([ arr1, arr2 ]); // fromEntries - МОЖНО ТОЛЬКО ДВУМЕРНЫЙ МАССИВ В ОБЪЕКТ ПРЕОБРАЗОВАТЬ
+    }
+
+    public checkArrayIsArray(arr: any[]): boolean {
+        return Array.isArray(arr);
+    }
+
+    private _checkNumberIsInteger(item: number): boolean {
+        return Number.isInteger(item);
+    }
+
+    public getMax(arr: any[], startMax: number = Number.NEGATIVE_INFINITY): number | null {
+        this._maxGetMax = startMax;
+        if (this.checkArrayIsArray(arr)) {
+            arr.forEach((item: number | any[]) => {
+                if (this.checkArrayIsArray((item as any[]))) {
+                    this.getMax((item as any[]), this._maxGetMax);
+                } else if (this._checkNumberIsInteger((item as number))) {
+                    this._maxGetMax = (item as number) > this._maxGetMax ? (item as number) : this._maxGetMax;
+                } else if (!this._checkNumberIsInteger((item as number))) {
+                    this._maxGetMax = null;
+                }
+            });
+            setTimeout(() => { this._maxGetMax = Number.NEGATIVE_INFINITY; }, 0);
+
+            return this._maxGetMax;
+        }
+
+        return null;
+    }
+
+    public getMin(arr: any[], startMin: number = Number.POSITIVE_INFINITY): number | null {
+        this._maxGetMin = startMin;
+        if (this.checkArrayIsArray(arr)) {
+            arr.forEach((item: number | any[]) => {
+                if (this.checkArrayIsArray((item as any[]))) {
+                    this.getMin((item as any[]), this._maxGetMin);
+                } else if (this._checkNumberIsInteger((item as number))) {
+                    this._maxGetMin = (item as number) < this._maxGetMin ? (item as number) : this._maxGetMin;
+                } else if (!this._checkNumberIsInteger((item as number))) {
+                    this._maxGetMin = null;
+                }
+            });
+            setTimeout(() => { this._maxGetMin = Number.POSITIVE_INFINITY; }, 0);
+
+            return this._maxGetMin;
+        }
+
+        return null;
     }
 }

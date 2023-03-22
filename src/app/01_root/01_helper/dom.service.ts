@@ -36,6 +36,7 @@ export class DomService {
         el$.innerHTML = strInnerHTML;
 
         this.elementAdd((parentElement as Element), typeAppend, dataId, eventName, fn, el$);
+        console.log('--this.common.getFunctionName-', this.common.getFunctionName());
     }
 
     /**
@@ -64,7 +65,7 @@ export class DomService {
     /**
      * Удаляем HTMl элемент
      * @param parentElement- родительский элемент
-     * @param el$- новый элемент
+     * @param el$- элемент
      */
     public elementRemove(parentElement: Element | NodeList, el$: Element | NodeList) {
         this.renderer.removeChild(parentElement, el$);
