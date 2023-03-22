@@ -2,3 +2,9 @@
 .pointer{
     cursor: pointer;
 }
+
+.div-disabled {
+    pointer-events: none; // div становиться не кликабелен
+    opacity: .3; // прозрачен
+}
+

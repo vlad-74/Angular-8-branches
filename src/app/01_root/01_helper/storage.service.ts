@@ -6,6 +6,29 @@ export class StorageService {
     public localStorage = window.localStorage;
     public sessionStorage = window.sessionStorage;
 
+    public cache(key, value = null) {
+        if (typeof value === 'undefined') { return this.cache[key]; }
+        this.cache[key] = value;
+    }
+
+    /**
+     * Пример Выполнение функции
+     * console.time('regular querySelector');
+     *  for (var i = 0; i < 1000000; i++) { document.querySelector('h1'); }
+     * console.timeEnd('regular querySelector'); // regular querySelector: 100.6123046875ms
+     *
+     * console.time('cached querySelector');
+     *  for (var i = 0; i < 1000000; i++) {  this.querySelector('h1'); }
+     * console.timeEnd('cached querySelector'); // querySelector: 5.77392578125ms
+     */
+    public querySelector(selector) {
+        if (!this.cache(selector)) {
+            this.cache(selector, document.querySelector(selector));
+        }
+
+        return this.cache(selector);
+    }
+
     public setLocalItem(name, value) {
         this._setInStorage(this.localStorage, name, value);
     }
