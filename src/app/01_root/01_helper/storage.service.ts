@@ -6,27 +6,38 @@ export class StorageService {
     public localStorage = window.localStorage;
     public sessionStorage = window.sessionStorage;
 
-    public cache(key, value = null) {
-        if (typeof value === 'undefined') { return this.cache[key]; }
-        this.cache[key] = value;
+    public cache = {};
+    public cacheFn(key: string, value = 'undefined', name: string = key) {
+        name = key === name ? name : name + '-' + key;
+        this.cache[name] = value;
     }
 
     /**
      * Пример Выполнение функции
-     * console.time('regular querySelector');
-     *  for (var i = 0; i < 1000000; i++) { document.querySelector('h1'); }
-     * console.timeEnd('regular querySelector'); // regular querySelector: 100.6123046875ms
+     *        console.time('cached querySelector1');
+     *         for (var i = 0; i < 1000000; i++) {  document.querySelector('p'); }
+     *         console.timeEnd('cached querySelector1'); // 322.379150390625 ms
      *
-     * console.time('cached querySelector');
-     *  for (var i = 0; i < 1000000; i++) {  this.querySelector('h1'); }
-     * console.timeEnd('cached querySelector'); // querySelector: 5.77392578125ms
+     *         console.time('cached querySelector2');
+     *         for (let i = 0; i < 1000000; i++) {
+     *             if (!this._h.storage.querySelectorCache('p', 'dom')) {
+     *                 break;
+     *             }
+     *         }
+     *         console.timeEnd('cached querySelector2'); // 0.2041015625 ms
      */
-    public querySelector(selector) {
-        if (!this.cache(selector)) {
-            this.cache(selector, document.querySelector(selector));
-        }
+    public querySelectorCache(selector, from = 'default') {
+        let value = null;
 
-        return this.cache(selector);
+        if (!this.cache[from + '-' + 'querySelector' + '-' + selector]) {
+            value = document.querySelector(selector);
+            this.cacheFn(selector, value, from + '-' + 'querySelector');
+        }
+        if (value) {
+            return this.cache[from + '-' + 'querySelector' + '-' + selector];
+        } else {
+            return null;
+        }
     }
 
     public setLocalItem(name, value) {

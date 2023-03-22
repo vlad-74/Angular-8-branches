@@ -31,6 +31,8 @@ export class DomComponent implements OnInit {
             console.log('elementsGeAllNeighbor', this._h.dom.elementsGetSiblingAll(el));
         }
 
+        this.checkCache();
+
         setTimeout(() => {
             this._h.dom.elementClassRemove(el,  'red');
         }, 2000);
@@ -88,6 +90,26 @@ export class DomComponent implements OnInit {
         setTimeout(() => {
             this._h.dom.elementAdd(parentElement, 'appendChild', counter, 'click', null, removeElement);
         }, 5000);
+    }
 
+    public checkCache() {
+        console.log('-1--this._h.storage.cache', this._h.storage.cache);
+        this._h.common.getFunctionExecutionTime(this.querySelector1);
+        this._h.common.getFunctionExecutionTime(
+            this.querySelector2,
+            { _h: this._h },
+        );
+        console.log('-2--this._h.storage.cache', this._h.storage.cache);
+        setTimeout(() => {console.log('-3--this._h.storage.cache', this._h.storage.cache); }, 5000);
+    }
+
+    private querySelector1() { for (let i = 0; i < 1000000; i++) { document.querySelector('p'); } }
+    private querySelector2() {
+        this._h.storage.cache = {};
+        for (let i = 0; i < 1000000; i++) {
+            if (!this._h.storage.querySelectorCache('p', 'dom')) {
+                break;
+            }
+        }
     }
 }
