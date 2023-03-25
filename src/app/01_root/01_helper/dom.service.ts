@@ -215,7 +215,10 @@ export class DomService {
      * Добавить скрипт в HTML
      * @param url- путь к скрипту - например - './assets/scripts/code.js'
      */
-    public addScriptToHTML(url: string): void  {
+    public async addScriptToHTML(url: string): Promise<void> {
+        const scr = await this.elementGet('script');
+
+        console.log('---scr', scr);
         const script = this.document.createElement('script');
 
         script.setAttribute('type', 'text/javascript');

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HelperService } from '@helper/helper.service';
+declare var myExtObject: any;
+declare var webGlObject: any;
 
 @Component({
     selector: 'dom',
@@ -16,6 +18,10 @@ export class DomComponent implements OnInit {
     public ngOnInit() {
         this.testDom().then();
         this.renderer().then();
+
+        this.callFunction1();
+        this.callFunction2();
+        this.callFunction3();
     }
 
     public async testDom() {
@@ -104,12 +110,30 @@ export class DomComponent implements OnInit {
     }
 
     private querySelector1() { for (let i = 0; i < 1000000; i++) { document.querySelector('p'); } }
+
     private querySelector2() {
         this._h.storage.cache = {};
         for (let i = 0; i < 1000000; i++) {
             if (!this._h.storage.querySelectorCache('p', 'dom')) {
                 break;
             }
+        }
+    }
+
+    private callFunction1() {
+        if (myExtObject) {
+            myExtObject.func1();
+        }
+    }
+
+    private callFunction2() {
+        if (myExtObject) {
+            myExtObject.func2();
+        }
+    }
+    private callFunction3() {
+        if (webGlObject) {
+            webGlObject.init();
         }
     }
 }
