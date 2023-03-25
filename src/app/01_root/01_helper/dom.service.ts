@@ -216,24 +216,24 @@ export class DomService {
      * @param url- путь к скрипту - например - './assets/scripts/code.js'
      */
     public addScriptToHTML(url: string): void  {
-        const script = document.createElement('script');
+        const script = this.document.createElement('script');
 
         script.setAttribute('type', 'text/javascript');
         script.setAttribute('src', url);
-        document.getElementsByTagName('head')[0].appendChild(script);
+        this.document.getElementsByTagName('head')[0].appendChild(script);
     }
 
     /**
      * Добавить CSS в HTML
-     * @param url- путь к стилям - например - './assets/css/style.css'
+     * @param href- путь к стилям - например - './assets/css/style.css'
      */
     public addLinkToHTML(url: string): void  {
-        const script = document.createElement('link');
+        const script = this.document.createElement('link');
 
         script.setAttribute('rel', 'stylesheet');
         script.setAttribute('type', 'text/css');
         script.setAttribute('href', url);
-        document.getElementsByTagName('head')[0].appendChild(script);
+        this.document.getElementsByTagName('head')[0].appendChild(script);
     }
 
 }
