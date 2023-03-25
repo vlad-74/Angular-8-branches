@@ -12,6 +12,7 @@ import { ThemeComponent } from '@developer/examples/theme/theme.component';
 import { LoaderComponent2 } from '@developer/examples/loader/loader.component';
 import { DomComponent } from '@developer/examples/dom/dom.component';
 import { AnimationComponent } from '@developer/examples/animation/animation.component';
+import { ScreenComponent } from '@developer/examples/screen/screen.component';
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import { AnimationComponent } from '@developer/examples/animation/animation.comp
         LoaderComponent2,
         DomComponent,
         AnimationComponent,
+        ScreenComponent,
     ],
     imports: [
         CommonModule,

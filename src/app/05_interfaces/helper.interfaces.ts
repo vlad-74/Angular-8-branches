@@ -7,6 +7,7 @@ export interface IScreen {
     coefficient: number;
     typeScreen: string;
     browser: IBrowser;
+    orientation: ScreenOrientation;
 }
 
 export interface IBrowser {

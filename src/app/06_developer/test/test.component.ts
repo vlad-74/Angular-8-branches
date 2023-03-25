@@ -45,6 +45,7 @@ export class TestComponent implements OnInit, OnDestroy {
         console.log('---this._h.date.createDateByNumbers', this._h.date.createDateByNumbers(2023, 2, 24));
 
         console.log('---!!!!!', this._h.array.randomItemFromArray(this._h.array.getArrayFromTo(11, 22)));
+
     }
 
     /* Отписываемся от подписок */
@@ -61,7 +62,7 @@ export class TestComponent implements OnInit, OnDestroy {
         const arr = [1, 2, 3, 4, 5];
         const arr1 = [10, 12, 13, 14, 15];
         const arr2 = [ ...arr, ...arr1];
-        const arr3 = [ arr, arr1, ];
+        const arr3 = [ arr, arr1 ];
 
         console.log('---arr.max()', arr['max']());
         console.log('---arr.min()', arr['min']());

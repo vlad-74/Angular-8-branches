@@ -35,7 +35,8 @@ export class ScreenService {
 
         const coefficient = window.innerWidth / window.innerHeight;
         const typeScreen = coefficient >= 1 ? 'tablet' : 'mobile';
+        const orientation = window.screen.orientation;
 
-        return <IScreen> { vw, vh, dpi, coefficient, typeScreen, browser: this.browser.getBrowser() };
+        return <IScreen> { vw, vh, dpi, coefficient, typeScreen, browser: this.browser.getBrowser(), orientation };
     }
 }

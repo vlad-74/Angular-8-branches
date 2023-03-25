@@ -9,6 +9,7 @@ import { ThemeComponent } from '@developer/examples/theme/theme.component';
 import { LoaderComponent2 } from '@developer/examples/loader/loader.component';
 import { DomComponent } from '@developer/examples/dom/dom.component';
 import { AnimationComponent } from '@developer/examples/animation/animation.component';
+import { ScreenComponent } from '@developer/examples/screen/screen.component';
 
 const routes: Routes = [
     {
@@ -51,7 +52,10 @@ const routes: Routes = [
                 path: 'animation',
                 component: AnimationComponent,
             },
-
+            {
+                path: 'screen',
+                component: ScreenComponent,
+            },
             {
                 path: '',
                 redirectTo: 'info',
