@@ -24,10 +24,10 @@ interface Ihh {
 
 /**
  * в импортах компонента можно повторно продекларировать - для удобства
- * @example => declare var hh: HelperService;
+ * @example => declare const hh: HelperService;
  * тогда будет более глубокая детализация
  */
-declare var hh: Ihh; // для глобальных переменных (window['hh'] = this) - чтобы не было ошибок у TS
+declare const hh: Ihh; // для глобальных переменных (window['hh'] = this) - чтобы не было ошибок у TS
 
 declare var myExtObject: any;
 declare var webGlObject: any;

@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { HelperService } from '@helper/helper.service';
 import { AppSnapshotService } from '@state/app-snapshot.service';
-// declare var hh: HelperService;
+declare const hh: HelperService;
 
 @Component({
     selector: 'test',
