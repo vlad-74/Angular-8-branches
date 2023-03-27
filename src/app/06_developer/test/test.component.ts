@@ -3,7 +3,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { HelperService } from '@helper/helper.service';
 import { AppSnapshotService } from '@state/app-snapshot.service';
-// declare const hh: HelperService;
 
 @Component({
     selector: 'test',
@@ -30,7 +29,7 @@ export class TestComponent implements OnInit, OnDestroy {
                 },
                 error => console.log('login - error', error),
             );
-        console.log('-global.window._h--', hh.unique.generateUniqueString());
+        console.log('-global.window._h--', hhh.unique.generateUniqueString());
 
         this.checkDates();
         this.checkArray();

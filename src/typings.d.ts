@@ -5,26 +5,30 @@
 // declare var module: NodeModule;
 
 /**
- * в случае добавления новых сервисов в HelperService
- * в интерфейс Ihh тоже нужно добавить новый параметр
+ * ИСПОЛЬЗОВАНИЕ ГЛОБАЛЬНОЙ ПЕРЕМЕННОЙ
+ * БЕЗ ИСПОЛЬЗОВАНИЯ:
+ * - ИМПОРТА (в компоненте)
+ * - ДЕКЛАРАЦИЙ (в компоненте)
+ * - this (в компоненте)
+ *
+ * 1 шаг - декларация
+ * @example => declare const hhh: any;
+ * в src\typings.d.ts
+ *
+ * 2 шаг - декларация глобальной переменной
+ * @example => declare global {
+ *     interface Window {
+ *         hhh: HelperService;
+ *     }
+ * }
+ * в src\polyfills.ts
+ *
+ * 3 шаг - присвоение глобальной переменной сервиса
+ * @example => window.hhh = this;
+ * в src\app\01_root\01_helper\helper.service.ts
+ *
+ * 4 шаг - использование глобальной переменной
+ * @example => hhh.unique.generateUniqueString()
+ * например в src\app\06_developer\test\test.component.ts
  */
-interface Ihh {
-    array: any;
-    common: any;
-    dom: any;
-    jsonService: any;
-    screen: any;
-    unique: any;
-    storage: any;
-    object: any;
-    string: any;
-    date: any;
-    browser: any;
-}
-
-/**
- * в импортах компонента можно повторно продекларировать - для удобства
- * @example => declare const hh: HelperService;
- * тогда будет более глубокая детализация
- */
-declare const hh: Ihh; // для глобальных переменных (window['hh'] = this) - чтобы не было ошибок у TS
+// declare const hhh: any; // для глобальных переменных (window['hhh'] = this) - чтобы не было ошибок у TS

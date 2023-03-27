@@ -55,9 +55,55 @@
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
-import 'zone.js/dist/zone';  // Included with Angular CLI.
-
+import 'zone.js/dist/zone';
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+/***************************************************************************************************
+ * ИСПОЛЬЗОВАНИЕ ГЛОБАЛЬНОЙ ПЕРЕМЕННОЙ
+ * БЕЗ ИСПОЛЬЗОВАНИЯ:
+ * - ИМПОРТА (в компоненте)
+ * - ДЕКЛАРАЦИЙ (в компоненте)
+ * - this (в компоненте)
+ *
+ * 1 шаг - декларация глобальных переменных
+ * @example => declare global {
+ *     interface Window {
+ *         hhh: HelperService;
+ *     }
+ * }
+ * @example => declare global {
+ *     const hhh: HelperService;
+ * }
+ * в src\polyfills.ts
+ *
+ * 2 шаг - присвоение глобальной переменной сервиса
+ * @example => window.hhh = this;
+ * в src\app\01_root\01_helper\helper.service.ts
+ *
+ * 3 шаг - использование глобальной переменной
+ * @example => hhh.unique.generateUniqueString()
+ * например в src\app\06_developer\test\test.component.ts
+ */
+import { HelperService } from '@helper/helper.service';  // Included with Angular CLI.
+
+declare global {
+    interface Window {
+        hhh: HelperService;
+    }
+}
+
+declare global {
+    /**
+     * Если нужна ЕЩЕ "глобальная переменная" типа hhh
+     *
+     * реализацию смотри в polyfills.ts
+     * @example
+     * ДЛЯ ПРОСМОТРА ДОСТУПНЫХ СВОЙСТВ И МЕТОДОВ у переменной
+     * нажать - Ctrl + Shift + пробел
+     */
+    const hhh: HelperService;
+}
+/***************************************************************************************************/

@@ -14,16 +14,33 @@ import { DateService } from '@helper/date.service';
 import { BrowserService } from '@helper/browser.service';
 
 /**
- * для ГЛОБАЛЬНОГО использования HelperService как hh
- * @example => в src\typings.d.ts
- * задекларирована переменная hh
- * @example => declare const hh: Ihh;
- * с интерфейсом Ihh
- * в случае добавления новых сервисов в HelperService
- * в интерфейс Ihh тоже нужно добавить новый параметр
+ * ИСПОЛЬЗОВАНИЕ ГЛОБАЛЬНОЙ ПЕРЕМЕННОЙ
+ * БЕЗ ИСПОЛЬЗОВАНИЯ:
+ * - ИМПОРТА (в компоненте)
+ * - ДЕКЛАРАЦИЙ (в компоненте)
+ * - this (в компоненте)
+ *
+ * 1 шаг - декларация глобальных переменных
+ * @example => declare global {
+ *     interface Window {
+ *         hhh: HelperService;
+ *     }
+ * }
+ * @example => declare global {
+ *     const hhh: HelperService;
+ * }
+ * в src\polyfills.ts
+ *
+ * 2 шаг - присвоение глобальной переменной сервиса
+ * @example => window.hhh = this;
+ * в src\app\01_root\01_helper\helper.service.ts
+ *
+ * 3 шаг - использование глобальной переменной
+ * @example => hhh.unique.generateUniqueString()
+ * например в src\app\06_developer\test\test.component.ts
  */
 @Injectable({ providedIn: 'root' })
-export class HelperService implements Ihh {
+export class HelperService {
 
     public constructor(
         public array: ArrayService,
@@ -38,8 +55,10 @@ export class HelperService implements Ihh {
         public date: DateService,
         public browser: BrowserService,
     ) {
-        window['helper'] = window['hh'] = this;
-
-        // window.jQuery = window.$ = jQuery;
+        /**
+         * если нужна ЕЩЕ "глобальная переменная" типа hhh
+         * реализацию смотри в polyfills.ts
+         */
+        window.hhh = this;
     }
 }
