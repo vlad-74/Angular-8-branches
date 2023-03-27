@@ -30,7 +30,7 @@ export class TestComponent implements OnInit, OnDestroy {
                 },
                 error => console.log('login - error', error),
             );
-
+        console.log('-global.window._h--', hh.unique.generateUniqueString());
         this.checkDates();
         this.checkArray();
         console.log('+++++++', await this._h.jsonService.getAssetsJsonData('i18n/en.json'));

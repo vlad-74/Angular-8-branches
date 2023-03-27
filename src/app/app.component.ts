@@ -42,6 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
     /* Подписываемся на STATE & USER_ACTIVITY */
     public ngOnInit() {
         console.log('-----------------------------------------------------' );
+        window['hh'] = this._h;
         this._subscribeApp.onInitApp();
 
         // if (!environment.production) {
