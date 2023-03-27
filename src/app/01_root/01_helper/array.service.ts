@@ -132,13 +132,13 @@ export class ArrayService {
         return typeof item === 'number'; // Number.isInteger(item);
     }
 
-    public getMax(arr: any[], startMax: number = Number.NEGATIVE_INFINITY): number | null {
+    public getMax(arr: number[], startMax: number = Number.NEGATIVE_INFINITY): number | null {
         this._maxGetMax = startMax;
 
         if (this.checkArrayIsArray(arr)) {
-            arr.forEach((item: number | any[]) => {
-                if (this.checkArrayIsArray((item as any[]))) {
-                    this.getMax((item as any[]), this._maxGetMax);
+            arr.forEach((item: number | number[]) => {
+                if (this.checkArrayIsArray((item as number[]))) {
+                    this.getMax((item as number[]), this._maxGetMax);
                 } else if (this._checkNumberIsNumber((item as number))) {
                     this._maxGetMax = (item as number) > this._maxGetMax ? (item as number) : this._maxGetMax;
                 } else if (!this._checkNumberIsNumber((item as number))) {
@@ -153,17 +153,16 @@ export class ArrayService {
         return null;
     }
 
-    public getMin(arr: any[], startMin: number = Number.POSITIVE_INFINITY): number | null {
+    public getMin(arr: number[], startMin: number = Number.POSITIVE_INFINITY): number | null {
         this._maxGetMin = startMin;
 
         if (this.checkArrayIsArray(arr)) {
-            arr.forEach((item: number | any[]) => {
-                if (this.checkArrayIsArray((item as any[]))) {
-                    this.getMin((item as any[]), this._maxGetMin);
+            arr.forEach((item: number | number[]) => {
+                if (this.checkArrayIsArray((item as number[]))) {
+                    this.getMin((item as number[]), this._maxGetMin);
                 } else if (this._checkNumberIsNumber((item as number))) {
                     this._maxGetMin = (item as number) < this._maxGetMin ? (item as number) : this._maxGetMin;
                 } else if (!this._checkNumberIsNumber((item as number))) {
-                    console.log('---typeof item', typeof item, item);
                     this._maxGetMin = null;
                 }
             });
