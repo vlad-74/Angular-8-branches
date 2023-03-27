@@ -29,5 +29,8 @@ export class HelperService {
         public date: DateService,
         public browser: BrowserService,
     ) {
+        window['helper'] = window['hh'] = this;
+
+        // window.jQuery = window.$ = jQuery;
     }
 }

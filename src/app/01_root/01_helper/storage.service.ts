@@ -34,7 +34,8 @@ export class StorageService {
             this.cacheFn(selector, value, from + '-' + 'querySelector');
         }
         if (value) {
-            return this.cache[from + '-' + 'querySelector' + '-' + selector];
+            return from + '-' + 'querySelector' + '-' + selector;
+            // return this.cache[from + '-' + 'querySelector' + '-' + selector];
         } else {
             return null;
         }

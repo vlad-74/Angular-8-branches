@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HelperService } from '@helper/helper.service';
-declare var myExtObject: any;
-declare var webGlObject: any;
+
+// declare var myExtObject: any;
+// declare var webGlObject: any;
 
 @Component({
     selector: 'dom',
@@ -114,9 +115,12 @@ export class DomComponent implements OnInit {
     private querySelector2() {
         this._h.storage.cache = {};
         for (let i = 0; i < 1000000; i++) {
-            if (!this._h.storage.querySelectorCache('p', 'dom')) {
+            const result = this._h.storage.querySelectorCache('.p', 'dom');
+
+            if (!result) {
                 break;
             }
+            console.log('---result', result);
         }
     }
 

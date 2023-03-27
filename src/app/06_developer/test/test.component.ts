@@ -3,7 +3,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { HelperService } from '@helper/helper.service';
 import { AppSnapshotService } from '@state/app-snapshot.service';
-import { BrowserService } from '@helper/browser.service';
 
 @Component({
     selector: 'test',
