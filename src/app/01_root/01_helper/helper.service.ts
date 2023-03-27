@@ -13,8 +13,17 @@ import { StringService } from '@helper/string.service';
 import { DateService } from '@helper/date.service';
 import { BrowserService } from '@helper/browser.service';
 
+/**
+ * для ГЛОБАЛЬНОГО использования HelperService как hh
+ * @example => в src\typings.d.ts
+ * задекларирована переменная hh
+ * @example => declare var hh: Ihh;
+ * с интерфейсом Ihh
+ * в случае добавления новых сервисов в HelperService
+ * в интерфейс Ihh тоже нужно добавить новый параметр
+ */
 @Injectable({ providedIn: 'root' })
-export class HelperService {
+export class HelperService implements Ihh {
 
     public constructor(
         public array: ArrayService,

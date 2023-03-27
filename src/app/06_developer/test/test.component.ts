@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { HelperService } from '@helper/helper.service';
 import { AppSnapshotService } from '@state/app-snapshot.service';
+// declare var hh: HelperService;
 
 @Component({
     selector: 'test',
@@ -30,6 +31,7 @@ export class TestComponent implements OnInit, OnDestroy {
                 error => console.log('login - error', error),
             );
         console.log('-global.window._h--', hh.unique.generateUniqueString());
+
         this.checkDates();
         this.checkArray();
         console.log('+++++++', await this._h.jsonService.getAssetsJsonData('i18n/en.json'));
@@ -44,7 +46,6 @@ export class TestComponent implements OnInit, OnDestroy {
         console.log('---this._h.date.createDateByNumbers', this._h.date.createDateByNumbers(2023, 2, 24));
 
         console.log('---!!!!!', this._h.array.randomItemFromArray(this._h.array.getArrayFromTo(11, 22)));
-
     }
 
     /* Отписываемся от подписок */

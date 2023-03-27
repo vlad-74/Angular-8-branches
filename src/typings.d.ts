@@ -4,7 +4,30 @@ interface NodeModule {
 }
 declare var module: NodeModule;
 
-declare var hh: any; // чтобы не было ошибок у TS
+/**
+ * в случае добавления новых сервисов в HelperService
+ * в интерфейс Ihh тоже нужно добавить новый параметр
+ */
+interface Ihh {
+    array: any;
+    common: any;
+    dom: any;
+    jsonService: any;
+    screen: any;
+    unique: any;
+    storage: any;
+    object: any;
+    string: any;
+    date: any;
+    browser: any;
+}
+
+/**
+ * в импортах компонента можно повторно продекларировать - для удобства
+ * @example => declare var hh: HelperService;
+ * тогда будет более глубокая детализация
+ */
+declare var hh: Ihh; // для глобальных переменных (window['hh'] = this) - чтобы не было ошибок у TS
 
 declare var myExtObject: any;
 declare var webGlObject: any;

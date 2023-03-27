@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HelperService } from '@helper/helper.service';
 
-// declare var myExtObject: any;
-// declare var webGlObject: any;
-
 @Component({
     selector: 'dom',
     templateUrl: './dom.component.html',

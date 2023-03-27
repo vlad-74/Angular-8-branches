@@ -6,7 +6,6 @@ import { SubscribeService } from '@root/03_state-subscribe/subscribe.service';
 import { ScreenReglamentsService } from '@reglaments/reglaments/screen-reglaments.service';
 import { ScreenService } from '@state/screen.service';
 import { HelperService } from '@helper/helper.service';
-import { environment } from '@environments/environment';
 
 @Component({
     selector: 'app-root',
@@ -42,7 +41,6 @@ export class AppComponent implements OnInit, OnDestroy {
     /* Подписываемся на STATE & USER_ACTIVITY */
     public ngOnInit() {
         this._subscribeApp.onInitApp();
-
         // if (!environment.production) {
         //     this._router.navigate(['developer']);
         // }
