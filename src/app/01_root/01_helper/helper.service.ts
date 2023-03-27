@@ -14,11 +14,15 @@ import { DateService } from '@helper/date.service';
 import { BrowserService } from '@helper/browser.service';
 
 /**
- * ИСПОЛЬЗОВАНИЕ ГЛОБАЛЬНОЙ ПЕРЕМЕННОЙ
+ * ИСПОЛЬЗОВАНИЕ ГЛОБАЛЬНОЙ ПЕРЕМЕННОЙ - hhh
+ *
+ * для HelperService
+ *
  * БЕЗ ИСПОЛЬЗОВАНИЯ:
  * - ИМПОРТА (в компоненте)
  * - ДЕКЛАРАЦИЙ (в компоненте)
  * - this (в компоненте)
+ * - и чтобы TypeScript не выбрасывал ошибки при использовании hhh
  *
  * 1 шаг - декларация глобальных переменных
  * @example => declare global {
