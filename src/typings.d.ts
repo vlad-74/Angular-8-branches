@@ -1,8 +1,8 @@
 /* SystemJS module definition */
-interface NodeModule {
-    id: string;
-}
-declare var module: NodeModule;
+// interface NodeModule {
+//     id: string;
+// }
+// declare var module: NodeModule;
 
 /**
  * в случае добавления новых сервисов в HelperService
@@ -28,6 +28,3 @@ interface Ihh {
  * тогда будет более глубокая детализация
  */
 declare const hh: Ihh; // для глобальных переменных (window['hh'] = this) - чтобы не было ошибок у TS
-
-declare var myExtObject: any;
-declare var webGlObject: any;
