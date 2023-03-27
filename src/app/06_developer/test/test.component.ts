@@ -60,15 +60,15 @@ export class TestComponent implements OnInit, OnDestroy {
 
     private checkArray() {
         const arr = [1, 2, 3, 4, 5];
-        const arr1 = [10, 12, 13, 14, 15];
+        const arr1 = [10, 12, 13, 14, 15, 15.6];
         const arr2 = [ ...arr, ...arr1];
         const arr3 = [ arr, arr1 ];
 
         console.log('---arr.max()', arr['max']());
         console.log('---arr.min()', arr['min']());
         console.log('---arr2.max()', arr2['max']());
-        console.log('---getMin', this._h.array.getMin(arr3));
-        console.log('---getMax', this._h.array.getMax(arr3));
+        console.log('---getMin', this._h.array.getMin(arr1));
+        console.log('---getMax', this._h.array.getMax(arr1));
         console.log('---getFunctionName', this._h.common.getFunctionName());
     }
 }
