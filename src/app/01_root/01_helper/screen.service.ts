@@ -39,4 +39,40 @@ export class ScreenService {
 
         return <IScreen> { vw, vh, dpi, coefficient, typeScreen, browser: this.browser.getBrowser(), orientation };
     }
+
+    /* Запустить полноэкранный режим в зависимости от браузера */
+    private _launchFullscreen(element) {
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+        }
+    }
+
+    /* Выйти из полноэкранного режима в зависимости от браузера */
+    private _exitFullscreen(document) {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+    }
+
+    /* Выйти из полноэкранного режима */
+    public setExitFullscreen() {
+        this._exitFullscreen(document);
+    }
+
+    /* Запустить полноэкранный режим */
+    public setFullscreen() {
+        this._launchFullscreen(document.documentElement);
+    }
 }

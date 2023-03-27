@@ -112,4 +112,12 @@ export class ScreenComponent implements OnInit, OnDestroy {
 
         this.orientationHandler(prefix);
     }
+
+    public fullScreen() {
+       this._h.screen.setFullscreen();
+    }
+
+    public exitFullScreen() {
+        this._h.screen.setExitFullscreen();
+    }
 }
