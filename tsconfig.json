@@ -14,7 +14,9 @@
         "@interfaces/*": ["src/app/03_interfaces/*"],
         "@shared/*": ["src/app/04_shared/*"],
         "@modules/*": ["src/app/05_modules/*"],
-        "@developer/*": ["src/app/06_developer/*"]
+        "@directives/*": ["src/app/06_directives/*"],
+        "@pipes/*": ["src/app/07_pipes/*"],
+        "@developer/*": ["src/app/08_developer/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

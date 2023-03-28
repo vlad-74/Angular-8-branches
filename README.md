@@ -9,13 +9,31 @@
 [ngrok - для удаленного тестирования](https://ngrok.com)
 
 > ## ГЛАВНОЕ
-* 1 - `src\polyfills.ts` - реализация ИСПОЛЬЗОВАНИЯ ГЛОБАЛЬНОЙ ПЕРЕМЕННОЙ - hhh (HelperService - ДЛЯ РАЗРАБОТЧИКА)
-* 2 - `src\typings.d.ts` - место для объявления глобальных переменных (...как вариант / пока не актуально)
-* 3 - `src\app\02_routing\lazy-loading-routes.ts` - роутинг приложения.
-* 4 - `src\app\01_root\01_helper\style\index.scss` - общие стили приложения
-* 5 - `src\app\01_root\01_helper\helper.service.ts` - СЕРВИСЫ ДЛЯ РАЗРАБОТЧИКА
-* 6 - `src\app\01_root\02_checkpoints` - контрольные точки приложения (emmit & subscribe)
-* 7 - `src\app\01_root\03_reglaments\reglaments.service.ts` - логика действий приложения по контрольным точкам приложения
+* 1 - `angular.json` - место добавления js скриптов - `"scripts": ["./src/assets/scripts/code.js"]` и стилей - `"styles": ["src/styles.scss"]`
+* 2 - `src\polyfills.ts` !!! - реализация ИСПОЛЬЗОВАНИЯ ГЛОБАЛЬНОЙ ПЕРЕМЕННОЙ - hhh (HelperService - ДЛЯ РАЗРАБОТЧИКА)
+* 3 - `src\typings.d.ts` - место для объявления глобальных переменных (...как вариант / пока не актуально)
+* 4 - `src\app\02_routing\lazy-loading-routes.ts` - роутинг приложения.
+* 5 - `src\app\01_root\01_helper\style\index.scss` - общие стили приложения
+* 6 - `src\app\01_root\01_helper\helper.service.ts` - СЕРВИСЫ ДЛЯ РАЗРАБОТЧИКА
+* 7 - `src\app\01_root\02_checkpoints` - контрольные точки приложения (emmit & subscribe)
+* 7.1. - `public setCurrentAppSnapshot(snapshot)` - emmit СНИМКА ПРИЛОЖЕНИЯ (url, appActions$, appState$, isTheme$, isSleep$)
+* 7.2. - `public getAppSnapshot()` - подписываемся на изменения ТЕКУЩЕГО СОСТОЯНИЯ ПРИЛОЖЕНИЯ
+* 8 - `src\app\01_root\03_reglaments\reglaments.service.ts` - логика действий приложения по контрольным точкам приложения 
+* 8.1. - `public checkStateChanges(appSnapshot)` - ТОЧКА СВЯЗКИ подписки и регламентов
+* 9 - ngOnInit компонента с подпиской на appSnapshot$
+```
+/* Подписывемся на appSnapshot$*/
+public ngOnInit() {
+    this._snapShot.appSnapshot$
+        .pipe(takeUntil(this.destroyed$))
+        .subscribe(
+            appSnapshot => {
+            this.currentAppSnapshot = appSnapshot;
+        },
+        error => console.log('login - error', error),
+        );
+}
+```
 
 > ## СТРУКТУРА ПРОЕКТА
 * 0 - Папка - `src\app\00_app` - старт приложения
@@ -29,15 +47,16 @@
 * 3 - Папка `03_interfaces` - интерфейсы приложения.
 * 4 - Папка `04_shared` - модуль с `общим функционалом` приложения.
 * 5 - Папка `05_modules` - модули приложения
-* 6 - Папка !!! `06_developer` - информация для разработчка об `инструментах/библиотеках` участвующих в проекте. ВИЗУАЛИЗАЦИЯ КОДА !!!
+* 6 - Папка `06_directives` - директивы приложения
+* 7 - Папка `07_pipes` - пайпы приложения
+* 8 - Папка !!! `08_developer` - информация для разработчка об `инструментах/библиотеках` участвующих в проекте. ВИЗУАЛИЗАЦИЯ КОДА !!!
 
 > ### This project was generated with:
 #### [NODE](https://nodejs.org/fr/blog/release/v12.18.1/) version 12.18.1
 #### NPM - 6.14.5
 #### [Angular CLI](https://github.com/angular/angular-cli) version 8.3.29.
 
->
-## Development server
+> ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 

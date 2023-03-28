@@ -88,7 +88,7 @@ import 'zone.js/dist/zone';
  *
  * 3 шаг - использование глобальной переменной
  * @example => hhh.unique.generateUniqueString()
- * например в src\app\06_developer\test\test.component.ts
+ * например в src\app\08_developer\test\test.component.ts
  */
 import { HelperService } from '@helper/helper.service';  // Included with Angular CLI.
 
