@@ -15,12 +15,17 @@ export class WrapperComponent extends AppSnapshotComponent implements OnInit, On
     public constructor(
         public snapShot: AppSnapshotService,
     ) {
-        super( snapShot );
+        super(snapShot);
     }
 
+    /**
+     * при наследовании получают:
+     * - КЛАСС AppSnapshotComponent - подписка на состояние приложения
+     * - КЛАСС LogComponent - логирование компонента
+     * this.currentAppSnapshot пришел из наследуемого класса AppSnapshotComponent
+     */
     public ngOnInit() {
-        // this.currentAppSnapshot пришел из наследуемого класса AppSnapshotComponent
-        const index = this.currentAppSnapshot.appHistory.length -  1;
+        const index = this.currentAppSnapshot.appHistory.length - 1;
         const currentRoute = this.currentAppSnapshot.appHistory[index].split('/')[1];
 
         this.isHiddenMenu = this._activeRouteHidden.includes(currentRoute);

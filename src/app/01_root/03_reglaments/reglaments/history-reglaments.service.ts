@@ -12,8 +12,6 @@ export class HistoryReglamentsService {
     }
 
     public checkForChanges(appSnapshot) {
-        console.log(this.constructor.name + ' - appSnapshot - ', appSnapshot);
-
         this._appSnapshot = appSnapshot;
         const checkPoint = appSnapshot.appHistory;
 

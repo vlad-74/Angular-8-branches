@@ -33,11 +33,14 @@ private readonly destroyed$ = new Subject();
 protected constructor(
     public snapShot: AppSnapshotService,
 ) {
+    super();
     this.snapShot.appSnapshot$
         .pipe(takeUntil(this.destroyed$))
         .subscribe(
             appSnapshot => {
                 this.currentAppSnapshot = appSnapshot;
+                // логирование из наследуемого класса LogComponent
+                this.log(this.currentAppSnapshot);
             },
             error => console.log('login - error', error),
         );
@@ -58,12 +61,17 @@ export class ...Component extends AppSnapshotComponent
     public constructor(
         public snapShot: AppSnapshotService,
     ) {
-        super( snapShot );
+        super(snapShot);
     }
 
+    /**
+     * при наследовании получают:
+     * - КЛАСС AppSnapshotComponent - подписка на состояние приложения
+     * - КЛАСС LogComponent - логирование компонента
+     * this.currentAppSnapshot пришел из наследуемого класса AppSnapshotComponent
+     */
     public ngOnInit() {
-        // this.currentAppSnapshot пришел из наследуемого класса AppSnapshotComponent
-        const index = this.currentAppSnapshot.appHistory.length -  1;
+        const index = this.currentAppSnapshot.appHistory.length - 1;
         const currentRoute = this.currentAppSnapshot.appHistory[index].split('/')[1];
 
         this.isHiddenMenu = this._activeRouteHidden.includes(currentRoute);
