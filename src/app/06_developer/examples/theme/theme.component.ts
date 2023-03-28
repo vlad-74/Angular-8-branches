@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ThemeService } from '@state/theme.service';
+import { ThemeService } from '@checkpoints/01_state-emitters/theme.service';
 
 @Component({
     selector: 'theme.component.ts',

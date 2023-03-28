@@ -1,7 +1,7 @@
 /* Функции для работы с экраном */
 import { Injectable } from '@angular/core';
 import { IScreen } from '@interfaces/helper.interfaces';
-import { BrowserService } from '@helper/browser.service';
+import { BrowserService } from '@helper/services/browser.service';
 
 @Injectable({ providedIn: 'root' })
 export class ScreenService {

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { LazyLoadingRoutes } from './lazy-loading-routes';
-import { LazyLoadingModulesPreloadingStrategy } from '@app/lazy-loading-modules-preloading.strategy';
+import { LazyLoadingRoutes } from '@routing/lazy-loading-routes';
+import { LazyLoadingModulesPreloadingStrategy } from '@routing/lazy-loading-modules-preloading.strategy';
 
 @NgModule({
     imports: [

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HelperService } from '@helper/helper.service';
-import { ActionsReglamentsService } from '@reglaments/reglaments/actions-reglaments.service';
-import { StateReglamentsService } from '@reglaments/reglaments/state-reglaments.service';
-import { ThemeReglamentsService } from '@reglaments/reglaments/theme-reglaments.service';
-import { SleepReglamentsService } from '@reglaments/reglaments/sleep-reglaments.service';
-import { HistoryReglamentsService } from '@reglaments/reglaments/history-reglaments.service';
+import { ActionsReglamentsService } from '@root/03_reglaments/reglaments/actions-reglaments.service';
+import { SleepReglamentsService } from '@root/03_reglaments/reglaments/sleep-reglaments.service';
+import { StateReglamentsService } from '@root/03_reglaments/reglaments/state-reglaments.service';
+import { ThemeReglamentsService } from '@root/03_reglaments/reglaments/theme-reglaments.service';
+import { HistoryReglamentsService } from '@root/03_reglaments/reglaments/history-reglaments.service';
 
 @Injectable({ providedIn: 'root' })
 export class ReglamentsService {

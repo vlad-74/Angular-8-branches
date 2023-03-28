@@ -3,9 +3,9 @@
 */
 
 import { Injectable } from '@angular/core';
-import { UserActivitySubscribeService } from '@subscribe/subscribe/user-activity-subscribe.service';
-import { StateSubscribeService } from '@subscribe/subscribe/state-subscribe.service';
-import { SnapshotSubscribeService } from '@subscribe/subscribe/snapshot-subscribe.service';
+import { UserActivitySubscribeService } from '@checkpoints/02_state-subscribe/subscribe/user-activity-subscribe.service';
+import { StateSubscribeService } from '@checkpoints/02_state-subscribe/subscribe/state-subscribe.service';
+import { SnapshotSubscribeService } from '@checkpoints/02_state-subscribe/subscribe/snapshot-subscribe.service';
 
 @Injectable({ providedIn: 'root' })
 export class SubscribeService {

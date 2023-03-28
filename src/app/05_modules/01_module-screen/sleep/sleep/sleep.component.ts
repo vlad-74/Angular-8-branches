@@ -1,7 +1,7 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
-import { UserActivityService } from '@state/user-activity.service';
+import { UserActivityService } from '@checkpoints/01_state-emitters/user-activity.service';
 
 @Component({
     selector: 'sleep',

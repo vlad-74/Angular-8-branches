@@ -2,14 +2,14 @@
 
 import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
-import { BrowserService } from '@helper/browser.service';
+import { BrowserService } from '@helper/services/browser.service';
 
 @Injectable({ providedIn: 'root' })
 export class CommonService {
     protected logСоunt = 0;
 
     public constructor(
-        public browser: BrowserService
+        public browser: BrowserService,
     ) {
     }
 
@@ -57,7 +57,7 @@ export class CommonService {
 
     /**
      * ДЛЯ ПРОМИСОВ РАБОТАЕТ НЕ КОРРЕКТНО
-     * */
+     */
     public getFunctionName() {
         // tslint:disable-next-line:prefer-const
         const err = new Error().stack;

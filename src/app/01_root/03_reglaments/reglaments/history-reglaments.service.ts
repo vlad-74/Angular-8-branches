@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HelperService } from '@helper/helper.service';
-import { StateService } from '@state/state.service';
 import { TRoles } from '@interfaces/helper.interfaces';
+import { StateService } from '@checkpoints/01_state-emitters/state.service';
 
 @Injectable({ providedIn: 'root' })
 export class HistoryReglamentsService {

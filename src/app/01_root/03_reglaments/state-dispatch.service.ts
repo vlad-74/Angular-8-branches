@@ -3,7 +3,7 @@
 */
 
 import { Injectable } from '@angular/core';
-import { AppSnapshotService } from '@state/app-snapshot.service';
+import { AppSnapshotService } from '@root/02_checkpoints/01_state-emitters/app-snapshot.service';
 
 @Injectable({ providedIn: 'root' })
 export class StateDispatchService {

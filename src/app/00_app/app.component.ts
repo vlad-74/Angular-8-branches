@@ -2,10 +2,10 @@
 
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SubscribeService } from '@root/03_state-subscribe/subscribe.service';
-import { ScreenReglamentsService } from '@reglaments/reglaments/screen-reglaments.service';
-import { ScreenService } from '@state/screen.service';
+import { SubscribeService } from '@checkpoints/02_state-subscribe/subscribe.service';
 import { HelperService } from '@helper/helper.service';
+import { ScreenService } from '@checkpoints/01_state-emitters/screen.service';
+import { ScreenReglamentsService } from '@root/03_reglaments/reglaments/screen-reglaments.service';
 
 @Component({
     selector: 'app-root',

@@ -4,9 +4,10 @@
 
 import { Injectable, Inject } from '@angular/core';
 import { Subject } from 'rxjs';
-import { AppSnapshotService } from '@state/app-snapshot.service';
+
 import { takeUntil } from 'rxjs/operators';
-import { ReglamentsService } from '@reglaments/reglaments.service';
+import { AppSnapshotService } from '@checkpoints/01_state-emitters/app-snapshot.service';
+import { ReglamentsService } from '@root/03_reglaments/reglaments.service';
 
 @Injectable({ providedIn: 'root' })
 export class SnapshotSubscribeService {

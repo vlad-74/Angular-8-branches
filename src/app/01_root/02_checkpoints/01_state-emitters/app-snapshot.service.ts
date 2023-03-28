@@ -1,6 +1,6 @@
 /*
   СНИМОК ПРИЛОЖЕНИЯ
-    1. при изменении в 02_state-emitters - url, appActions$, appState$, isTheme$, isSleep$
+    1. при изменении в 01_state-emitters - url, appActions$, appState$, isTheme$, isSleep$
     2. обновляется СНИМОК ПРИЛОЖЕНИЯ
 */
 

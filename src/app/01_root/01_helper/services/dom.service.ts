@@ -2,7 +2,7 @@
 import { ElementRef, Inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { TAllEvents, TGetElement, TSelector, TTypeAppend } from '@interfaces/helper.interfaces';
-import { CommonService } from '@helper/common.service';
+import { CommonService } from '@helper/services/common.service';
 
 @Injectable({ providedIn: 'root' })
 export class DomService {

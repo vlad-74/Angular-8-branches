@@ -1,17 +1,17 @@
 /* Группа сервисов для разработчика */
 
 import { Injectable } from '@angular/core';
-import { ArrayService } from '@helper/array.service';
-import { CommonService } from '@helper/common.service';
-import { DomService } from '@helper/dom.service';
-import { AssetsJsonService } from '@helper/assets-json.service';
-import { ScreenService } from '@helper/screen.service';
-import { UniqueService } from '@helper/unique.service';
-import { StorageService } from '@helper/storage.service';
-import { ObjectService } from '@helper/object.service';
-import { StringService } from '@helper/string.service';
-import { DateService } from '@helper/date.service';
-import { BrowserService } from '@helper/browser.service';
+import { ArrayService } from '@helper/services/array.service';
+import { CommonService } from '@helper/services/common.service';
+import { DomService } from '@helper/services/dom.service';
+import { AssetsJsonService } from '@helper/services/assets-json.service';
+import { ScreenService } from '@helper/services/screen.service';
+import { UniqueService } from '@helper/services/unique.service';
+import { StorageService } from '@helper/services/storage.service';
+import { ObjectService } from '@helper/services/object.service';
+import { StringService } from '@helper/services/string.service';
+import { DateService } from '@helper/services/date.service';
+import { BrowserService } from '@helper/services/browser.service';
 
 /**
  * ИСПОЛЬЗОВАНИЕ ГЛОБАЛЬНОЙ ПЕРЕМЕННОЙ - hhh

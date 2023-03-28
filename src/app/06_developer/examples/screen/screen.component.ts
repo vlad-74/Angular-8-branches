@@ -2,8 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { HelperService } from '@helper/helper.service';
-import { AppSnapshotService } from '@state/app-snapshot.service';
-import { BrowserService } from '@helper/browser.service';
+import { AppSnapshotService } from '@checkpoints/01_state-emitters/app-snapshot.service';
 
 @Component({
     selector: 'screen',

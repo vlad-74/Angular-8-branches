@@ -3,15 +3,16 @@
 */
 
 import { Injectable } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { ActionsService } from '@state/actions.service';
-import { StateService } from '@state/state.service';
-import { ThemeService } from '@state/theme.service';
-import { UserActivityService } from '@state/user-activity.service';
-import { StateDispatchService } from '@reglaments/state-dispatch.service';
-import { ScreenService } from '@state/screen.service';
-import { NavigationEnd, Router } from '@angular/router';
+
+import { ActionsService } from '@checkpoints/01_state-emitters/actions.service';
+import { StateService } from '@checkpoints/01_state-emitters/state.service';
+import { ThemeService } from '@checkpoints/01_state-emitters/theme.service';
+import { UserActivityService } from '@checkpoints/01_state-emitters/user-activity.service';
+import { ScreenService } from '@checkpoints/01_state-emitters/screen.service';
+import { StateDispatchService } from '@root/03_reglaments/state-dispatch.service';
 
 @Injectable({ providedIn: 'root' })
 export class StateSubscribeService {

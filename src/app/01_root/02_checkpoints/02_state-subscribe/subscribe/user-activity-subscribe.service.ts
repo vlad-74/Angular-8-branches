@@ -6,7 +6,7 @@ import { Injectable, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { switchMap, takeUntil } from 'rxjs/operators';
 import { fromEvent, interval, Subject } from 'rxjs';
-import { UserActivityService } from '@state/user-activity.service';
+import { UserActivityService } from '@checkpoints/01_state-emitters/user-activity.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserActivitySubscribeService {
