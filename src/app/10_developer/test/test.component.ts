@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { HelperService } from '@helper/helper.service';
 import { AppSnapshotService } from '@checkpoints/01_state-emitters/app-snapshot.service';
 
 @Component({
@@ -14,7 +13,6 @@ export class TestComponent implements OnInit, OnDestroy {
     private currentAppSnapshot;
 
     public constructor(
-        private _h: HelperService,
         private _snapShot: AppSnapshotService,
     ) {
     }
@@ -33,18 +31,18 @@ export class TestComponent implements OnInit, OnDestroy {
 
         this.checkDates();
         this.checkArray();
-        console.log('+++++++', await this._h.jsonService.getAssetsJsonData('i18n/en.json'));
+        console.log('+++++++', await hhh.jsonService.getAssetsJsonData('i18n/en.json'));
     }
 
     public checkDates() {
         const date1 = new Date('2/07/2023');
         const date2 = new Date('3/07/2023');
 
-        console.log('---this._h.date.getDifferenceDays', this._h.date.getDifferenceDays(date1, date2));
-        console.log('---this._h.date.getDateWeekNumber', this._h.date.getDateWeekNumber());
-        console.log('---this._h.date.createDateByNumbers', this._h.date.createDateByNumbers(2023, 2, 24));
+        console.log('---hhh.date.getDifferenceDays', hhh.date.getDifferenceDays(date1, date2));
+        console.log('---hhh.date.getDateWeekNumber', hhh.date.getDateWeekNumber());
+        console.log('---hhh.date.createDateByNumbers', hhh.date.createDateByNumbers(2023, 2, 24));
 
-        console.log('---!!!!!', this._h.array.randomItemFromArray(this._h.array.getArrayFromTo(11, 22)));
+        console.log('---!!!!!', hhh.array.randomItemFromArray(hhh.array.getArrayFromTo(11, 22)));
     }
 
     /* Отписываемся от подписок */
@@ -54,7 +52,7 @@ export class TestComponent implements OnInit, OnDestroy {
     }
 
     private _log(arr: any[]) {
-        this._h.common.log(arr);
+        hhh.common.log(arr);
     }
 
     private checkArray() {
@@ -66,8 +64,8 @@ export class TestComponent implements OnInit, OnDestroy {
         console.log('---arr.max()', arr['max']());
         console.log('---arr.min()', arr['min']());
         console.log('---arr2.max()', arr2['max']());
-        console.log('---getMin', this._h.array.getMin(arr1));
-        console.log('---getMax', this._h.array.getMax(arr1));
-        console.log('---getFunctionName', this._h.common.getFunctionName());
+        console.log('---getMin', hhh.array.getMin(arr1));
+        console.log('---getMax', hhh.array.getMax(arr1));
+        console.log('---getFunctionName', hhh.common.getFunctionName());
     }
 }

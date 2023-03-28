@@ -1,5 +1,7 @@
 // FLEX CONTAINER -  - @import '06_flex'; - добавлены в styles.scss
-
+.flex{
+    display: flex;
+}
 .fle-container, .fle {
     display: flex;
     align-items: center;

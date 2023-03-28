@@ -9,6 +9,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoaderComponent } from './components/loader/loader.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -19,6 +20,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     declarations: [
         WrapperComponent,
         LoaderComponent,
+        MenuComponent,
     ],
     imports: [
         CommonModule,
@@ -33,6 +35,8 @@ export function HttpLoaderFactory(http: HttpClient) {
                 deps: [HttpClient],
             },
         }),
+    ],
+    providers: [
     ],
     exports: [
         LoaderComponent,

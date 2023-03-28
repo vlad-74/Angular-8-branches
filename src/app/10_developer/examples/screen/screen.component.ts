@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { HelperService } from '@helper/helper.service';
 import { AppSnapshotService } from '@checkpoints/01_state-emitters/app-snapshot.service';
 
 @Component({
@@ -13,7 +12,6 @@ export class ScreenComponent implements OnInit, OnDestroy {
     private readonly destroyed$ = new Subject();
 
     public constructor(
-        private _h: HelperService,
         private _snapShot: AppSnapshotService,
     ) {
     }
@@ -113,10 +111,10 @@ export class ScreenComponent implements OnInit, OnDestroy {
     }
 
     public fullScreen() {
-       this._h.screen.setFullscreen();
+       hhh.screen.setFullscreen();
     }
 
     public exitFullScreen() {
-        this._h.screen.setExitFullscreen();
+        hhh.screen.setExitFullscreen();
     }
 }

@@ -8,7 +8,7 @@ import { HelperService } from '@helper/helper.service';
 
 @Injectable({ providedIn: 'root' })
 export class ScreenService {
-    public appScreen$: BehaviorSubject<any> = new BehaviorSubject(this._h.screen.checkScreen());
+    public appScreen$: BehaviorSubject<any> = new BehaviorSubject(hhh.screen.checkScreen());
 
     public constructor(
         private _h: HelperService,

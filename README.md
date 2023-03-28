@@ -20,19 +20,59 @@
 * 7.2. - `public getAppSnapshot()` - подписываемся на изменения ТЕКУЩЕГО СОСТОЯНИЯ ПРИЛОЖЕНИЯ
 * 8 - `src\app\01_root\03_reglaments\reglaments.service.ts` - логика действий приложения по контрольным точкам приложения 
 * 8.1. - `public checkStateChanges(appSnapshot)` - ТОЧКА СВЯЗКИ подписки и регламентов
-* 9 - ngOnInit компонента с подпиской на appSnapshot$
+* 9 - `src\app\01_root\04_extends` - классы для наследования
+* 10 - `src\app\10_developer` - "ПЕСОЧНИЦА" для разработчика - отработка и ИСТОРИЯ функционала. ВИЗУАЛИЗАЦИЯ КОДА !!!
+* 11 - !!! AppSnapshotComponent с подпиской на appSnapshot$
 ```
-/* Подписывемся на appSnapshot$*/
-public ngOnInit() {
-    this._snapShot.appSnapshot$
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+public currentAppSnapshot;
+private readonly destroyed$ = new Subject();
+
+protected constructor(
+    public snapShot: AppSnapshotService,
+) {
+    this.snapShot.appSnapshot$
         .pipe(takeUntil(this.destroyed$))
         .subscribe(
             appSnapshot => {
-            this.currentAppSnapshot = appSnapshot;
-        },
-        error => console.log('login - error', error),
+                this.currentAppSnapshot = appSnapshot;
+            },
+            error => console.log('login - error', error),
         );
 }
+
+/* Отписываемся от подписок */
+public onDestroy(): void {
+    this.destroyed$.next();
+    this.destroyed$.complete();
+}
+```
+==============================================================================
+
+!!! НАСЛЕДУЕМСЯ В КОМПОНЕНТАХ ОТ AppSnapshotComponent И ПОЛУЧАЕМ currentAppSnapshot
+
+export class ...Component extends AppSnapshotComponent
+```
+    public constructor(
+        public snapShot: AppSnapshotService,
+    ) {
+        super( snapShot );
+    }
+
+    public ngOnInit() {
+        // this.currentAppSnapshot пришел из наследуемого класса AppSnapshotComponent
+        const index = this.currentAppSnapshot.appHistory.length -  1;
+        const currentRoute = this.currentAppSnapshot.appHistory[index].split('/')[1];
+
+        this.isHiddenMenu = this._activeRouteHidden.includes(currentRoute);
+    }
+
+    /* Отписываемся от подписок */
+    public ngOnDestroy(): void {
+        this.onDestroy();
+    }
 ```
 
 > ## СТРУКТУРА ПРОЕКТА
@@ -49,7 +89,8 @@ public ngOnInit() {
 * 5 - Папка `05_modules` - модули приложения
 * 6 - Папка `06_directives` - директивы приложения
 * 7 - Папка `07_pipes` - пайпы приложения
-* 8 - Папка !!! `08_developer` - информация для разработчка об `инструментах/библиотеках` участвующих в проекте. ВИЗУАЛИЗАЦИЯ КОДА !!!
+* 8 - Папка `08_styles` - стили приложения
+* 9 - Папка !!! `10_developer` - "ПЕСОЧНИЦА" для разработчика - отработка и ИСТОРИЯ функционала. ВИЗУАЛИЗАЦИЯ КОДА !!!
 
 > ### This project was generated with:
 #### [NODE](https://nodejs.org/fr/blog/release/v12.18.1/) version 12.18.1

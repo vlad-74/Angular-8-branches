@@ -16,7 +16,7 @@
         "@modules/*": ["src/app/05_modules/*"],
         "@directives/*": ["src/app/06_directives/*"],
         "@pipes/*": ["src/app/07_pipes/*"],
-        "@developer/*": ["src/app/08_developer/*"]
+        "@developer/*": ["src/app/10_developer/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

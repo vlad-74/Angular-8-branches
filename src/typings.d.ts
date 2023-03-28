@@ -29,6 +29,6 @@
  *
  * 4 шаг - использование глобальной переменной
  * @example => hhh.unique.generateUniqueString()
- * например в src\app\08_developer\test\test.component.ts
+ * например в src\app\10_developer\test\test.component.ts
  */
 // declare const hhh: any; // для глобальных переменных (window['hhh'] = this) - чтобы не было ошибок у TS

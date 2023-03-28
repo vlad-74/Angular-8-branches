@@ -3,7 +3,6 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SubscribeService } from '@checkpoints/02_state-subscribe/subscribe.service';
-import { HelperService } from '@helper/helper.service';
 import { ScreenService } from '@checkpoints/01_state-emitters/screen.service';
 import { ScreenReglamentsService } from '@root/03_reglaments/reglaments/screen-reglaments.service';
 
@@ -23,7 +22,6 @@ export class AppComponent implements OnInit, OnDestroy {
         private _subscribeApp: SubscribeService,
         private _screenReglaments: ScreenReglamentsService,
         private _screen: ScreenService,
-        private _h: HelperService,
         private _router: Router,
     ) {
     }
@@ -32,7 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
     public onResized(_: Event): void {
         clearTimeout(this.resizeId);
         this.resizeId = setTimeout(() => {
-            const screen = this._h.screen.checkScreen();
+            const screen = hhh.screen.checkScreen();
 
             this._screen.setAppScreen(screen); // отрабатывает при ресйзе (при старте приложения нет)
         }, 500);

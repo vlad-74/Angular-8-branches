@@ -1,1 +1,20 @@
-<router-outlet></router-outlet>
+<div class="wrapper-wrap">
+    <div
+        *ngIf="!isHiddenMenu"
+        [ngClass]="{
+        'container-tablet': currentAppSnapshot.appScreen.typeScreen === 'tablet',
+        'container-column': currentAppSnapshot.appScreen.typeScreen !== 'tablet'
+        }"
+    >
+        <menu></menu>
+        <div class="content-wrap">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+    <ng-container *ngIf="isHiddenMenu">
+        <div class="container-all">
+            <router-outlet></router-outlet>
+        </div>
+    </ng-container>
+</div>

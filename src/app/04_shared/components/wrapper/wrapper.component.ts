@@ -1,17 +1,33 @@
 /* WrapperComponent - компонент, который управляет экранными модулями (01_module-screen) */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AppSnapshotService } from '@checkpoints/01_state-emitters/app-snapshot.service';
+import { AppSnapshotComponent } from '@root/04_extends/app-snapshot.component';
 
 @Component({
     selector: 'wrapper',
     templateUrl: './wrapper.component.html',
     styleUrls: ['./wrapper.component.scss'],
-    styles: [
-        ':host { width: 100%; height: 100%; overflow: hidden;}',
-    ],
 })
-export class WrapperComponent implements OnInit {
+export class WrapperComponent extends AppSnapshotComponent implements OnInit, OnDestroy {
+    public isHiddenMenu = false;
+    private _activeRouteHidden = ['developer', 'sleep', 'not-found'];
 
-    public ngOnInit() {
+    public constructor(
+        public snapShot: AppSnapshotService,
+    ) {
+        super( snapShot );
     }
 
+    public ngOnInit() {
+        // this.currentAppSnapshot пришел из наследуемого класса AppSnapshotComponent
+        const index = this.currentAppSnapshot.appHistory.length -  1;
+        const currentRoute = this.currentAppSnapshot.appHistory[index].split('/')[1];
+
+        this.isHiddenMenu = this._activeRouteHidden.includes(currentRoute);
+    }
+
+    /* Отписываемся от подписок */
+    public ngOnDestroy(): void {
+        this.onDestroy();
+    }
 }

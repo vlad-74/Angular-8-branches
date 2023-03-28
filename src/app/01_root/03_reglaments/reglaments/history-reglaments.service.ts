@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HelperService } from '@helper/helper.service';
 import { TRoles } from '@interfaces/helper.interfaces';
 import { StateService } from '@checkpoints/01_state-emitters/state.service';
 
@@ -8,7 +7,6 @@ export class HistoryReglamentsService {
     private _appSnapshot = null;
 
     public constructor(
-        private _h: HelperService,
         private _state: StateService,
     ) {
     }
@@ -26,15 +24,15 @@ export class HistoryReglamentsService {
 
     private _startApplication() {
         // kvg: при выходе очистить все в storage связанное с визитером
-        this._h.storage.setLocalItem('#startScreen', this._h.screen.checkScreen());
-        const visitorHasLogin = this._h.storage.getLocalItem('visitorHasLogin');
+        hhh.storage.setLocalItem('#startScreen', hhh.screen.checkScreen());
+        const visitorHasLogin = hhh.storage.getLocalItem('visitorHasLogin');
 
         console.log('---visitorHasLogin', visitorHasLogin);
         if (!visitorHasLogin) {
             this._checkRolesVisitors();
         } else {
-            this._h.storage.clearLocal();
-            this._h.storage.clearSession();
+            hhh.storage.clearLocal();
+            hhh.storage.clearSession();
         }
     }
 
@@ -50,10 +48,10 @@ export class HistoryReglamentsService {
         const names = ['#cups', '#users', '#participant-users', '#cup-participants-referees' ];
         const roles: TRoles[] = ['visitor'];
         const result = await Promise.all([
-            this._h.jsonService.getAssetsJsonData('db/cups.json'),
-            this._h.jsonService.getAssetsJsonData('db/users.json'),
-            this._h.jsonService.getAssetsJsonData('db/participant-users.json'),
-            this._h.jsonService.getAssetsJsonData('db/cup-participants-referees.json'),
+            hhh.jsonService.getAssetsJsonData('db/cups.json'),
+            hhh.jsonService.getAssetsJsonData('db/users.json'),
+            hhh.jsonService.getAssetsJsonData('db/participant-users.json'),
+            hhh.jsonService.getAssetsJsonData('db/cup-participants-referees.json'),
         ]);
 
         result.forEach((item, i) => {
@@ -75,16 +73,16 @@ export class HistoryReglamentsService {
             }
 
             // kvg: только на период "без БЭКа"
-            this._h.storage.setLocalItem(names[i], result[i]);
+            hhh.storage.setLocalItem(names[i], result[i]);
         });
 
         this._state.newAppState({
             ...this._appSnapshot.appState,
-            roles: this._h.array.getArrayUnique(roles),
-            participants: this._h.array.getArrayUnique(participants),
-            cupsFounders: this._h.array.getArrayUnique(cupsFounders),
-            cupsReferee: this._h.array.getArrayUnique(cupsReferee),
-            cupsParticipants: this._h.array.getArrayUnique(cupsParticipants),
+            roles: hhh.array.getArrayUnique(roles),
+            participants: hhh.array.getArrayUnique(participants),
+            cupsFounders: hhh.array.getArrayUnique(cupsFounders),
+            cupsReferee: hhh.array.getArrayUnique(cupsReferee),
+            cupsParticipants: hhh.array.getArrayUnique(cupsParticipants),
         });
     }
 
@@ -130,7 +128,7 @@ export class HistoryReglamentsService {
 
     private _getCupsParticipants(item, participants, cupsParticipants) {
         item['cupParticipantsReferees'].forEach(cup => {
-            const arr = this._h.array.intersectionUniqueInArrays(cup.idParticipants, participants);
+            const arr = hhh.array.intersectionUniqueInArrays(cup.idParticipants, participants);
 
             if (arr.length > 0) {
                 arr.forEach(cupItem => {

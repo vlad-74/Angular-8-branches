@@ -20,7 +20,7 @@ export class StorageService {
      *
      *         console.time('cached querySelector2');
      *         for (let i = 0; i < 1000000; i++) {
-     *             if (!this._h.storage.querySelectorCache('p', 'dom')) {
+     *             if (!hhh.storage.querySelectorCache('p', 'dom')) {
      *                 break;
      *             }
      *         }

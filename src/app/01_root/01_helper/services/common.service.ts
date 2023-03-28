@@ -44,7 +44,7 @@ export class CommonService {
     public async getFunctionExecutionTime(fn, self = null, args = [], isAwait = false) {
         const start = new Date().getTime();
 
-        // для DomComponent компонента и функции this._h.dom.elementGet - await fn.call(self, 'dom div span', 'querySelector', document);
+        // для DomComponent компонента и функции hhh.dom.elementGet - await fn.call(self, 'dom div span', 'querySelector', document);
         if (isAwait) {
             await fn.call(self, ...args);
         } else {
