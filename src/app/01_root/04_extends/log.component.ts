@@ -1,3 +1,5 @@
+import { ISnapshot } from '@interfaces/snapshot.interface';
+
 /**
  * КЛАСС ДЛЯ НАСЛЕДОВАНИЯ КОМПОНЕНТАМИ ЛОГИРОВАНИЯ
  */
@@ -7,29 +9,32 @@ export abstract class LogComponent {
      */
     private isNotLog = [''];
 
+    protected constructor(
+        public logType: string,
+    ) {}
+
     /**
-     * Логируем, если наименование класса / компонента нет в isNotLog
-     *
-     * currentAppSnapshot - состояние приложения
-     *
-     * type - определяет что будет логироваться
+     * Логируем, если есть this.logType и наименование класса / компонента нет в isNotLog
      */
-    public log(currentAppSnapshot, type = 'default') {
-        if (!this.getIsNotLog()) {
+    public log(...args) {
+        if (this.logType && !this.getIsNotLog()) {
             const result = [this.constructor.name];
 
-            if (currentAppSnapshot && type === 'default') {
-                if (currentAppSnapshot.appHistory) {
-                    const index = currentAppSnapshot.appHistory.length - 1;
-                    const arrCurrentRoute = currentAppSnapshot.appHistory[index].split('/');
+            // при this.logType === 'default' в ...args первым аргументом передавать appSnapshot приложения
+            if (this.logType === 'default' && args.length === 1) {
+                const snapshot: ISnapshot = hhh.object.objectCopy(args[0]);
+
+                if (snapshot.appHistory) {
+                    const index = snapshot.appHistory.length - 1;
+                    const arrCurrentRoute = snapshot.appHistory[index].split('/');
                     const i = arrCurrentRoute.length - 1;
                     const page = arrCurrentRoute[i];
 
                     result.push(page);
                 }
                 result.push(
-                    currentAppSnapshot.itemChange,
-                    currentAppSnapshot,
+                    snapshot.itemChange,
+                    hhh.object.objectCopy(args[0]),
                 );
             }
             hhh.common.log(result);

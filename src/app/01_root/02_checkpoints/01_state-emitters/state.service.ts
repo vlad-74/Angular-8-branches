@@ -6,7 +6,7 @@
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { IState } from '@interfaces/helper.interfaces';
+import { IState } from '@interfaces/helper.interface';
 
 @Injectable({ providedIn: 'root' })
 export class StateService {

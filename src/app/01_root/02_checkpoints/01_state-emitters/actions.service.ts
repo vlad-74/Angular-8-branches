@@ -6,7 +6,7 @@
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { IAction } from '@interfaces/helper.interfaces';
+import { IAction } from '@interfaces/helper.interface';
 
 @Injectable({ providedIn: 'root' })
 export class ActionsService {

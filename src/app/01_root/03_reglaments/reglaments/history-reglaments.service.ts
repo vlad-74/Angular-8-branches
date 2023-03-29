@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TRoles } from '@interfaces/helper.interfaces';
+import { TRoles } from '@interfaces/helper.interface';
 import { StateService } from '@checkpoints/01_state-emitters/state.service';
 
 @Injectable({ providedIn: 'root' })

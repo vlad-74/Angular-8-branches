@@ -1,7 +1,7 @@
 /* Общие функции. Для работы с DOM */
 import { ElementRef, Inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { TAllEvents, TGetElement, TSelector, TTypeAppend } from '@interfaces/helper.interfaces';
+import { TAllEvents, TGetElement, TSelector, TTypeAppend } from '@interfaces/helper.interface';
 import { CommonService } from '@helper/services/common.service';
 
 @Injectable({ providedIn: 'root' })

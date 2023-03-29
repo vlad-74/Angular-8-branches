@@ -15,7 +15,7 @@ export class WrapperComponent extends AppSnapshotComponent implements OnInit, On
     public constructor(
         public snapShot: AppSnapshotService,
     ) {
-        super(snapShot);
+        super(snapShot, 'default');  // если не нужно логирование - super(snapShot, '');
     }
 
     /**
