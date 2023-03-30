@@ -1,16 +1,26 @@
+@import '../../../01_root/01_helper/style/02_variables';
+
 :host {
-    width: 100%; height: 100%; overflow: hidden;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: $bg;
+    color: $color;
     .wrapper-wrap{
         width: 100%;
         height: 100%;
         .container-all{
             width: 100%;
             height: 100%;
+            background: $bg;
+            color: $color;
         }
         .container-tablet{
             width: 100%;
             height: 100%;
             display: flex;
+            background: $bg;
+            color: $color;
             menu{
                 width: 3%;
                 height: 100%;

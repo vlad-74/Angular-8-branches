@@ -27,30 +27,34 @@
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-public currentAppSnapshot;
-private readonly destroyed$ = new Subject();
+public currentAppSnapshot: ISnapshot;
+    private readonly destroyed$ = new Subject();
 
-protected constructor(
-    public snapShot: AppSnapshotService,
-) {
-    super();
-    this.snapShot.appSnapshot$
-        .pipe(takeUntil(this.destroyed$))
-        .subscribe(
-            appSnapshot => {
-                this.currentAppSnapshot = appSnapshot;
-                // логирование из наследуемого класса LogComponent
-                this.log(this.currentAppSnapshot);
-            },
-            error => console.log('login - error', error),
-        );
-}
+    protected constructor(
+        public snapShot: AppSnapshotService,
+        public logType: string = '',
+    ) {
+        super(logType);
+        this.snapShot.appSnapshot$
+            .pipe(takeUntil(this.destroyed$))
+            .subscribe(
+                appSnapshot => {
+                    this.currentAppSnapshot = appSnapshot;
+                    /**
+                     * логирование из наследуемого класса LogComponent
+                     * при this.logType === 'default' передавать appSnapshot приложения
+                     */
+                    if (this.logType) { this.log(this.currentAppSnapshot); }
+                },
+                error => console.log('login - error', error),
+            );
+    }
 
-/* Отписываемся от подписок */
-public onDestroy(): void {
-    this.destroyed$.next();
-    this.destroyed$.complete();
-}
+    /* Отписываемся от подписок */
+    public onDestroy(): void {
+        this.destroyed$.next();
+        this.destroyed$.complete();
+    }
 ```
 ==============================================================================
 

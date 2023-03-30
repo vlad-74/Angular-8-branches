@@ -1,11 +1,14 @@
 // ПЕРЕМЕННЫЕ ДЛЯ CSS и СТАРТОВЫЙ СБРОС СТИЛЕЙ - @import '01_root'; - добавлены в styles.scss
 
 :root {
-    --bg: #F9F9F9;
-    --color: #333333;
     --vw: 1090px;
     --vh: 969px;
     --dpi: 1px;
+
+    --bg: #F9F9F9;
+    --color: #333333;
+
+    --bgMenu: #333333;
 }
 /* Убираем внешние отступы */
 * { padding: 0; margin: 0; }
@@ -34,8 +37,6 @@ body{
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 14px;
-    background: #F9F9F9;
-    color: #444756;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

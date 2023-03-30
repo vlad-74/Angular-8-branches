@@ -10,15 +10,20 @@ export class ThemeReglamentsService {
 
     // значения для темы
     public setThemsValue(isTheme) {
-        const body = isTheme ? '#444756' : '#F9F9F9';
-        const text = isTheme ? '#FFFFFF' : '#333333';
+        const bg = isTheme ? '#444756' : '#F9F9F9';
+        const color = isTheme ? '#FFFFFF' : '#333333';
+        const bgMenu = isTheme ? '#F9F9F9' : '#444756';
 
-        this.changeTheme ({ body, text }); // для смены темы
+        this.changeTheme ({ bg, color, bgMenu }); // для смены темы
     }
 
     // задать полученные значения для параметров (body и text) темы
     public changeTheme(prop) {
-        const values = [ ['--bg', prop.body], ['--color', prop.text] ];
+        const values = [
+            ['--bg', prop.bg],
+            ['--color', prop.color],
+            ['--bgMenu', prop.bgMenu],
+        ];
         const stl = document.documentElement.style;
 
         for (const value of values) {

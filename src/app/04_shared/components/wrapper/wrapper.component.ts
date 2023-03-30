@@ -2,6 +2,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AppSnapshotService } from '@checkpoints/01_state-emitters/app-snapshot.service';
 import { AppSnapshotComponent } from '@root/04_extends/app-snapshot.component';
+import { ThemeService } from '@checkpoints/01_state-emitters/theme.service';
 
 @Component({
     selector: 'wrapper',
@@ -14,6 +15,7 @@ export class WrapperComponent extends AppSnapshotComponent implements OnInit, On
 
     public constructor(
         public snapShot: AppSnapshotService,
+        private _theme: ThemeService,
     ) {
         super(snapShot, 'default');  // если не нужно логирование - super(snapShot, '');
     }
@@ -29,6 +31,10 @@ export class WrapperComponent extends AppSnapshotComponent implements OnInit, On
         const currentRoute = this.currentAppSnapshot.appHistory[index].split('/')[1];
 
         this.isHiddenMenu = this._activeRouteHidden.includes(currentRoute);
+
+        // setTimeout(() => {
+        //     this._theme.darkTheme();
+        // }, 2000);
     }
 
     /* Отписываемся от подписок */
