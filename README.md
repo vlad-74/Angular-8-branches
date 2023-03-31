@@ -1,12 +1,17 @@
 # Competitions
 [Справочные материалы по Markdown](https://learn.microsoft.com/ru-ru/contribute/markdown-reference)
 
+[Класс для ВАЛИДАЦИИ](https://github.com/typestack/class-validator#installation)
+
 [Internaltionalization I18n stackblitz](https://stackblitz.com/edit/angular-internaltionalization-i18n-cpzeaf?file=src%2Fapp%2Fhello.component.ts,src%2Fapp%2Fapp.component.ts)
 
 [Internaltionalization I18n статья](https://progtask.ru/angular-i18n-ngx-translate/)
 
 ### ngrok http 4200 -host-header="localhost:4200"
 [ngrok - для удаленного тестирования](https://ngrok.com)
+
+
+
 
 > ## ГЛАВНОЕ
 * 1 - `angular.json` - место добавления js скриптов - `"scripts": ["./src/assets/scripts/code.js"]` и стилей - `"styles": ["src/styles.scss"]`

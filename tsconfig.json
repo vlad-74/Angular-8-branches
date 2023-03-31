@@ -14,8 +14,10 @@
         "@interfaces/*": ["src/app/03_interfaces/*"],
         "@shared/*": ["src/app/04_shared/*"],
         "@modules/*": ["src/app/05_modules/*"],
-        "@directives/*": ["src/app/06_directives/*"],
-        "@pipes/*": ["src/app/07_pipes/*"],
+        "@decorators/*": ["src/app/06_decorators/*"],
+        "@directives/*": ["src/app/07_directives/*"],
+        "@pipes/*": ["src/app/08_pipes/*"],
+        "@styles/*": ["src/app/09_styles/*"],
         "@developer/*": ["src/app/10_developer/*"]
     },
     "outDir": "./dist/out-tsc",
