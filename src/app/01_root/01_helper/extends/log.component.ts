@@ -44,7 +44,6 @@ export abstract class LogComponent extends OutlineComponent {
                     hhh.object.objectCopy(args[0]),
                 );
             }
-            // hhh.common.log(result);
             hhh.common.setTypelog(result, 11, '=');
         }
     }
