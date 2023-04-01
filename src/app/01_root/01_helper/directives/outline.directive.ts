@@ -5,7 +5,7 @@ import { environment } from '@environments/environment';
     selector: '[outline]',
 })
 export class OutlineDirective {
-    @Input() public type;
+    @Input() public value;
 
     private _defaultType: string = '1px dashed red';
 
@@ -15,8 +15,8 @@ export class OutlineDirective {
     ) {}
 
     public ngOnInit() {
-        if (this.type) {
-            this._defaultType = this.type;
+        if (this.value) {
+            this._defaultType = this.value;
         }
 
         if (!environment.production) {
