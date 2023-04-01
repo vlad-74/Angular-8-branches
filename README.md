@@ -57,10 +57,21 @@ export class WrapperComponent extends AppSnapshotComponent implements OnInit, On
 ==============================================================================
 * 4 - !!! AppSnapshotComponent с подпиской на appSnapshot$
 ```
-import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { AppSnapshotService } from '@checkpoints/01_state-emitters/app-snapshot.service';
+import { LogComponent } from '@helper/extends/log.component';
+import { ISnapshot } from '@interfaces/snapshot.interface';
+import { ILogParam, IOutlineParam } from '@interfaces/helper.interface';
 
-public currentAppSnapshot: ISnapshot;
+/**
+ * КЛАСС ДЛЯ НАСЛЕДОВАНИЯ КОМПОНЕНТАМИ
+ *
+ * при наследовании получают
+ * @param currentAppSnapshot - состояние приложения
+ */
+export abstract class AppSnapshotComponent extends LogComponent {
+    public currentAppSnapshot: ISnapshot;
     private readonly destroyed$ = new Subject();
 
     protected constructor(
@@ -69,6 +80,7 @@ public currentAppSnapshot: ISnapshot;
         public outlineParam: IOutlineParam,
     ) {
         super(logParam, outlineParam);
+        
         this.snapShot.appSnapshot$
             .pipe(takeUntil(this.destroyed$))
             .subscribe(
@@ -89,6 +101,7 @@ public currentAppSnapshot: ISnapshot;
         this.destroyed$.next();
         this.destroyed$.complete();
     }
+}
 ```
 
 > ## ГЛАВНОЕ

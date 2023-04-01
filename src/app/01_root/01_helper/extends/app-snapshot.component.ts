@@ -21,6 +21,7 @@ export abstract class AppSnapshotComponent extends LogComponent {
         public outlineParam: IOutlineParam,
     ) {
         super(logParam, outlineParam);
+
         this.snapShot.appSnapshot$
             .pipe(takeUntil(this.destroyed$))
             .subscribe(
