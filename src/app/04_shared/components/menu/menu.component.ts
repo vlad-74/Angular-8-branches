@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { AppSnapshotService } from '@checkpoints/01_state-emitters/app-snapshot.service';
-import { Outline } from '@decorators/outline.decorator';
 
-@Outline
 @Component({
     selector: 'menu',
     templateUrl: './menu.component.html',

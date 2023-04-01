@@ -10,6 +10,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { OutlineDirective } from '@helper/directives/outline.directive';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -21,6 +22,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         WrapperComponent,
         LoaderComponent,
         MenuComponent,
+        OutlineDirective,
     ],
     imports: [
         CommonModule,
@@ -40,6 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ],
     exports: [
         LoaderComponent,
+        OutlineDirective,
     ],
 })
 export class SharedModule {
