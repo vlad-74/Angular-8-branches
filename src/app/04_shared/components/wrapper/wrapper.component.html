@@ -6,15 +6,15 @@
         'container-column': currentAppSnapshot.appScreen.typeScreen !== 'tablet'
         }"
     >
-        <menu outline *ngIf="currentAppSnapshot.appScreen.typeScreen !== 'tablet'" ></menu>
-        <div outline class="content-wrap">
+        <menu *ngIf="currentAppSnapshot.appScreen.typeScreen !== 'tablet'" ></menu>
+        <div class="content-wrap">
             <router-outlet></router-outlet>
         </div>
-        <menu outline *ngIf="currentAppSnapshot.appScreen.typeScreen === 'tablet'"></menu>
+        <menu *ngIf="currentAppSnapshot.appScreen.typeScreen === 'tablet'"></menu>
     </div>
 
     <ng-container *ngIf="isHiddenMenu">
-        <div outline class="container-all">
+        <div class="container-all">
             <router-outlet></router-outlet>
         </div>
     </ng-container>

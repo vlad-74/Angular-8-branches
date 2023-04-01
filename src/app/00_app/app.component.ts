@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { SubscribeService } from '@checkpoints/02_state-subscribe/subscribe.service';
 import { ScreenService } from '@checkpoints/01_state-emitters/screen.service';
 import { ScreenReglamentsService } from '@root/03_reglaments/reglaments/screen-reglaments.service';
+import { LogComponent } from '@helper/extends/log.component';
 
 @Component({
     selector: 'app-root',
@@ -14,7 +15,7 @@ import { ScreenReglamentsService } from '@root/03_reglaments/reglaments/screen-r
         ':host { width: 100%; height: 100%; overflow: hidden;}',
     ],
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent extends LogComponent implements OnInit, OnDestroy {
     public title = 'competitions';
     private resizeId;
 
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
         private _screen: ScreenService,
         private _router: Router,
     ) {
+        super('');
     }
 
     @HostListener('window:resize', ['$event'])

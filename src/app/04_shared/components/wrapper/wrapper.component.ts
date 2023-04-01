@@ -23,7 +23,8 @@ export class WrapperComponent extends AppSnapshotComponent implements OnInit, On
     /**
      * при наследовании получают:
      * - КЛАСС AppSnapshotComponent - подписка на состояние приложения
-     * - КЛАСС LogComponent - логирование компонента
+     * - КЛАСС LogComponent - логирование компонента - если в конструктор передан параметр logTyp:string
+     * - КЛАСС OutlineComponent - outline (css) для компонента - если в конструктор передан параметр px:number
      * this.currentAppSnapshot пришел из наследуемого класса AppSnapshotComponent
      */
     public ngOnInit() {

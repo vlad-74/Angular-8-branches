@@ -1,9 +1,11 @@
 import { ISnapshot } from '@interfaces/snapshot.interface';
+import { OutlineComponent } from '@helper/extends/outline.component';
+import { environment } from '@environments/environment';
 
 /**
  * КЛАСС ДЛЯ НАСЛЕДОВАНИЯ КОМПОНЕНТАМИ ЛОГИРОВАНИЯ
  */
-export abstract class LogComponent {
+export abstract class LogComponent extends OutlineComponent {
     /**
      * классы / компоненты которых не нужно логировать
      */
@@ -11,13 +13,13 @@ export abstract class LogComponent {
 
     protected constructor(
         public logType: string,
-    ) {}
+    ) { super(1); }
 
     /**
-     * Логируем, если есть this.logType и наименование класса / компонента нет в isNotLog
+     * Логируем, если находимся в режиме разработки, есть this.logType и наименование класса/компонента нет в isNotLog
      */
     public log(...args) {
-        if (this.logType && !this.getIsNotLog()) {
+        if (!environment.production && this.logType && !this.getIsNotLog()) {
             const result = [this.constructor.name];
 
             // при this.logType === 'default' в ...args первым аргументом передавать appSnapshot приложения

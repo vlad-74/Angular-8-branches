@@ -10,23 +10,41 @@
 ### ngrok http 4200 -host-header="localhost:4200"
 [ngrok - для удаленного тестирования](https://ngrok.com)
 
+> ## ДЛЯ РАЗРАБОТЧИКА
+==============================================================================
+* 1- !!! НАСЛЕДУЕМСЯ В КОМПОНЕНТАХ ОТ AppSnapshotComponent И ПОЛУЧАЕМ currentAppSnapshot
+* при наследовании класс получает:
+    * - КЛАСС AppSnapshotComponent - подписка на состояние приложения
+    * - под-КЛАСС LogComponent - логирование компонента - если в конструктор передан параметр logTyp: string
+    * - под-под-КЛАСС OutlineComponent - outline (css) для компонента - если в конструктор передан параметр px: number
+```
+export class WrapperComponent extends AppSnapshotComponent implements OnInit, OnDestroy {
 
-> ## ГЛАВНОЕ
-* 1 - `angular.json` - место добавления js скриптов - `"scripts": ["./src/assets/scripts/code.js"]` и стилей - `"styles": ["src/styles.scss"]`
-* 2 - `src\polyfills.ts` !!! - реализация ИСПОЛЬЗОВАНИЯ ГЛОБАЛЬНОЙ ПЕРЕМЕННОЙ - hhh (HelperService - ДЛЯ РАЗРАБОТЧИКА)
-* 3 - `src\typings.d.ts` - место для объявления глобальных переменных (...как вариант / пока не актуально)
-* 4 - `src\app\02_routing\lazy-loading-routes.ts` - роутинг приложения.
-* 5 - `src\app\01_root\01_helper\style\index.scss` - общие стили приложения
-* 6 - `src\app\01_root\01_helper\helper.service.ts` - СЕРВИСЫ ДЛЯ РАЗРАБОТЧИКА
-* 7 - `src\app\01_root\01_helper\extends` - классы для наследования (...и для использования в других проектах)
-* 8 - `src\app\01_root\01_helper\directives` - директивы (...и для использования в других проектах)
-* 9 - `src\app\01_root\02_checkpoints` - контрольные точки приложения (emmit & subscribe)
-* 10.1. - `public setCurrentAppSnapshot(snapshot)` - emmit СНИМКА ПРИЛОЖЕНИЯ (url, appActions$, appState$, isTheme$, isSleep$)
-* 10.2. - `public getAppSnapshot()` - подписываемся на изменения ТЕКУЩЕГО СОСТОЯНИЯ ПРИЛОЖЕНИЯ
-* 11 - `src\app\01_root\03_reglaments\reglaments.service.ts` - логика действий приложения по контрольным точкам приложения 
-* 11.1. - `public checkStateChanges(appSnapshot)` - ТОЧКА СВЯЗКИ подписки и регламентов
-* 12 - `src\app\10_developer` - "ПЕСОЧНИЦА" для разработчика - отработка и ИСТОРИЯ функционала. ВИЗУАЛИЗАЦИЯ КОДА !!!
-* 13 - !!! AppSnapshotComponent с подпиской на appSnapshot$
+    public constructor(
+        public snapShot: AppSnapshotService,
+    ) {
+        super(snapShot, 'default');  // если не нужно логирование - super(snapShot, '');
+    }
+
+    /**
+     * при наследовании получают:
+     * - КЛАСС AppSnapshotComponent - подписка на состояние приложения
+     * - КЛАСС LogComponent - логирование компонента - если в конструктор передан параметр logTyp:string
+     * - КЛАСС OutlineComponent - outline (css) для компонента - если в конструктор передан параметр px:number
+     * this.currentAppSnapshot пришел из наследуемого класса AppSnapshotComponent
+     */
+    public ngOnInit() {
+        const index = this.currentAppSnapshot.appHistory.length - 1;
+        const currentRoute = this.currentAppSnapshot.appHistory[index].split('/')[1];
+    }
+
+    /* Отписываемся от подписок */
+    public ngOnDestroy(): void {
+        this.onDestroy();
+    }
+```
+==============================================================================
+* 2 - !!! AppSnapshotComponent с подпиской на appSnapshot$
 ```
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -60,36 +78,22 @@ public currentAppSnapshot: ISnapshot;
         this.destroyed$.complete();
     }
 ```
-==============================================================================
 
-!!! НАСЛЕДУЕМСЯ В КОМПОНЕНТАХ ОТ AppSnapshotComponent И ПОЛУЧАЕМ currentAppSnapshot
-
-export class ...Component extends AppSnapshotComponent
-```
-    public constructor(
-        public snapShot: AppSnapshotService,
-    ) {
-        super(snapShot);
-    }
-
-    /**
-     * при наследовании получают:
-     * - КЛАСС AppSnapshotComponent - подписка на состояние приложения
-     * - КЛАСС LogComponent - логирование компонента
-     * this.currentAppSnapshot пришел из наследуемого класса AppSnapshotComponent
-     */
-    public ngOnInit() {
-        const index = this.currentAppSnapshot.appHistory.length - 1;
-        const currentRoute = this.currentAppSnapshot.appHistory[index].split('/')[1];
-
-        this.isHiddenMenu = this._activeRouteHidden.includes(currentRoute);
-    }
-
-    /* Отписываемся от подписок */
-    public ngOnDestroy(): void {
-        this.onDestroy();
-    }
-```
+> ## ГЛАВНОЕ
+* 1 - `angular.json` - место добавления js скриптов - `"scripts": ["./src/assets/scripts/code.js"]` и стилей - `"styles": ["src/styles.scss"]`
+* 2 - `src\polyfills.ts` !!! - реализация ИСПОЛЬЗОВАНИЯ ГЛОБАЛЬНОЙ ПЕРЕМЕННОЙ - hhh (HelperService - ДЛЯ РАЗРАБОТЧИКА)
+* 3 - `src\typings.d.ts` - место для объявления глобальных переменных (...как вариант / пока не актуально)
+* 4 - `src\app\02_routing\lazy-loading-routes.ts` - роутинг приложения.
+* 5 - `src\app\01_root\01_helper\style\index.scss` - общие стили приложения
+* 6 - `src\app\01_root\01_helper\helper.service.ts` - СЕРВИСЫ ДЛЯ РАЗРАБОТЧИКА
+* 7 - `src\app\01_root\01_helper\extends` - классы для наследования (...и для использования в других проектах)
+* 8 - `src\app\01_root\01_helper\directives` - директивы (...и для использования в других проектах)
+* 9 - `src\app\01_root\02_checkpoints` - контрольные точки приложения (emmit & subscribe)
+* 10.1. - `public setCurrentAppSnapshot(snapshot)` - emmit СНИМКА ПРИЛОЖЕНИЯ (url, appActions$, appState$, isTheme$, isSleep$)
+* 10.2. - `public getAppSnapshot()` - подписываемся на изменения ТЕКУЩЕГО СОСТОЯНИЯ ПРИЛОЖЕНИЯ
+* 11 - `src\app\01_root\03_reglaments\reglaments.service.ts` - логика действий приложения по контрольным точкам приложения 
+* 11.1. - `public checkStateChanges(appSnapshot)` - ТОЧКА СВЯЗКИ подписки и регламентов
+* 12 - `src\app\10_developer` - "ПЕСОЧНИЦА" для разработчика - отработка и ИСТОРИЯ функционала. ВИЗУАЛИЗАЦИЯ КОДА !!!
 
 > ## СТРУКТУРА ПРОЕКТА
 * 0 - Папка - `src\app\00_app` - старт приложения
