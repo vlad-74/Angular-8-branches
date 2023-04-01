@@ -7,9 +7,10 @@ import { environment } from '@environments/environment';
  */
 
 export abstract class OutlineComponent {
-    /**
-     * классы / компоненты которым не нужна outline
-     */
+    // если ГЛОБАЛЬНО нужны outline
+    private isGlobalOutline = true; // false - если нужно отменить
+
+    // классы / компоненты которым не нужна outline
     private isNotOutline = [''];
 
     protected constructor(
@@ -21,7 +22,7 @@ export abstract class OutlineComponent {
      * Отображаем outline, если находимся в режиме разработки и есть this.px
      */
     public getColor() {
-        if (!environment.production && this.px && !this.getIsNotOutline()) {
+        if (!environment.production && this.isGlobalOutline && this.px && !this.getIsNotOutline()) {
             return this.color = this.px + 'px solid ' + hhh.dom.colorGeneration();
         }
 

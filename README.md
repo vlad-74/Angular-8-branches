@@ -10,9 +10,14 @@
 ### ngrok http 4200 -host-header="localhost:4200"
 [ngrok - для удаленного тестирования](https://ngrok.com)
 
-> ## ДЛЯ РАЗРАБОТЧИКА
+> ## ДЛЯ РАЗРАБОТЧИКА (только для режима - `!environment.production`)
+* 1 - outline 
+* 1.1 - outline для компонентов - OutlineDirective
+* 1.2 - outline для html элементов - OutlineComponent
+* 2 - логирование LogComponent
+
 ==============================================================================
-* 1- !!! НАСЛЕДУЕМСЯ В КОМПОНЕНТАХ ОТ AppSnapshotComponent И ПОЛУЧАЕМ currentAppSnapshot
+* 3 - !!! НАСЛЕДУЕМСЯ В КОМПОНЕНТАХ ОТ AppSnapshotComponent И ПОЛУЧАЕМ currentAppSnapshot
 * при наследовании класс получает:
     * - КЛАСС AppSnapshotComponent - подписка на состояние приложения
     * - под-КЛАСС LogComponent - логирование компонента - если в конструктор передан параметр logTyp: string
@@ -44,7 +49,7 @@ export class WrapperComponent extends AppSnapshotComponent implements OnInit, On
     }
 ```
 ==============================================================================
-* 2 - !!! AppSnapshotComponent с подпиской на appSnapshot$
+* 4 - !!! AppSnapshotComponent с подпиской на appSnapshot$
 ```
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';

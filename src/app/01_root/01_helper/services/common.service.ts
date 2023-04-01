@@ -27,12 +27,18 @@ export class CommonService {
     }
 
     // console.log(this.constructor.name + ' - appSnapshot - ', appSnapshot);
-    public log(arg) {
+    public log(arg, type = '***********') {
         if (!environment.production) {
             this.logСоunt++;
-            console.log('***********' + this.logСоunt, ...arg);
+            console.log( type + ' ' + this.logСоunt, ...arg);
             console.log('');
         }
+    }
+
+    public setTypelog(arg, length = 11, type = '*') {
+        const _type = hhh.string.startAddString('', length, type);
+
+        this.log(arg, _type);
     }
 
     /**

@@ -6,9 +6,10 @@ import { environment } from '@environments/environment';
  * КЛАСС ДЛЯ НАСЛЕДОВАНИЯ КОМПОНЕНТАМИ ЛОГИРОВАНИЯ
  */
 export abstract class LogComponent extends OutlineComponent {
-    /**
-     * классы / компоненты которых не нужно логировать
-     */
+    // если ГЛОБАЛЬНО нужно логирование
+    private isGlobalLog = true; // false - если нужно отменить
+
+    // классы / компоненты которых не нужно логировать
     private isNotLog = [''];
 
     protected constructor(
@@ -19,7 +20,7 @@ export abstract class LogComponent extends OutlineComponent {
      * Логируем, если находимся в режиме разработки, есть this.logType и наименование класса/компонента нет в isNotLog
      */
     public log(...args) {
-        if (!environment.production && this.logType && !this.getIsNotLog()) {
+        if (!environment.production && this.isGlobalLog && this.logType && !this.getIsNotLog()) {
             const result = [this.constructor.name];
 
             // при this.logType === 'default' в ...args первым аргументом передавать appSnapshot приложения
@@ -39,7 +40,8 @@ export abstract class LogComponent extends OutlineComponent {
                     hhh.object.objectCopy(args[0]),
                 );
             }
-            hhh.common.log(result);
+            // hhh.common.log(result);
+            hhh.common.setTypelog(result, 11, '=');
         }
     }
 
