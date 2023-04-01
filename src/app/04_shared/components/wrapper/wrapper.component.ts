@@ -1,7 +1,7 @@
 /* WrapperComponent - компонент, который управляет экранными модулями (01_module-screen) */
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AppSnapshotService } from '@checkpoints/01_state-emitters/app-snapshot.service';
-import { AppSnapshotComponent } from '@root/04_extends/app-snapshot.component';
+import { AppSnapshotComponent } from '@root/01_helper/extends/app-snapshot.component';
 import { ThemeService } from '@checkpoints/01_state-emitters/theme.service';
 
 @Component({

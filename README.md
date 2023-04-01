@@ -11,8 +11,6 @@
 [ngrok - для удаленного тестирования](https://ngrok.com)
 
 
-
-
 > ## ГЛАВНОЕ
 * 1 - `angular.json` - место добавления js скриптов - `"scripts": ["./src/assets/scripts/code.js"]` и стилей - `"styles": ["src/styles.scss"]`
 * 2 - `src\polyfills.ts` !!! - реализация ИСПОЛЬЗОВАНИЯ ГЛОБАЛЬНОЙ ПЕРЕМЕННОЙ - hhh (HelperService - ДЛЯ РАЗРАБОТЧИКА)
@@ -20,14 +18,15 @@
 * 4 - `src\app\02_routing\lazy-loading-routes.ts` - роутинг приложения.
 * 5 - `src\app\01_root\01_helper\style\index.scss` - общие стили приложения
 * 6 - `src\app\01_root\01_helper\helper.service.ts` - СЕРВИСЫ ДЛЯ РАЗРАБОТЧИКА
-* 7 - `src\app\01_root\02_checkpoints` - контрольные точки приложения (emmit & subscribe)
-* 7.1. - `public setCurrentAppSnapshot(snapshot)` - emmit СНИМКА ПРИЛОЖЕНИЯ (url, appActions$, appState$, isTheme$, isSleep$)
-* 7.2. - `public getAppSnapshot()` - подписываемся на изменения ТЕКУЩЕГО СОСТОЯНИЯ ПРИЛОЖЕНИЯ
-* 8 - `src\app\01_root\03_reglaments\reglaments.service.ts` - логика действий приложения по контрольным точкам приложения 
-* 8.1. - `public checkStateChanges(appSnapshot)` - ТОЧКА СВЯЗКИ подписки и регламентов
-* 9 - `src\app\01_root\04_extends` - классы для наследования
-* 10 - `src\app\10_developer` - "ПЕСОЧНИЦА" для разработчика - отработка и ИСТОРИЯ функционала. ВИЗУАЛИЗАЦИЯ КОДА !!!
-* 11 - !!! AppSnapshotComponent с подпиской на appSnapshot$
+* 7 - `src\app\01_root\01_helper\extends` - классы для наследования (...и для использования в других проектах)
+* 8 - `src\app\01_root\01_helper\directives` - директивы (...и для использования в других проектах)
+* 9 - `src\app\01_root\02_checkpoints` - контрольные точки приложения (emmit & subscribe)
+* 10.1. - `public setCurrentAppSnapshot(snapshot)` - emmit СНИМКА ПРИЛОЖЕНИЯ (url, appActions$, appState$, isTheme$, isSleep$)
+* 10.2. - `public getAppSnapshot()` - подписываемся на изменения ТЕКУЩЕГО СОСТОЯНИЯ ПРИЛОЖЕНИЯ
+* 11 - `src\app\01_root\03_reglaments\reglaments.service.ts` - логика действий приложения по контрольным точкам приложения 
+* 11.1. - `public checkStateChanges(appSnapshot)` - ТОЧКА СВЯЗКИ подписки и регламентов
+* 12 - `src\app\10_developer` - "ПЕСОЧНИЦА" для разработчика - отработка и ИСТОРИЯ функционала. ВИЗУАЛИЗАЦИЯ КОДА !!!
+* 13 - !!! AppSnapshotComponent с подпиской на appSnapshot$
 ```
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';

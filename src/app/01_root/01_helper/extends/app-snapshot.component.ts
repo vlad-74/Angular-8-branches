@@ -1,7 +1,7 @@
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { AppSnapshotService } from '@checkpoints/01_state-emitters/app-snapshot.service';
-import { LogComponent } from '@root/04_extends/log.component';
+import { LogComponent } from '@helper/extends/log.component';
 import { ISnapshot } from '@interfaces/snapshot.interface';
 
 /**

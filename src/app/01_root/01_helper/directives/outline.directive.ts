@@ -7,7 +7,7 @@ import { environment } from '@environments/environment';
 export class OutlineDirective {
     @Input() public value;
 
-    private _defaultType: string = '1px dashed red';
+    private _defaultType: string = '3px dashed ';
 
     public constructor(
         private elementRef: ElementRef,
@@ -17,6 +17,11 @@ export class OutlineDirective {
     public ngOnInit() {
         if (this.value) {
             this._defaultType = this.value;
+        } else {
+
+            const color = hhh.dom.colorGeneration();
+
+            this._defaultType = this._defaultType + color;
         }
 
         if (!environment.production) {
