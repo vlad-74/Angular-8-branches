@@ -18,7 +18,10 @@ export abstract class LogComponent extends OutlineComponent {
     ) { super( outlineParam ); }
 
     /**
-     * Логируем, если находимся в режиме разработки, есть this.logType и наименование класса/компонента нет в isNotLog
+     * Логируем,
+     * если находимся в режиме разработки,
+     * есть this.isGlobalLog с this.logParam.type
+     * и наименование класса/компонента нет в isNotLog
      */
     public log(...args) {
         if (!environment.production && this.isGlobalLog && this.logParam.isGlobalLog && this.logParam.type && !this.getIsNotLog()) {

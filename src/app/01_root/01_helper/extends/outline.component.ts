@@ -20,7 +20,10 @@ export abstract class OutlineComponent {
     @HostBinding('style.outline') public color: string = this.getColor();
 
     /**
-     * Отображаем outline, если находимся в режиме разработки и есть this.px
+     * Отображаем outline,
+     * если находимся в режиме разработки,
+     * есть this.isGlobalOutline с this.outline.px
+     * и наименование класса/компонента нет в isNotOutline
      */
     public getColor() {
         if (!environment.production && this.isGlobalOutline && this.outline.isGlobalOutline && this.outline.px && !this.getIsNotOutline()) {
