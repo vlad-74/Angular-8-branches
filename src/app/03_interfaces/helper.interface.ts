@@ -34,6 +34,16 @@ export interface IAction {
     data: any;
 }
 
+export interface ILogParam {
+    type: string;
+    isGlobalLog: boolean;
+}
+
+export interface IOutlineParam {
+    px: number;
+    isGlobalOutline: boolean;
+}
+
 export type TSelector = 'querySelector' | 'querySelectorAll';
 
 export type TGetElement = Element | NodeList;

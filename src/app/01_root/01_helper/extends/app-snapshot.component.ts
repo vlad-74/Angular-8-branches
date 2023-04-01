@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { AppSnapshotService } from '@checkpoints/01_state-emitters/app-snapshot.service';
 import { LogComponent } from '@helper/extends/log.component';
 import { ISnapshot } from '@interfaces/snapshot.interface';
+import { ILogParam, IOutlineParam } from '@interfaces/helper.interface';
 
 /**
  * КЛАСС ДЛЯ НАСЛЕДОВАНИЯ КОМПОНЕНТАМИ
@@ -16,9 +17,10 @@ export abstract class AppSnapshotComponent extends LogComponent {
 
     protected constructor(
         public snapShot: AppSnapshotService,
-        public logType: string = '',
+        public logParam: ILogParam,
+        public outlineParam: IOutlineParam,
     ) {
-        super(logType);
+        super(logParam, outlineParam);
         this.snapShot.appSnapshot$
             .pipe(takeUntil(this.destroyed$))
             .subscribe(
@@ -26,9 +28,9 @@ export abstract class AppSnapshotComponent extends LogComponent {
                     this.currentAppSnapshot = appSnapshot;
                     /**
                      * логирование из наследуемого класса LogComponent
-                     * при this.logType === 'default' передавать appSnapshot приложения
+                     * при this.logParam.type === 'default' передавать appSnapshot приложения
                      */
-                    if (this.logType) { this.log(this.currentAppSnapshot); }
+                    if (this.logParam.type) { this.log(this.currentAppSnapshot); }
                 },
                 error => console.log('login - error', error),
             );

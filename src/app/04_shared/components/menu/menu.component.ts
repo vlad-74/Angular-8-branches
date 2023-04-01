@@ -16,7 +16,7 @@ export class MenuComponent extends LogComponent implements OnInit {
 
     public constructor(
         private _snapShot: AppSnapshotService,
-    ) { super(''); }
+    ) { super({ type: '', isGlobalLog: true }, { px: 1, isGlobalOutline: true }); }
 
     public ngOnInit() {
         if (this._snapShot) {

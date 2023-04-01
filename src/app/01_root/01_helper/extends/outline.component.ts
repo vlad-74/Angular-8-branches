@@ -1,5 +1,6 @@
 import { HostBinding } from '@angular/core';
 import { environment } from '@environments/environment';
+import { IOutlineParam } from '@interfaces/helper.interface';
 /**
  * КЛАСС ДЛЯ НАСЛЕДОВАНИЯ КОМПОНЕНТАМИ
  *
@@ -14,7 +15,7 @@ export abstract class OutlineComponent {
     private isNotOutline = [''];
 
     protected constructor(
-        public px = 0,
+        public outline: IOutlineParam,
     ) {}
     @HostBinding('style.outline') public color: string = this.getColor();
 
@@ -22,8 +23,8 @@ export abstract class OutlineComponent {
      * Отображаем outline, если находимся в режиме разработки и есть this.px
      */
     public getColor() {
-        if (!environment.production && this.isGlobalOutline && this.px && !this.getIsNotOutline()) {
-            return this.color = this.px + 'px solid ' + hhh.dom.colorGeneration();
+        if (!environment.production && this.isGlobalOutline && this.outline.isGlobalOutline && this.outline.px && !this.getIsNotOutline()) {
+            return this.color = this.outline.px + 'px solid ' + hhh.dom.colorGeneration();
         }
 
         return null;

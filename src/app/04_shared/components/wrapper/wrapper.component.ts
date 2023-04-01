@@ -17,7 +17,13 @@ export class WrapperComponent extends AppSnapshotComponent implements OnInit, On
         public snapShot: AppSnapshotService,
         private _theme: ThemeService,
     ) {
-        super(snapShot, 'default');  // если не нужно логирование - super(snapShot, '');
+        super(
+            snapShot,
+            { type: 'default', isGlobalLog: true },
+            { px: 1, isGlobalOutline: true },
+        );
+        // если не нужно логирование - super(snapShot, { type: '', isGlobalLog: false }, { px: 1, isGlobalOutline: true });
+        // если не нужно outline - super(snapShot, { type: 'default', isGlobalLog: true }, { px: 0, isGlobalOutline: false });
     }
 
     /**

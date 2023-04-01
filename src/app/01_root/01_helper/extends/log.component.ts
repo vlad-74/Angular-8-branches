@@ -1,6 +1,7 @@
 import { ISnapshot } from '@interfaces/snapshot.interface';
 import { OutlineComponent } from '@helper/extends/outline.component';
 import { environment } from '@environments/environment';
+import { ILogParam, IOutlineParam } from '@interfaces/helper.interface';
 
 /**
  * КЛАСС ДЛЯ НАСЛЕДОВАНИЯ КОМПОНЕНТАМИ ЛОГИРОВАНИЯ
@@ -8,23 +9,23 @@ import { environment } from '@environments/environment';
 export abstract class LogComponent extends OutlineComponent {
     // если ГЛОБАЛЬНО нужно логирование
     private isGlobalLog = true; // false - если нужно отменить
-
     // классы / компоненты которых не нужно логировать
     private isNotLog = [''];
 
     protected constructor(
-        public logType: string,
-    ) { super(1); }
+        public logParam: ILogParam,
+        public outlineParam: IOutlineParam,
+    ) { super( outlineParam ); }
 
     /**
      * Логируем, если находимся в режиме разработки, есть this.logType и наименование класса/компонента нет в isNotLog
      */
     public log(...args) {
-        if (!environment.production && this.isGlobalLog && this.logType && !this.getIsNotLog()) {
+        if (!environment.production && this.isGlobalLog && this.logParam.isGlobalLog && this.logParam.type && !this.getIsNotLog()) {
             const result = [this.constructor.name];
 
             // при this.logType === 'default' в ...args первым аргументом передавать appSnapshot приложения
-            if (this.logType === 'default' && args.length === 1) {
+            if (this.logParam.type === 'default' && args.length === 1) {
                 const snapshot: ISnapshot = hhh.object.objectCopy(args[0]);
 
                 if (snapshot.appHistory) {

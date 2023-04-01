@@ -12,9 +12,9 @@
 
 > ## ДЛЯ РАЗРАБОТЧИКА (только для режима - `!environment.production`)
 * 1 - outline 
-* 1.1 - outline для компонентов - OutlineDirective
-* 1.2 - outline для html элементов - OutlineComponent
-* 2 - логирование LogComponent
+* 1.1 - outline для компонентов - OutlineDirective - string = '3px dashed
+* 1.2 - outline для html элементов - OutlineComponent - interface IOutlineParam
+* 2 - логирование LogComponent - interface ILogParam 
 
 ==============================================================================
 * 3 - !!! НАСЛЕДУЕМСЯ В КОМПОНЕНТАХ ОТ AppSnapshotComponent И ПОЛУЧАЕМ currentAppSnapshot
@@ -28,7 +28,13 @@ export class WrapperComponent extends AppSnapshotComponent implements OnInit, On
     public constructor(
         public snapShot: AppSnapshotService,
     ) {
-        super(snapShot, 'default');  // если не нужно логирование - super(snapShot, '');
+        super(
+            snapShot,
+            { type: 'default', isGlobalLog: true },
+            { px: 1, isGlobalOutline: true },
+        );
+        // если не нужно логирование - super(snapShot, { type: '', isGlobalLog: false }, { px: 1, isGlobalOutline: true });
+        // если не нужно outline - super(snapShot, { type: 'default', isGlobalLog: true }, { px: 0, isGlobalOutline: false });
     }
 
     /**
@@ -59,9 +65,10 @@ public currentAppSnapshot: ISnapshot;
 
     protected constructor(
         public snapShot: AppSnapshotService,
-        public logType: string = '',
+        public logParam: ILogParam,
+        public outlineParam: IOutlineParam,
     ) {
-        super(logType);
+        super(logParam, outlineParam);
         this.snapShot.appSnapshot$
             .pipe(takeUntil(this.destroyed$))
             .subscribe(
@@ -69,9 +76,9 @@ public currentAppSnapshot: ISnapshot;
                     this.currentAppSnapshot = appSnapshot;
                     /**
                      * логирование из наследуемого класса LogComponent
-                     * при this.logType === 'default' передавать appSnapshot приложения
+                     * при this.logParam.type === 'default' передавать appSnapshot приложения
                      */
-                    if (this.logType) { this.log(this.currentAppSnapshot); }
+                    if (this.logParam.type) { this.log(this.currentAppSnapshot); }
                 },
                 error => console.log('login - error', error),
             );
