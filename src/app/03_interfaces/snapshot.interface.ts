@@ -1,7 +1,7 @@
 import { IAction, IScreen, IState } from '@interfaces/helper.interface';
 
 export interface ISnapshot {
-    appHistory: string[];
+    appRouterHistory: string[];
     appActions: IAction;
     appScreen: IScreen;
     appState: IState;

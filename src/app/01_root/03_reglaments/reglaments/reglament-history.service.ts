@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { TRoles } from '@interfaces/helper.interface';
-import { StateService } from '@checkpoints/01_state-emitters/state.service';
+import { CheckpointsService } from '@checkpoints/checkpoints.service';
 
 @Injectable({ providedIn: 'root' })
-export class HistoryReglamentsService {
+export class ReglamentHistoryService {
     private _appSnapshot = null;
 
     public constructor(
-        private _state: StateService,
+        // public checkpoints: CheckpointsService,
     ) {
     }
 
     public checkForChanges(appSnapshot) {
         this._appSnapshot = appSnapshot;
-        const checkPoint = appSnapshot.appHistory;
+        const checkPoint = appSnapshot.appRouterHistory;
 
         if (checkPoint.length === 1 && checkPoint[0] === '/') {
             this._startApplication();
@@ -25,7 +25,6 @@ export class HistoryReglamentsService {
         hhh.storage.setLocalItem('#startScreen', hhh.screen.checkScreen());
         const visitorHasLogin = hhh.storage.getLocalItem('visitorHasLogin');
 
-        console.log('---visitorHasLogin', visitorHasLogin);
         if (!visitorHasLogin) {
             this._checkRolesVisitors();
         } else {
@@ -74,14 +73,17 @@ export class HistoryReglamentsService {
             hhh.storage.setLocalItem(names[i], result[i]);
         });
 
-        this._state.newAppState({
-            ...this._appSnapshot.appState,
-            roles: hhh.array.getArrayUnique(roles),
-            participants: hhh.array.getArrayUnique(participants),
-            cupsFounders: hhh.array.getArrayUnique(cupsFounders),
-            cupsReferee: hhh.array.getArrayUnique(cupsReferee),
-            cupsParticipants: hhh.array.getArrayUnique(cupsParticipants),
-        });
+        // if (this.checkpoints) {
+        //     this.checkpoints['dispatchAppState']({
+        //         ...this._appSnapshot.appState,
+        //         roles: hhh.array.getArrayUnique(roles),
+        //         participants: hhh.array.getArrayUnique(participants),
+        //         cupsFounders: hhh.array.getArrayUnique(cupsFounders),
+        //         cupsReferee: hhh.array.getArrayUnique(cupsReferee),
+        //         cupsParticipants: hhh.array.getArrayUnique(cupsParticipants),
+        //     });
+        // }
+
     }
 
     private _getFounder(item, userId, cupsFounders): boolean {

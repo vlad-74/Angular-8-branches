@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
-export class ThemeReglamentsService {
+export class ReglamentThemeService {
 
     public checkForChanges(appSnapshot) {
-        console.log(this.constructor.name + ' - appSnapshot - ', appSnapshot);
         this.setThemsValue(appSnapshot.isTheme);
     }
 

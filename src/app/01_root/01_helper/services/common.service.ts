@@ -30,7 +30,7 @@ export class CommonService {
     public log(arg, type = '***********') {
         if (!environment.production) {
             this.logСоunt++;
-            console.log( type + ' ' + this.logСоunt, ...arg);
+            console.log( this.logСоunt + ' ' + type  + ' ', ...arg);
             console.log('');
         }
     }

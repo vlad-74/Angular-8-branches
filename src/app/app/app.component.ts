@@ -2,9 +2,8 @@
 
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SubscribeService } from '@checkpoints/02_state-subscribe/subscribe.service';
-import { ScreenService } from '@checkpoints/01_state-emitters/screen.service';
-import { ScreenReglamentsService } from '@root/03_reglaments/reglaments/screen-reglaments.service';
+import { ReglamentScreenService } from '@reglaments/reglaments/reglament-screen.service';
+import { CheckpointsService } from '@checkpoints/checkpoints.service';
 
 @Component({
     selector: 'app-root',
@@ -19,10 +18,9 @@ export class AppComponent implements OnInit, OnDestroy {
     private resizeId;
 
     public constructor(
-        private _subscribeApp: SubscribeService,
-        private _screenReglaments: ScreenReglamentsService,
-        private _screen: ScreenService,
+        private _screenReglaments: ReglamentScreenService,
         private _router: Router,
+        private _checkpoints: CheckpointsService,
     ) {
     }
 
@@ -32,13 +30,13 @@ export class AppComponent implements OnInit, OnDestroy {
         this.resizeId = setTimeout(() => {
             const screen = hhh.screen.checkScreen();
 
-            this._screen.setAppScreen(screen); // отрабатывает при ресйзе (при старте приложения нет)
+            this._checkpoints.setAppScreen(screen); // отрабатывает при ресйзе (при старте приложения нет)
         }, 500);
     }
 
     /* Подписываемся на STATE & USER_ACTIVITY */
     public ngOnInit() {
-        this._subscribeApp.onInitApp();
+        this._checkpoints.initCheckpoints();
         // if (!environment.production) {
         //     this._router.navigate(['developer']);
         // }
@@ -46,6 +44,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
     /* Отписываемся от подписок */
     public ngOnDestroy(): void {
-        this._subscribeApp.onDestroyApp();
+        this._checkpoints.onDestroyApp();
     }
 }

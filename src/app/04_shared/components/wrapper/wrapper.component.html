@@ -2,15 +2,15 @@
     <div
         *ngIf="!isHiddenMenu"
         [ngClass]="{
-        'container-tablet': currentAppSnapshot.appScreen.typeScreen === 'tablet',
-        'container-column': currentAppSnapshot.appScreen.typeScreen !== 'tablet'
+        'container-tablet': $checkpoints.appScreen.typeScreen === 'tablet',
+        'container-column': $checkpoints.appScreen.typeScreen !== 'tablet'
         }"
     >
-        <menu *ngIf="currentAppSnapshot.appScreen.typeScreen !== 'tablet'" ></menu>
+        <menu *ngIf="$checkpoints.appScreen.typeScreen !== 'tablet'" ></menu>
         <div class="content-wrap">
             <router-outlet></router-outlet>
         </div>
-        <menu *ngIf="currentAppSnapshot.appScreen.typeScreen === 'tablet'"></menu>
+        <menu *ngIf="$checkpoints.appScreen.typeScreen === 'tablet'"></menu>
     </div>
 
     <ng-container *ngIf="isHiddenMenu">

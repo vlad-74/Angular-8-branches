@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ThemeService } from '@checkpoints/01_state-emitters/theme.service';
+import { CheckpointsService } from '@checkpoints/checkpoints.service';
 
 @Component({
     selector: 'theme.component.ts',
@@ -12,13 +12,13 @@ import { ThemeService } from '@checkpoints/01_state-emitters/theme.service';
 export class ThemeComponent implements OnInit {
 
     public constructor(
-        private _theme: ThemeService,
+        public checkpoints: CheckpointsService,
     ) {
     }
 
     public ngOnInit() {
         setTimeout(() => {
-            this._theme.darkTheme();
+            this.checkpoints.themeDark();
         }, 2000);
     }
 }

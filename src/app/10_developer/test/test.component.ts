@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AppSnapshotService } from '@checkpoints/01_state-emitters/app-snapshot.service';
 
 @Component({
     selector: 'test',
@@ -13,20 +12,11 @@ export class TestComponent implements OnInit, OnDestroy {
     private currentAppSnapshot;
 
     public constructor(
-        private _snapShot: AppSnapshotService,
     ) {
     }
 
     /* Подписывемся на appSnapshot$*/
     public async ngOnInit() {
-        this._snapShot.appSnapshot$
-            .pipe(takeUntil(this.destroyed$))
-            .subscribe(
-                appSnapshot => {
-                    this.currentAppSnapshot = appSnapshot;
-                },
-                error => console.log('login - error', error),
-            );
         console.log('-global.window._h--', hhh.unique.generateUniqueString());
 
         this.checkDates();

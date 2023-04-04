@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
-export class SleepReglamentsService {
+export class ReglamentSleepService {
 
     public constructor(
         private router: Router,
@@ -10,7 +10,6 @@ export class SleepReglamentsService {
     }
 
     public checkForChanges(appSnapshot) {
-        console.log(this.constructor.name + ' - appSnapshot - ', appSnapshot);
         this.router.navigate(['sleep']).then();
     }
 }

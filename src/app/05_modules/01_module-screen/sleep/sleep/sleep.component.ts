@@ -1,7 +1,7 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
-import { UserActivityService } from '@checkpoints/01_state-emitters/user-activity.service';
+import { CheckpointsService } from '@checkpoints/checkpoints.service';
 
 @Component({
     selector: 'sleep',
@@ -13,9 +13,9 @@ export class SleepComponent implements OnInit, OnDestroy {
     private _interval;
 
     public constructor(
-        public router: Router,
         @Inject(DOCUMENT) private document: Document,
-        private _userActivity: UserActivityService,
+        public router: Router,
+        public checkpoints: CheckpointsService,
     ) {
     }
 
@@ -32,7 +32,7 @@ export class SleepComponent implements OnInit, OnDestroy {
     }
 
     public goHome() {
-        this._userActivity.userWork();
+        this.checkpoints.userWork();
         this.router.navigate(['']).then();
     }
 

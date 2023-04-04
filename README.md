@@ -17,13 +17,13 @@
 * 2 - логирование LogComponent - interface ILogParam 
 
 ==============================================================================
-* 3 - !!! НАСЛЕДУЕМСЯ В КОМПОНЕНТАХ ОТ AppSnapshotComponent И ПОЛУЧАЕМ currentAppSnapshot
+* 3 - !!! НАСЛЕДУЕМСЯ В КОМПОНЕНТАХ ОТ CheckpointsComponent И ПОЛУЧАЕМ currentAppSnapshot
 * при наследовании класс получает:
-    * - КЛАСС AppSnapshotComponent - подписка на состояние приложения
+    * - КЛАСС CheckpointsComponent - подписка на состояние приложения
     * - под-КЛАСС LogComponent - логирование компонента - если в конструктор передан параметр logTyp: string
     * - под-под-КЛАСС OutlineComponent - outline (css) для компонента - если в конструктор передан параметр px: number
 ```
-export class WrapperComponent extends AppSnapshotComponent implements OnInit, OnDestroy {
+export class WrapperComponent extends CheckpointsComponent implements OnInit, OnDestroy {
 
     public constructor(
         public snapShot: AppSnapshotService,
@@ -39,14 +39,14 @@ export class WrapperComponent extends AppSnapshotComponent implements OnInit, On
 
     /**
      * при наследовании получают:
-     * - КЛАСС AppSnapshotComponent - подписка на состояние приложения
+     * - КЛАСС CheckpointsComponent - подписка на состояние приложения
      * - КЛАСС LogComponent - логирование компонента - если в конструктор передан параметр logTyp:string
      * - КЛАСС OutlineComponent - outline (css) для компонента - если в конструктор передан параметр px:number
-     * this.currentAppSnapshot пришел из наследуемого класса AppSnapshotComponent
+     * this.currentAppSnapshot пришел из наследуемого класса CheckpointsComponent
      */
     public ngOnInit() {
-        const index = this.currentAppSnapshot.appHistory.length - 1;
-        const currentRoute = this.currentAppSnapshot.appHistory[index].split('/')[1];
+        const index = this.currentAppSnapshot.appRouterHistory.length - 1;
+        const currentRoute = this.currentAppSnapshot.appRouterHistory[index].split('/')[1];
     }
 
     /* Отписываемся от подписок */
@@ -55,7 +55,7 @@ export class WrapperComponent extends AppSnapshotComponent implements OnInit, On
     }
 ```
 ==============================================================================
-* 4 - !!! AppSnapshotComponent с подпиской на appSnapshot$
+* 4 - !!! CheckpointsComponent с подпиской на appSnapshot$
 ```
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -70,7 +70,7 @@ import { ILogParam, IOutlineParam } from '@interfaces/helper.interface';
  * при наследовании получают
  * @param currentAppSnapshot - состояние приложения
  */
-export abstract class AppSnapshotComponent extends LogComponent {
+export abstract class CheckpointsComponent extends LogComponent {
     public currentAppSnapshot: ISnapshot;
     private readonly destroyed$ = new Subject();
 
@@ -116,8 +116,8 @@ export abstract class AppSnapshotComponent extends LogComponent {
 * 9 - `src\app\01_root\02_checkpoints` - контрольные точки приложения (emmit & subscribe)
 * 10.1. - `public setCurrentAppSnapshot(snapshot)` - emmit СНИМКА ПРИЛОЖЕНИЯ (url, appActions$, appState$, isTheme$, isSleep$)
 * 10.2. - `public getAppSnapshot()` - подписываемся на изменения ТЕКУЩЕГО СОСТОЯНИЯ ПРИЛОЖЕНИЯ
-* 11 - `src\app\01_root\03_reglaments\reglaments.service.ts` - логика действий приложения по контрольным точкам приложения 
-* 11.1. - `public checkStateChanges(appSnapshot)` - ТОЧКА СВЯЗКИ подписки и регламентов
+* 11 - `src\app\01_root\03_reglaments\reglament.service.ts` - логика действий приложения по контрольным точкам приложения 
+* 11.1. - `public getСheckpoints(appSnapshot)` - ТОЧКА СВЯЗКИ подписки и регламентов
 * 12 - `src\app\10_developer` - "ПЕСОЧНИЦА" для разработчика - отработка и ИСТОРИЯ функционала. ВИЗУАЛИЗАЦИЯ КОДА !!!
 
 > ## СТРУКТУРА ПРОЕКТА

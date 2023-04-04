@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Injectable({ providedIn: 'root' })
-export class ScreenReglamentsService {
+export class ReglamentScreenService {
 
     public constructor(
         @Inject(DOCUMENT) private document: Document,

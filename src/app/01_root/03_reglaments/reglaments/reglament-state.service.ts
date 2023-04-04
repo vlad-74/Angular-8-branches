@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
-export class ActionsReglamentsService {
+export class ReglamentStateService {
 
     public checkForChanges(appSnapshot) {
-        console.log('---appSnapshot', appSnapshot);
+        // console.log('---appSnapshot', appSnapshot);
     }
 }

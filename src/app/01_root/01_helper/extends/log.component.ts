@@ -29,18 +29,18 @@ export abstract class LogComponent extends OutlineComponent {
 
             // при this.logType === 'default' в ...args первым аргументом передавать appSnapshot приложения
             if (this.logParam.type === 'default' && args.length === 1) {
-                const snapshot: ISnapshot = hhh.object.objectCopy(args[0]);
+                const checkpoints = hhh.object.objectCopy(args[0]);
 
-                if (snapshot.appHistory) {
-                    const index = snapshot.appHistory.length - 1;
-                    const arrCurrentRoute = snapshot.appHistory[index].split('/');
+                if (checkpoints.appRouterHistory && checkpoints.appRouterHistory.length > 0) {
+                    const index = checkpoints.appRouterHistory.length - 1;
+                    const arrCurrentRoute = checkpoints.appRouterHistory[index].split('/');
                     const i = arrCurrentRoute.length - 1;
                     const page = arrCurrentRoute[i];
 
                     result.push(page);
                 }
                 result.push(
-                    snapshot.itemChange,
+                    checkpoints.itemChange,
                     hhh.object.objectCopy(args[0]),
                 );
             }

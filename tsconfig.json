@@ -9,7 +9,7 @@
         "@root/*": ["src/app/01_root/*"],
         "@helper/*": ["src/app/01_root/01_helper/*"],
         "@checkpoints/*": ["src/app/01_root/02_checkpoints/*"],
-        "@reglaments/*": ["src/app/01_root/04_state-reglaments/*"],
+        "@reglaments/*": ["src/app/01_root/03_reglaments/*"],
         "@routing/*": ["src/app/02_routing/*"],
         "@interfaces/*": ["src/app/03_interfaces/*"],
         "@shared/*": ["src/app/04_shared/*"],

@@ -1,14 +1,16 @@
 /* Интерфейсы для модуля Helper */
 
 export interface IScreen {
-    vw: string;
-    vh: string;
-    dpi: number;
-    coefficient: number;
-    typeScreen: string;
-    browser: IBrowser;
-    orientation: ScreenOrientation;
+    vw?: string;
+    vh?: string;
+    dpi?: number;
+    coefficient?: number;
+    typeScreen?: string;
+    browser?: IBrowser;
+    orientation?: ScreenOrientation;
 }
+
+export type THistory = string[];
 
 export interface IBrowser {
     browser: string;

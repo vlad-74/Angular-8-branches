@@ -1,37 +1,32 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { AppSnapshotService } from '@checkpoints/01_state-emitters/app-snapshot.service';
+import { CheckpointsComponent } from '@helper/extends/checkpoints.component.ts';
+import { CheckpointsService } from '@checkpoints/checkpoints.service';
 
 @Component({
     selector: 'snapshot',
     templateUrl: './snapshot.component.html',
     styleUrls: ['./snapshot.component.scss'],
 })
-export class SnapshotComponent implements OnInit, OnDestroy {
-    private readonly destroyed$ = new Subject();
-    private currentAppSnapshot;
+export class SnapshotComponent extends CheckpointsComponent implements OnInit, OnDestroy {
 
     public constructor(
-        private _snapShot: AppSnapshotService,
+        public checkpoints: CheckpointsService,
     ) {
+        super(
+            checkpoints,
+            { type: 'default', isGlobalLog: true },
+            { px: 1, isGlobalOutline: true },
+        );
+        // если не нужно логирование - super(snapShot, { type: '', isGlobalLog: false }, { px: 1, isGlobalOutline: true });
+        // если не нужно outline - super(snapShot, { type: 'default', isGlobalLog: true }, { px: 0, isGlobalOutline: false });
     }
 
     /* Подписывемся на appSnapshot$*/
     public ngOnInit() {
-        this._snapShot.appSnapshot$
-            .pipe(takeUntil(this.destroyed$))
-            .subscribe(
-                appSnapshot => {
-                    this.currentAppSnapshot = appSnapshot;
-                },
-                error => console.log('login - error', error),
-            );
+        console.log('---this.checkpoints.watcher', this.checkpoints.watcher);
     }
 
-    /* Отписываемся от подписок */
     public ngOnDestroy(): void {
-        this.destroyed$.next();
-        this.destroyed$.complete();
+        this.onDestroy();
     }
 }

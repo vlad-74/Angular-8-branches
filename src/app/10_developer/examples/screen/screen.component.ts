@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AppSnapshotService } from '@checkpoints/01_state-emitters/app-snapshot.service';
 
 @Component({
     selector: 'screen',
@@ -12,20 +11,11 @@ export class ScreenComponent implements OnInit, OnDestroy {
     private readonly destroyed$ = new Subject();
 
     public constructor(
-        private _snapShot: AppSnapshotService,
     ) {
     }
 
     /* Подписывемся на appSnapshot$*/
     public async ngOnInit() {
-        this._snapShot.appSnapshot$
-            .pipe(takeUntil(this.destroyed$))
-            .subscribe(
-                appSnapshot => {
-                    console.log('---appSnapshot', appSnapshot);
-                },
-                error => console.log('login - error', error),
-            );
         this.checkScreen();
     }
 
