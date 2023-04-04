@@ -24,12 +24,14 @@
     * - под-под-КЛАСС OutlineComponent - outline (css) для компонента - если в конструктор передан параметр px: number
 ```
 export class WrapperComponent extends CheckpointsComponent implements OnInit, OnDestroy {
+    public isHiddenMenu = false;
+    private _activeRouteHidden = ['developer', 'sleep', 'not-found'];
 
     public constructor(
-        public snapShot: AppSnapshotService,
+        public checkpoints: CheckpointsService, // для передачи в super
     ) {
         super(
-            snapShot,
+            checkpoints,
             { type: 'default', isGlobalLog: true },
             { px: 1, isGlobalOutline: true },
         );
@@ -42,27 +44,32 @@ export class WrapperComponent extends CheckpointsComponent implements OnInit, On
      * - КЛАСС CheckpointsComponent - подписка на состояние приложения
      * - КЛАСС LogComponent - логирование компонента - если в конструктор передан параметр logTyp:string
      * - КЛАСС OutlineComponent - outline (css) для компонента - если в конструктор передан параметр px:number
-     * this.currentAppSnapshot пришел из наследуемого класса CheckpointsComponent
+     * this.$checkpoints пришел из наследуемого класса CheckpointsComponent
      */
     public ngOnInit() {
-        const index = this.currentAppSnapshot.appRouterHistory.length - 1;
-        const currentRoute = this.currentAppSnapshot.appRouterHistory[index].split('/')[1];
+        const index = this.$checkpoints.appRouterHistory.length - 1;
+
+        if (index !== -1) {
+            const currentRoute = this.$checkpoints.appRouterHistory[index].split('/')[1];
+
+            this.isHiddenMenu = this._activeRouteHidden.includes(currentRoute);
+        }
     }
 
     /* Отписываемся от подписок */
     public ngOnDestroy(): void {
         this.onDestroy();
     }
+}
 ```
 ==============================================================================
-* 4 - !!! CheckpointsComponent с подпиской на appSnapshot$
+* 4 - !!! CheckpointsComponent с подпиской на _appCheckpoints$
 ```
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { AppSnapshotService } from '@checkpoints/01_state-emitters/app-snapshot.service';
 import { LogComponent } from '@helper/extends/log.component';
-import { ISnapshot } from '@interfaces/snapshot.interface';
 import { ILogParam, IOutlineParam } from '@interfaces/helper.interface';
+import { CheckpointsService, IWatcher } from '@checkpoints/checkpoints.service';
 
 /**
  * КЛАСС ДЛЯ НАСЛЕДОВАНИЯ КОМПОНЕНТАМИ
@@ -71,29 +78,30 @@ import { ILogParam, IOutlineParam } from '@interfaces/helper.interface';
  * @param currentAppSnapshot - состояние приложения
  */
 export abstract class CheckpointsComponent extends LogComponent {
-    public currentAppSnapshot: ISnapshot;
+    public $checkpoints: IWatcher;
     private readonly destroyed$ = new Subject();
 
     protected constructor(
-        public snapShot: AppSnapshotService,
+        public checkpoints: CheckpointsService,
         public logParam: ILogParam,
         public outlineParam: IOutlineParam,
     ) {
         super(logParam, outlineParam);
-        
-        this.snapShot.appSnapshot$
-            .pipe(takeUntil(this.destroyed$))
-            .subscribe(
-                appSnapshot => {
-                    this.currentAppSnapshot = appSnapshot;
-                    /**
-                     * логирование из наследуемого класса LogComponent
-                     * при this.logParam.type === 'default' передавать appSnapshot приложения
-                     */
-                    if (this.logParam.type) { this.log(this.currentAppSnapshot); }
-                },
-                error => console.log('login - error', error),
-            );
+
+        this.checkpoints._appCheckpoints$
+            .pipe( takeUntil(this.destroyed$) )
+            .subscribe((value: IWatcher) => {
+                /**
+                 * this.$checkpoints - будет доступна во всех наследуемых компонентах
+                 */
+                this.$checkpoints = value ;
+
+            /**
+             * логирование из наследуемого класса LogComponent
+             * при this.logParam.type === 'default' передавать appSnapshot приложения
+             */
+                if (this.logParam.type && value) { this.log(this.$checkpoints); }
+            });
     }
 
     /* Отписываемся от подписок */
@@ -113,20 +121,15 @@ export abstract class CheckpointsComponent extends LogComponent {
 * 6 - `src\app\01_root\01_helper\helper.service.ts` - СЕРВИСЫ ДЛЯ РАЗРАБОТЧИКА
 * 7 - `src\app\01_root\01_helper\extends` - классы для наследования (...и для использования в других проектах)
 * 8 - `src\app\01_root\01_helper\directives` - директивы (...и для использования в других проектах)
-* 9 - `src\app\01_root\02_checkpoints` - контрольные точки приложения (emmit & subscribe)
-* 10.1. - `public setCurrentAppSnapshot(snapshot)` - emmit СНИМКА ПРИЛОЖЕНИЯ (url, appActions$, appState$, isTheme$, isSleep$)
-* 10.2. - `public getAppSnapshot()` - подписываемся на изменения ТЕКУЩЕГО СОСТОЯНИЯ ПРИЛОЖЕНИЯ
-* 11 - `src\app\01_root\03_reglaments\reglament.service.ts` - логика действий приложения по контрольным точкам приложения 
-* 11.1. - `public getСheckpoints(appSnapshot)` - ТОЧКА СВЯЗКИ подписки и регламентов
-* 12 - `src\app\10_developer` - "ПЕСОЧНИЦА" для разработчика - отработка и ИСТОРИЯ функционала. ВИЗУАЛИЗАЦИЯ КОДА !!!
+* 9 - `src\app\01_root\02_checkpoints` - !!!контрольные точки приложения (emmit & subscribe) - url, appActions$, appState$, isTheme$, isSleep$
+* 10 - `src\app\01_root\03_reglaments\reglament.service.ts` - логика действий приложения по контрольным точкам приложения
+* 11 - `src\app\10_developer` - "ПЕСОЧНИЦА" для разработчика - отработка и ИСТОРИЯ функционала. ВИЗУАЛИЗАЦИЯ КОДА !!!
 
 > ## СТРУКТУРА ПРОЕКТА
 * 0 - Папка - `src\app\00_app` - старт приложения
 * 1 - Папка !!! - `src\app\01_root` содержит:
 * 1.1. - подпапка !!! `01_helper` - ПАПКА `ДЛЯ РАЗРАБОТЧИКА` - состоящая из сервисов для работы `типами данных` и другими сущностями приложения. - `@Injectable({ providedIn: 'root' })`
-* 1.2. - подпапка !!! `02_checkpoints` - ПАПКА `КОНТРОЛЬНЫХ ТОЧЕК ПРИЛОЖЕНИЯ` содержит:
-* 1.2.1. - под-подпапка !!! `01_state-emitters` - основной ПАПКА `СОСТОЯНИЯ` приложения. Все сервисы подключены к root - `@Injectable({ providedIn: 'root' })`
-* 1.2.2. - под-подпапка !!! `02_stste-subscribe` - ПАПКА `ДЛЯ ОСНОВНЫХ ПОДПИСОК ПРИЛОЖЕНИЯ` (клиент ПАПКИ `01_state-emitters`) - `@Injectable({ providedIn: 'root' })`
+* 1.2. - подпапка !!! `02_checkpoints` - ПАПКА `КОНТРОЛЬНЫХ ТОЧЕК ПРИЛОЖЕНИЯ`
 * 1.3. - подпапка !!! `03_reglaments` - ПАПКА `ЛОГИКА ДЕЙСТВИЯ ПРИЛОЖЕНИЯ ПО КОНТРОЛЬНЫМ ТОЧКАМ`. Все сервисы подключены к root - `@Injectable({ providedIn: 'root' })`
 * 2 - Папка !!! `src\app\02_routing` Папка `НАВИГАЦИИ`
 * 3 - Папка `03_interfaces` - интерфейсы приложения.
